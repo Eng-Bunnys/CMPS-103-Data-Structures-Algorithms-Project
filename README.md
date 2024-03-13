@@ -31,12 +31,14 @@ Example:
 2. **Tank**
   - Stack =>LIFO Behaviour, the last element added will be the first one removed which is perfect for this scenario
     Estimated time complexity for push, pop, and top: O(1)
+    ---------------------------------------------------------
     ![Stack](https://media.geeksforgeeks.org/wp-content/uploads/20230116192305/stack-768.png)
 
 3. **Gunnery**
    - Priority Queue => Elements are moved according to their priority, in our scenario the priority would be determined by the power & health, so the highest will be on top
      The estimated time complexity for update O(log(n)) will likely be similar to retrieval, insertion, deletion, and update if we use the tree approach.
      If a queue implementation was used, the estimated time complexity might be O(k + m) where m is the number of elements k is the priority level for insertion, O(1) for deletion, O(k + m) for update
+      ---------------------------------------------------------
      ![Priority Queue Queue method](https://miro.medium.com/v2/resize:fit:1200/1*8qeO7nFIxK_MhDY2MBVKXw.png)
      ![Priority Queue Tree method](https://he-s3.s3.amazonaws.com/media/uploads/6cedb81.jpg)
 
@@ -48,6 +50,7 @@ Example:
    - Queue, insertions, and deletions can be done with complexities O(1) **but** the operation to find pairs would require dequeuing two drones so it *could* be O(n)
    - Deque, a double-ended queue, this way we can insert and delete at both ends so estimated complexity O(1)
    - Array/List, Depending on the algorithm used the estimated min. complexity would be O(n log(n)) and worst case scenario would be O(n²)
+      ---------------------------------------------------------
    ![Deque](https://media.geeksforgeeks.org/wp-content/uploads/anod.png)
 
 ### Description [Not Complete]
