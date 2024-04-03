@@ -22,9 +22,6 @@
 *.out
 
 # Visual Studio files
-*.sln
-*.vcxproj
-*.vcxproj.filters
 *.pdb
 *.ilk
 *.sdf
@@ -42,8 +39,6 @@
 *.ipch
 *.aps
 *.ncb
-*.vspscc
-*.vssscc
 *.pch
 *.bak
 *.cache
