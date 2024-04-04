@@ -2,8 +2,9 @@
 #define Node_H
 
 template <typename T>
-struct Node
+class Node
 {
+public:
 	/* The value of the node */
 	T Value;
 	/* The node after */
