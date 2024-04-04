@@ -24,8 +24,10 @@ private:
 public:
 	Bag(int Size)
 	{
-		this->Size = MAX < Size ? MAX : Size;
-		Array = new T *[this->Size];
+		this->Size = MAX > Size ? MAX : Size;
+		Array = new T *[Size];
+
+		for (int i = 0; i < Size; i++) Array[i] = nullptr;
 	}
 
 	/**
@@ -33,7 +35,7 @@ public:
 	 * @param {T} NewElement - The element to insert.
 	 * @param {ArrayInsertPositions} Position - The position to insert the element (Front or Back).
 	 */
-	void Insert(const T &NewElement, ArrayInsertPositions Position)
+	void Insert(T NewElement, ArrayInsertPositions Position)
 	{
 		if (Position == ArrayInsertPositions::Front)
 			InsertFront(NewElement);
@@ -64,13 +66,13 @@ private:
 	 * Throws a runtime error if the Bag size exceeds the maximum allowed size.
 	 * @param {T} NewElement - The element to insert.
 	 */
-	void InsertFront(const T &NewElement) noexcept(false)
+	void InsertFront(T &NewElement) noexcept(false)
 	{
 		if (Size + 1 > MAX)
 			throw std::runtime_error(MaxSizeError);
 
 		Array[Size] = Array[0];
-		Array[0] = NewElement;
+		Array[0] = &NewElement;
 		Size++;
 	}
 
@@ -79,12 +81,12 @@ private:
 	 * Throws a runtime error if the Bag size exceeds the maximum allowed size.
 	 * @param {T} NewElement - The element to insert.
 	 */
-	void InsertBack(const T &NewElement) noexcept(false)
+	void InsertBack(T &NewElement) noexcept(false)
 	{
 		if (Size + 1 > MAX)
 			throw std::runtime_error(MaxSizeError);
 
-		Array[Size] = NewElement;
+		Array[Size] = &NewElement;
 		Size++;
 	}
 };

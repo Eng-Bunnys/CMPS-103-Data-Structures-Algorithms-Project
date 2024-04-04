@@ -39,7 +39,7 @@
     <ClInclude Include="Utils\Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Units\Earth\EarthArmy.h">
+    <ClInclude Include="Units\Earth\EarthUnit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Structures\Nodes\PriorityNode.h">
@@ -54,10 +54,13 @@
     <ClInclude Include="Structures\Priority Queue\linkedPriorityQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Units\unit.h">
+    <ClInclude Include="Units\Unit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Units\Earth Tanks\EarthTanks.h">
+    <ClInclude Include="Units\Earth\Earth Gunnery\Earth Gunnery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\Earth\EarthArmy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,11 +71,14 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Units\Earth\EarthArmy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Structures\Nodes\Node.h">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Units\Earth\Earth Gunnery\Earth Gunnery.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
   </ItemGroup>
 </Project>

@@ -127,12 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Units\Earth\Earth Gunnery\Earth Gunnery.h" />
     <ClInclude Include="Structures\Bag\Bag.h" />
     <ClInclude Include="Structures\Nodes\PriorityNode.h" />
     <ClInclude Include="Structures\Priority Queue\linkedPriorityQueue.h" />
     <ClInclude Include="Structures\Queue\LinkedQueue.h" />
-    <ClInclude Include="Units\Earth Tanks\EarthTanks.h" />
     <ClInclude Include="Units\Earth\EarthArmy.h" />
+    <ClInclude Include="Units\Earth\EarthUnit.h" />
     <ClInclude Include="Structures\Deque\Deque.h" />
     <ClInclude Include="Enums\Enums.h" />
     <ClInclude Include="Game Manager\GameManager.h" />
@@ -140,14 +141,17 @@
     <ClInclude Include="Structures\ADTs\QueueADT.h" />
     <ClInclude Include="Structures\Stack\ArrayStack.h" />
     <ClInclude Include="Structures\ADTs\StackADT.h" />
-    <ClInclude Include="Units\unit.h" />
+    <ClInclude Include="Units\Unit.h" />
     <ClInclude Include="Utils\Utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Units\Earth\Earth Gunnery\Earth Gunnery.cpp" />
     <ClCompile Include="Structures\Nodes\Node.h" />
-    <ClCompile Include="Units\Earth\EarthArmy.cpp" />
     <ClCompile Include="Game Manager\GameManager.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

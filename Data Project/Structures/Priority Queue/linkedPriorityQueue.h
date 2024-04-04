@@ -2,19 +2,19 @@
 #include "../Nodes/PriorityNode.h"
 
 template <typename T>
-class linkedPriorityQueue
+class PriorityQueue
 {
 	PriorityNode<T> *head;
 	int count;
 
 public:
-	linkedPriorityQueue() : head(nullptr), count(0) {}
+	PriorityQueue() : head(nullptr), count(0) {}
 
 	/**
 	 * Constructor that initializes the linked priority queue with a given head node
 	 * @param {PriorityNode<T>*} head - The head node of the linked priority queue
 	 */
-	linkedPriorityQueue(PriorityNode<T> *Head) : head(Head), count(0) {}
+	PriorityQueue(PriorityNode<T> *Head) : head(Head), count(0) {}
 
 	/**
 	 * Enqueues a new element according to its priority
@@ -121,7 +121,7 @@ public:
 		std::cout << " <- NULL" << std::endl;
 	}
 
-	~linkedPriorityQueue()
+	~PriorityQueue()
 	{
 		PriorityNode<T> *current = head;
 		while (current)
