@@ -54,6 +54,9 @@
     <ClInclude Include="Structures\Pri-Queue\linkedPriorityQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Units\unit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game Manager\GameManager.cpp">
