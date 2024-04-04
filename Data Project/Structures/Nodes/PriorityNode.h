@@ -2,8 +2,9 @@
 #define PriorityNode_H
 
 template <typename T>
-struct PriorityNode
+class PriorityNode
 {
+public:
     T Value;
     T Priority;
     PriorityNode<T> *Next;

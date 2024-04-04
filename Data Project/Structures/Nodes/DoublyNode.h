@@ -2,8 +2,9 @@
 #define DoublyNode_H
 
 template <typename T>
-struct DoublyNode
+class DoublyNode
 {
+public:
 	T Value;
 	DoublyNode<T> *Next;
 	DoublyNode<T> *Back;
