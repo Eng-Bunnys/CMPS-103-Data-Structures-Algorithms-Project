@@ -51,7 +51,7 @@
     <ClInclude Include="Structures\Bag\Bag.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Structures\Pri-Queue\linkedPriorityQueue.h">
+    <ClInclude Include="Structures\Priority Queue\linkedPriorityQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\unit.h">

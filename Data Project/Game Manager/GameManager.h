@@ -33,9 +33,8 @@ public:
 	/* String to prompt the user to run in either interactive or silent mode */
 	std::string ModeType = "To run \"Interactive Mode\", enter 1. To run \"Silent Mode\", enter 0.";
 
-	///Other functions
+	/// Other functions
 	void incrementTimeStep();
-
 };
 
 #endif // !GameManager_H

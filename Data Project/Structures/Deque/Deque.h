@@ -1,4 +1,4 @@
-#ifndef Deque_H
+﻿#ifndef Deque_H
 #define Deque_H
 
 #include "../Nodes/DoublyNode.h"
@@ -23,8 +23,8 @@ public:
         DoublyNode<T> *HeadNode = new DoublyNode<T>(Head);
         DoublyNode<T> *TailNode = new DoublyNode<T>(Tail);
 
-        HeadNode->Next = TailNode;
-        TailNode->Back = HeadNode;
+        HeadNode->SetNext(TailNode);
+        TailNode->SetBack(HeadNode);
         this->Head = HeadNode;
         this->Tail = TailNode;
         this->Count = 2;
@@ -46,8 +46,8 @@ public:
         else
         {
             // If false we set the next node of the new node to the head, the set back of the head to the new node then set the head to the new node
-            NewNode->Next = Head;
-            Head->Back = NewNode;
+            NewNode->SetNext(Head);
+            Head->SetBack(NewNode);
             Head = NewNode;
         }
         // Increment the value of the count so we know that the deque got a new element
@@ -68,7 +68,7 @@ public:
         else
         {
             // Setting the value of the removed head to the FrontElement parameter
-            FrontElement = Head->Value;
+            FrontElement = Head->GetValue();
 
             // I'm not sure if this is correct, but I created this to safely delete the front node, my thought process was if we didn't do this, there will be either a memory leak or dangling pointer
             DoublyNode<T> *Temp = Head;
@@ -78,8 +78,8 @@ public:
             else
             {
                 // If there are more than 1 elements in the deque, then we set the head to the node after the head
-                Head = Head->Next;
-                Head->Back = nullptr;
+                Head = Head->GetNext();
+                Head->SetBack(nullptr);
             }
             delete Temp;
             Count--;
@@ -103,8 +103,8 @@ public:
         else
         {
             // If the deque is not empty, we set the next of the previous tail to the new node, and make them point at each other then set the tail to the new node
-            Tail->Next = NewNode;
-            NewNode->Back = Tail;
+            Tail->SetNext(NewNode);
+            NewNode->SetBack(Tail);
             Tail = NewNode;
         }
         Count++;
@@ -124,7 +124,7 @@ public:
         else
         {
             // Setting the value of the old tail to the parameter
-            BackElement = Tail->Value;
+            BackElement = Tail->GetValue();
 
             // Just like dequeue front
             DoublyNode<T> *Temp = Tail;
@@ -133,8 +133,8 @@ public:
                 Head = Tail = nullptr;
             else
             {
-                Tail = Tail->Back;
-                Tail->Next = nullptr;
+                Tail = Tail->GetBack();
+                Tail->SetNext(nullptr);
             }
             delete Temp;
             Count--;
@@ -155,7 +155,7 @@ public:
         else
         {
             // Setting the value to the paramater and returning true
-            FrontElement = Head->Value;
+            FrontElement = Head->GetValue();
             return true;
         }
     }
@@ -171,7 +171,7 @@ public:
             return false;
         else
         {
-            BackElement = Tail->Value;
+            BackElement = Tail->GetValue();
             return true;
         }
     }
@@ -194,23 +194,25 @@ public:
     {
         // Check if the deque is empty
         if (isEmpty())
+        {
+            std::cout << "NULL" << std::endl;
             return;
-
+        }
         // Iterate through the deque and print each element
         DoublyNode<T> *Current = Head;
         while (Current != nullptr)
         {
-            std::cout << Current->Value;
+            std::cout << Current->GetValue();
 
             // Print arrow if the current node is not the last node
-            if (Current->Next != nullptr)
-                std::cout << " <- ";
+            if (Current->GetNext() != nullptr)
+                std::cout << " <-> ";
 
-            Current = Current->Next;
+            Current = Current->GetNext();
         }
 
         // Print "NULL" at the end of the deque
-        std::cout << " <- NULL" << std::endl;
+        std::cout << " <-> NULL" << std::endl;
     }
 
     /**
@@ -229,7 +231,7 @@ public:
             DoublyNode<T> *Temp = Current;
 
             // Move to the next node
-            Current = Current->Next;
+            Current = Current->GetNext();
 
             // Deallocate memory for the current node
             delete Temp;
@@ -267,7 +269,7 @@ public:
         while (Current != nullptr)
         {
             DoublyNode<T> *Temp = Current;
-            Current = Current->Next;
+            Current = Current->GetNext();
             delete Temp;
         }
 

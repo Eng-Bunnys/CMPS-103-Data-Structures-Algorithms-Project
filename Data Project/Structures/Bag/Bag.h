@@ -1,7 +1,7 @@
 /*
 To-Do:
-Print 
-Remove 
+Print
+Remove
 */
 #ifndef Bag_H
 #define Bag_H

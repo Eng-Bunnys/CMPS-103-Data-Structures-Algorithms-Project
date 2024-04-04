@@ -8,8 +8,11 @@ template <typename T>
 class LinkedQueue : public QueueADT<T>
 {
 private:
+	/* Pointer to the first node */
 	Node<T> *Head;
+	/* Pointer to the last node */
 	Node<T> *Tail;
+	/* The number of nodes in the queue */
 	int Count;
 
 public:
@@ -20,7 +23,7 @@ public:
 	 */
 	LinkedQueue(Node<T> *Head) : Head(Head), Tail(nullptr), Count(1)
 	{
-		this->Head->Next = nullptr;
+		this->Head->SetNext(nullptr);
 	}
 
 	/**
@@ -32,7 +35,7 @@ public:
 		Node<T> *HeadNode = new Node<T>(HeadValue);
 
 		this->Head = HeadNode;
-		this->Head->Next = nullptr;
+		this->Head->SetNext(nullptr);
 		this->Count++;
 	}
 
@@ -47,16 +50,16 @@ public:
 		Node<T> *TailNode = new Node<T>(TailValue);
 
 		this->Head = HeadNode;
-		this->Head->Next = TailNode;
+		this->Head->SetNext(TailNode);
 		this->Tail = TailNode;
-		this->Tail->Next = nullptr;
+		this->Tail->SetNext(nullptr);
 		this->Count++;
 	}
 
 	/**
 	 * Deep copy constructor
 	 * Creates a new instance of the queue with a deep copy of the elements
-	 * @param other The queue to be copied
+	 * @param {LinkedQueue<T>} OtherList - The queue to be copied
 	 */
 	LinkedQueue(const LinkedQueue &OtherList) : Head(nullptr), Tail(nullptr)
 	{
@@ -71,20 +74,20 @@ public:
 		while (CurrentOther != nullptr)
 		{
 			// Create a new node for the copy
-			Node<T> *NewNode = new Node<T>(CurrentOther->Value);
+			Node<T> *NewNode = new Node<T>(CurrentOther->GetValue());
 
 			// If it's the first node, set it as the head
 			if (Head == nullptr)
 				Head = NewNode;
 			// Link the previous node to the new node
 			else
-				PreviousCopy->Next = NewNode;
+				PreviousCopy->SetNext(NewNode);
 
 			// Update the tail
 			Tail = NewNode;
 
 			// Move to the next node in the other queue
-			CurrentOther = CurrentOther->Next;
+			CurrentOther = CurrentOther->GetNext();
 			// Update the previous copy node
 			PreviousCopy = NewNode;
 		}
@@ -92,7 +95,8 @@ public:
 
 	/**
 	 * Enqueues a new element at the back of the queue
-	 * @param value The value of the element to be enqueued
+	 * @param {T} NewElement - The value of the element to be enqueued
+	 * @returns {boolean} - True if the operation is successful, false otherwise
 	 */
 	bool enqueue(const T &NewElement) override
 	{
@@ -105,7 +109,7 @@ public:
 		else
 		{
 			// Otherwise, link the current tail to the new node and update the tail pointer
-			Tail->Next = NewNode;
+			Tail->SetNext(NewNode);
 			Tail = NewNode;
 		}
 		Count++;
@@ -114,8 +118,8 @@ public:
 
 	/**
 	 * Dequeues an element from the front of the queue
-	 * @param Value Reference to store the value of the dequeued element
-	 * @return True if dequeuing was successful, false if the queue is empty
+	 * @param {T} Value - Reference to store the value of the dequeued element
+	 * @returns {boolean} - True if dequeuing was successful, false if the queue is empty
 	 */
 	bool dequeue(T &Value)
 	{
@@ -124,11 +128,11 @@ public:
 			return false;
 
 		// Store the value of the head node
-		Value = Head->Value;
+		Value = Head->GetValue();
 
 		// Move the head pointer to the next node
 		Node<T> *Temp = Head;
-		Head = Head->Next;
+		Head = Head->GetNext();
 
 		// If the queue becomes empty after dequeuing, update the tail pointer to null
 		if (!Head || Head == Tail)
@@ -141,8 +145,8 @@ public:
 
 	/**
 	 * Retrieves the element at the front of the queue without removing it
-	 * @param FrontElement Reference to store the value of the front element
-	 * @return True if the operation is successful (queue is not empty), false otherwise
+	 * @param {T} FrontElement - Reference to store the value of the front element
+	 * @returns {boolean} - True if the operation is successful (queue is not empty), false otherwise
 	 */
 	bool peek(T &FrontElement) const override
 	{
@@ -151,21 +155,24 @@ public:
 			return false;
 
 		// Set the value to the data of the head node
-		FrontElement = Head->Value;
+		FrontElement = Head->GetValue();
 		return true;
 	}
 
 	/*
 	 * Returns if the queue is empty
-	 * @return True if the queue is empty, False otherwise
+	 * @returns {boolean} - True if the queue is empty, False otherwise
 	 */
+
 	bool isEmpty() const override
 	{
 		return !(Count > 0);
 	}
 
-	/*
+	/**
 	 * Prints the queue
+	 * @param {void}
+	 * @returns {void}
 	 */
 	void print() const
 	{
@@ -176,29 +183,43 @@ public:
 
 		while (Current != nullptr)
 		{
-			std::cout << Current->Value;
+			std::cout << Current->GetValue();
 
-			if (Current->Next != nullptr)
+			if (Current->GetNext() != nullptr)
 				std::cout << " <- ";
 
-			Current = Current->Next;
+			Current = Current->GetNext();
 		}
 
 		std::cout << " <- NULL" << std::endl;
 	}
 
-	~LinkedQueue()
+	/**
+	 * Clears the contents of the queue by deallocating memory for each node and resetting the queue's state.
+	 * @param {void}
+	 * @returns {void}
+	 */
+	void clear()
 	{
+		// Start from the head of the queue
 		Node<T> *Current = Head;
+
+		// Iterate through the queue and deallocate memory for each node
 		while (Current != nullptr)
 		{
-			Node<T> *Temp = Current;
-			Current = Current->Next;
-			delete Temp;
+			Node<T> *temp = Current;
+			Current = Current->GetNext();
+			delete temp;
 		}
 
+		// Reset Head, Tail, and Count to nullptr and 0 respectively
 		Head = Tail = nullptr;
 		Count = 0;
+	}
+
+	~LinkedQueue()
+	{
+		clear();
 	}
 };
 

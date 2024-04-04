@@ -4,14 +4,29 @@
 template <typename T>
 class Node
 {
-public:
+private:
 	/* The value of the node */
 	T Value;
 	/* The node after */
 	Node<T> *Next;
 
+public:
+	/**
+	 * Construct a new Node object with default value and next pointer.
+	 */
 	Node() : Next(nullptr) {}
+
+	/**
+	 * Construct a new Node object with given value and default next pointer.
+	 * @param {T} Value - The value to be stored in the node.
+	 */
 	Node(const T &Value) : Value(Value), Next(nullptr) {}
+
+	/**
+	 * Construct a new Node object with given value and next pointer.
+	 * @param {T} Value - The value to be stored in the node.
+	 * @param {Node<T>*} Next - Pointer to the next node.
+	 */
 	Node(const T &Value, Node<T> *Next) : Value(Value), Next(Next) {}
 
 	/**

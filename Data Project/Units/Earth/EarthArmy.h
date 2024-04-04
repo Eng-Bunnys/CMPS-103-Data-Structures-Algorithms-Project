@@ -6,10 +6,11 @@
 class GameManager;
 class EarthArmy
 {
-private: 
+private:
 	GameManager Manager;
+
 public:
-	EarthArmy(GameManager* Manager);
+	EarthArmy(GameManager *Manager);
 
 	~EarthArmy();
 };

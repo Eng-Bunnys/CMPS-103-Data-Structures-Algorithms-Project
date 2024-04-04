@@ -10,35 +10,40 @@ void GameManager::Start()
 	std::cout << ">> " << ModeType;
 }
 
-int GameManager::GetTimeStep() const {
+int GameManager::GetTimeStep() const
+{
 	return TimeStep;
 }
 
-Army GameManager::GetWinner() const {
+Army GameManager::GetWinner() const
+{
 	return Winner;
 }
 
-void GameManager::incrementTimeStep() {
+void GameManager::incrementTimeStep()
+{
 	TimeStep++;
 }
 
-void GameManager::StartInteractive() {
+void GameManager::StartInteractive()
+{
 	int key;
-	while (TimeStep <= 50) {
+	while (TimeStep <= 50)
+	{
 		std::cout << "Current Timestep " << TimeStep;
-		//displaying details
+		// displaying details
 		std::cout << "Press any key to move to next time step";
 		std::cin >> key;
 		TimeStep++;
 	}
-
 }
 
-void GameManager::StartSilent() {
+void GameManager::StartSilent()
+{
 	std::cout << "Silent Mode\n";
 	std::cout << "Simulation Starts...\n";
 	std::cout << "Simluation Ends , output file is created\n";
-	//output creating function
+	// output creating function
 }
 
 GameManager::~GameManager()

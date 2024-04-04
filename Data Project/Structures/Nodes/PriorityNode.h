@@ -4,13 +4,33 @@
 template <typename T>
 class PriorityNode
 {
-public:
+private:
+    /* The value of the node */
     T Value;
+    /* The node's priority */
     T Priority;
+    /* Pointer to the next node */
     PriorityNode<T> *Next;
 
+public:
+    /**
+     * Construct a new PriorityNode object with default value and next pointer.
+     */
     PriorityNode() : Next(nullptr) {}
+
+    /**
+     * Construct a new PriorityNode object with given value, priority, and default next pointer.
+     * @param {T} Value - The value to be stored in the node.
+     * @param {T} Priority - The priority of the node.
+     */
     PriorityNode(const T &Value, const T &Priority) : Value(Value), Priority(Priority), Next(nullptr) {}
+
+    /**
+     * Construct a new PriorityNode object with given value, priority, and next pointer.
+     * @param {T} Value - The value to be stored in the node.
+     * @param {T} Priority - The priority of the node.
+     * @param {PriorityNode<T>*} Next - Pointer to the next node.
+     */
     PriorityNode(const T &Value, const T &Priority, PriorityNode<T> *Next) : Value(Value), Priority(Priority), Next(Next) {}
 
     /**

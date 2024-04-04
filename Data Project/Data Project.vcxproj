@@ -129,7 +129,7 @@
   <ItemGroup>
     <ClInclude Include="Structures\Bag\Bag.h" />
     <ClInclude Include="Structures\Nodes\PriorityNode.h" />
-    <ClInclude Include="Structures\Pri-Queue\linkedPriorityQueue.h" />
+    <ClInclude Include="Structures\Priority Queue\linkedPriorityQueue.h" />
     <ClInclude Include="Structures\Queue\LinkedQueue.h" />
     <ClInclude Include="Units\Earth Tanks\EarthTanks.h" />
     <ClInclude Include="Units\Earth\EarthArmy.h" />
