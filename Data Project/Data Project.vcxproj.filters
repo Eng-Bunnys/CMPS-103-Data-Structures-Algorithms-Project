@@ -57,7 +57,7 @@
     <ClInclude Include="Units\unit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Units\Earth Tanks\earthTanks.h">
+    <ClInclude Include="Units\Earth Tanks\EarthTanks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

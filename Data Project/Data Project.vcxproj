@@ -131,7 +131,7 @@
     <ClInclude Include="Structures\Nodes\PriorityNode.h" />
     <ClInclude Include="Structures\Pri-Queue\linkedPriorityQueue.h" />
     <ClInclude Include="Structures\Queue\LinkedQueue.h" />
-    <ClInclude Include="Units\Earth Tanks\earthTanks.h" />
+    <ClInclude Include="Units\Earth Tanks\EarthTanks.h" />
     <ClInclude Include="Units\Earth\EarthArmy.h" />
     <ClInclude Include="Structures\Deque\Deque.h" />
     <ClInclude Include="Enums\Enums.h" />
