@@ -6,12 +6,13 @@ template <typename T>
 class unit
 {
 	GameManager *gManager;
-	int power, health, attackCapacity, joinTime;
-	int deletedEarthID[1000];
-	int deletedAlienID[1000];
+	int power, attackCapacity, joinTime , battle time;
+	double health;
+	//int deletedEarthID[1000];
+	//int deletedAlienID[1000];
 	std::string type;
-	int earthID = 0; // static or keep them as int?
-	int alienID = 1999;
+	const int id; // const to be unchanged
+	
 
 protected:
 	static int countOfunits = 0;
@@ -19,6 +20,7 @@ protected:
 public:
 	unit(std::string Type) : type(Type) {}
 
+	
 	/**
 	 * Sets the value of the power
 	 * @param int p - The new value to set for the power.
@@ -31,7 +33,7 @@ public:
 	 * @param int h - The new value to set for the health.
 	 * @returns {void}
 	 */
-	void setHealth(int h) { health = h > 100 ? 100 : h; };
+	void setHealth(double h) { health = h > 100 ? 100 : h; };
 
 	/**
 	 * Sets the value of the maximum attck capacity
@@ -58,7 +60,7 @@ public:
 	 * Sets the value of the earth units id
 	 * @returns {void}
 	 */
-	void setEarthID()
+	void setID(int ID)
 	{
 		/*for (int i = 0; i < 1000; i++) {
 			if (deletedEarthID[i]) {				not completed yet
@@ -66,25 +68,10 @@ public:
 				return;
 			}
 		}*/
-		if (earthID < 999 && earthID >= 0)
-			earthID++;
+		id = ID;
 	};
 
-	/**
-	 * Sets the value of the alien units id
-	 * @returns {void}
-	 */
-	void setAlienID()
-	{
-		/*for (int i = 0; i < 1000; i++) {
-			if (deletedAlienID[i]) {
-				earthID = deletedAlienID[i];
-				return;
-			}
-		}*/
-		if (alienID < 2999 && earthID >= 1999)
-			alienID++;
-	};
+	
 
 	/**
 	 * Gets the value of the power
@@ -96,7 +83,7 @@ public:
 	 * Gets the value of the healthe
 	 * @returns {const int}
 	 */
-	int getHealth() const { return health; };
+	double getHealth() const { return health; };
 
 	/**
 	 * Gets the value of the maximum attack capacity
@@ -117,16 +104,14 @@ public:
 	std::string getType() const { return type; };
 
 	/**
-	 * Gets the value of the earth id
+	 * Gets the value of the unit id
 	 * @returns {const int}
 	 */
-	int getEarthID() const { return earthID; };
-
-	/**
-	 * Gets the value of the alien id
-	 * @returns {const int}
-	 */
-	int getAlienID() const { return alienID; };
+	const int getID() const { 
+		
+		return id; 
+	
+	};
 
 	/**
 	 * Print units --> virtual to be derived in units
@@ -163,31 +148,31 @@ public:
 	bool moveToKilledList(T item) = 0; // not sure of the param and the functionality itself if it is right to be here or not
 	// friend std::ostream& operator <<(std::ostream& output, const unit<T>& ut);
 
-	/**
-	 * Stores ids of deleted earth objects
-	 * @param {int} id - id to be deleted
-	 * @returns {void}
-	 */
-	void deleteEarthID(int id)
-	{
-		int i = 0;
-		while (deletedEarthID[i])
-			i++;
-		deletedEarthID[i] = id;
-	}
+	///**
+	// * Stores ids of deleted earth objects
+	// * @param {int} id - id to be deleted
+	// * @returns {void}
+	// */
+	//void deleteEarthID(int id)
+	//{
+	//	int i = 0;
+	//	while (deletedEarthID[i])
+	//		i++;
+	//	deletedEarthID[i] = id;
+	//}
 
-	/**
-	 * Stores ids of deleted alien objects
-	 * @param {int} id - id to be deleted
-	 * @returns {void}
-	 */
-	void deleteAlienID(int id)
-	{
-		int i = 0;
-		while (deletedAlienID[i])
-			i++;
-		deletedAlienID[i] = id;
-	}
+	///**
+	// * Stores ids of deleted alien objects
+	// * @param {int} id - id to be deleted
+	// * @returns {void}
+	// */
+	//void deleteAlienID(int id)
+	//{
+	//	int i = 0;
+	//	while (deletedAlienID[i])
+	//		i++;
+	//	deletedAlienID[i] = id;
+	//}
 };
 
 // operator overloading if needed ... implementation not complete
