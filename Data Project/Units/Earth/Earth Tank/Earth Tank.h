@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include"../../Unit.h"
 #include"../../Structures/Stack/ArrayStack.h"
 
@@ -21,7 +20,7 @@ public:
 			countOfunits--;
 			return true;
 		}
-		//deleteEarthID(getEarthID());		waiting for doc answer
+		
 		return false;
 	}
 
@@ -46,9 +45,9 @@ public:
 	 * @param {T} refrence to item - The item holds the one that should to be picked.
 	 * @returns {bool}
 	 */
-	 /*bool pick(const T& item) {
-		 return tank->peek(item);    I am not sure yet of this
-	 }*/
+	 bool pick(const T& item) {
+		 return tank->peek(item);    
+	 }
 
 
 	 /**

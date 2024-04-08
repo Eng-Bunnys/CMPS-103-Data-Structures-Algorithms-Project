@@ -148,31 +148,7 @@ public:
 	bool moveToKilledList(T item) = 0; // not sure of the param and the functionality itself if it is right to be here or not
 	// friend std::ostream& operator <<(std::ostream& output, const unit<T>& ut);
 
-	///**
-	// * Stores ids of deleted earth objects
-	// * @param {int} id - id to be deleted
-	// * @returns {void}
-	// */
-	//void deleteEarthID(int id)
-	//{
-	//	int i = 0;
-	//	while (deletedEarthID[i])
-	//		i++;
-	//	deletedEarthID[i] = id;
-	//}
-
-	///**
-	// * Stores ids of deleted alien objects
-	// * @param {int} id - id to be deleted
-	// * @returns {void}
-	// */
-	//void deleteAlienID(int id)
-	//{
-	//	int i = 0;
-	//	while (deletedAlienID[i])
-	//		i++;
-	//	deletedAlienID[i] = id;
-	//}
+	
 };
 
 // operator overloading if needed ... implementation not complete
