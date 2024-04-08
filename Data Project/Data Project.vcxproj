@@ -127,7 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Units\Earth\Earth Gunnery\Earth Gunnery.h" />
     <ClInclude Include="Structures\Bag\Bag.h" />
     <ClInclude Include="Structures\Nodes\PriorityNode.h" />
     <ClInclude Include="Structures\Priority Queue\linkedPriorityQueue.h" />
@@ -146,7 +145,6 @@
     <ClInclude Include="Utils\Utils.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Units\Earth\Earth Gunnery\Earth Gunnery.cpp" />
     <ClCompile Include="Structures\Nodes\Node.h" />
     <ClCompile Include="Game Manager\GameManager.cpp" />
     <ClCompile Include="main.cpp" />
