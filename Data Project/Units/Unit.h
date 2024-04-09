@@ -2,12 +2,11 @@
 #include <iostream>
 #include "../Game Manager/GameManager.h"
 
-template <typename T>
 class unit
 {
 	GameManager *gManager;
-	int power, attackCapacity, joinTime , battle time;
-	double health;
+	int power, attackCapacity, joinTime , battleTime;
+	int health;
 	//int deletedEarthID[1000];
 	//int deletedAlienID[1000];
 	std::string type;
@@ -15,10 +14,19 @@ class unit
 	
 
 protected:
-	static int countOfunits = 0;
+	//static int countOfunits = 0;
 
 public:
-	unit(std::string Type) : type(Type) {}
+	unit(std::string Type , int ID) : type(Type ) , id(ID) {}
+
+	unit(int ID, std::string t, int jt, int h, int p, int attCap): id(ID) {
+		 
+		type = t; 
+		health = h; 
+		power = p;
+		attackCapacity = attCap;
+		joinTime = jt;
+	}
 
 	
 	/**
@@ -60,16 +68,7 @@ public:
 	 * Sets the value of the earth units id
 	 * @returns {void}
 	 */
-	void setID(int ID)
-	{
-		/*for (int i = 0; i < 1000; i++) {
-			if (deletedEarthID[i]) {				not completed yet
-				earthID = deletedEarthID[i];
-				return;
-			}
-		}*/
-		id = ID;
-	};
+	
 
 	
 
@@ -114,39 +113,16 @@ public:
 	};
 
 	/**
-	 * Print units --> virtual to be derived in units
+	 * Print unit details
 	 * @returns {void}
 	 */
-	void print() = 0;
-
-	/**
-	 * Inserts an item to the unit
-	 * @param {T} reference to item - The new item to be inserted.
-	 * @returns {bool}
-	 */
-	bool insert(const T &item) = 0;
-
-	/**
-	 * Removes an item from the unit
-	 * @param {T} reference to item - The new item to be removed.
-	 * @returns {bool}
-	 */
-	bool remove(const T &item) = 0;
-
-	/**
-	 * Picks an item from the unit
-	 * @param {T} refrence to item - The item holds the one that should to be picked.
-	 * @returns {bool}
-	 */
-	bool pick(const T &item) = 0;
-
-	/**
-	 * Move an item from the unit to killed list
-	 * @param {T} item - The item holds the one that should be moved to killed list.
-	 * @returns {bool}
-	 */
-	bool moveToKilledList(T item) = 0; // not sure of the param and the functionality itself if it is right to be here or not
-	// friend std::ostream& operator <<(std::ostream& output, const unit<T>& ut);
+	void print() {
+		std::cout << "Health of unit = " << getHealth();
+		std::cout << "\nPower of unit = " << getPower();
+		std::cout << "\nMaximum attack capacity of unit = " << getAttackCapacity();
+		std::cout << "\nID of tank = " << getID();
+		std::cout << "\nJoin time of unit = " << getJoinTime() << std::endl;
+	}
 
 	
 };

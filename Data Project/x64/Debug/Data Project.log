@@ -1,5 +1,5 @@
-﻿  Node.h
-  GameManager.cpp
-  main.cpp
-  Generating Code...
+﻿  main.cpp
+C:\Users\ben10\Desktop\Data Structures Project\Data Project\Units\Unit.h(44,40): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  (compiling source file 'main.cpp')
+  
   Data Project.vcxproj -> C:\Users\ben10\Desktop\Data Structures Project\x64\Debug\Data Project.exe
