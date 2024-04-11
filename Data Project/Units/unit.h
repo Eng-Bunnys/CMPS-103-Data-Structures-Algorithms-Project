@@ -1,130 +1,106 @@
 #pragma once
 #include <iostream>
-#include "../Game Manager/GameManager.h"
+//#include "../Game Manager/GameManager.h"
 
 class unit
 {
-	GameManager *gManager;
-	int power, attackCapacity, joinTime , battleTime;
-	int health;
+protected:
+	//GameManager* gManager = nullptr;
+	int power = 100, attackCapacity = 100, joinTime = 0, battleTime = 0;
+	double health = 0.0;
 	//int deletedEarthID[1000];
 	//int deletedAlienID[1000];
-	std::string type;
+	std::string type = "unit";
 	const int id; // const to be unchanged
-	
 
-protected:
+
+
 	//static int countOfunits = 0;
 
 public:
-	unit(std::string Type , int ID) : type(Type ) , id(ID) {}
+	unit(int ID);
 
-	unit(int ID, std::string t, int jt, int h, int p, int attCap): id(ID) {
-		 
-		type = t; 
-		health = h; 
-		power = p;
-		attackCapacity = attCap;
-		joinTime = jt;
-	}
+	unit(int ID, int attCap, int jt, int bTime, int p, double h);
 
-	
+
 	/**
 	 * Sets the value of the power
 	 * @param int p - The new value to set for the power.
 	 * @returns {void}
 	 */
-	void setPower(int p) { power = p; };
+	void setPower(int p);
 
 	/**
 	 * Sets the value of the health
 	 * @param int h - The new value to set for the health.
 	 * @returns {void}
 	 */
-	void setHealth(double h) { health = h > 100 ? 100 : h; };
+	void setHealth(double h);
 
 	/**
 	 * Sets the value of the maximum attck capacity
 	 * @param int cap - The new value to set for the maximum attacj capacity.
 	 * @returns {void}
 	 */
-	void setAttackCapacity(int cap) { attackCapacity = cap; };
+	void setAttackCapacity(int cap);
 
 	/**
 	 * Sets the value of the join time
 	 * @param int jt - The new value to set for the join time.
 	 * @returns {void}
 	 */
-	void setJoinTime(int jt) { joinTime = jt; };
+	void setJoinTime(int jt);
 
 	/**
 	 * Sets the value of the type
 	 * @param string t - The new value to set for the type.
 	 * @returns {void}
 	 */
-	void setType(std::string t) { type = t; };
-
-	/**
-	 * Sets the value of the earth units id
-	 * @returns {void}
-	 */
-	
-
-	
+	void setType(std::string t);
 
 	/**
 	 * Gets the value of the power
 	 * @returns {const int}
 	 */
-	int getPower() const { return power; };
+	int getPower() const;
 
 	/**
 	 * Gets the value of the healthe
 	 * @returns {const int}
 	 */
-	double getHealth() const { return health; };
+	double getHealth() const;
 
 	/**
 	 * Gets the value of the maximum attack capacity
 	 * @returns {const int}
 	 */
-	int getAttackCapacity() const { return attackCapacity; };
+	int getAttackCapacity() const;
 
 	/**
 	 * Gets the value of the join time
 	 * @returns {const int}
 	 */
-	int getJoinTime() const { return joinTime; };
+	int getJoinTime() const;
 
 	/**
 	 * Gets the value of the type
 	 * @returns {const string}
 	 */
-	std::string getType() const { return type; };
+	std::string getType() const;
 
 	/**
 	 * Gets the value of the unit id
 	 * @returns {const int}
 	 */
-	const int getID() const { 
-		
-		return id; 
-	
-	};
+	const int getID() const;
 
 	/**
 	 * Print unit details
 	 * @returns {void}
 	 */
-	void print() {
-		std::cout << "Health of unit = " << getHealth();
-		std::cout << "\nPower of unit = " << getPower();
-		std::cout << "\nMaximum attack capacity of unit = " << getAttackCapacity();
-		std::cout << "\nID of tank = " << getID();
-		std::cout << "\nJoin time of unit = " << getJoinTime() << std::endl;
-	}
+	void virtual print();
 
-	
+
 };
 
 // operator overloading if needed ... implementation not complete
