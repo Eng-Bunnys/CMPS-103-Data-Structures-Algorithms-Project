@@ -100,7 +100,7 @@ public:
 	 */
 	void virtual print();
 
-
+	int getBattleTime();
 };
 
 // operator overloading if needed ... implementation not complete

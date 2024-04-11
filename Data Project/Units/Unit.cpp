@@ -1,4 +1,4 @@
-#include"Unit.h"
+#include"unit.h"
 
 unit::unit(int ID) : id(ID) {}
 
@@ -32,12 +32,16 @@ std::string unit::getType() const { return type; };
 
 const int unit::getID() const { return id; };
 
+int unit::getBattleTime() { return battleTime; }
+
 void unit::print() {
-	std::cout << "Health of unit = " << getHealth();
-	std::cout << "\nPower of unit = " << getPower();
-	std::cout << "\nMaximum attack capacity of unit = " << getAttackCapacity();
 	std::cout << "\nID of tank = " << getID();
-	std::cout << "\nJoin time of unit = " << getJoinTime() << std::endl;
+	std::cout << "\nMaximum attack capacity of unit = " << getAttackCapacity();
+	std::cout << "\nJoin time of unit = " << getJoinTime() ;
+	std::cout << "\n Battle time of uniy= " << getBattleTime();
+	std::cout << "\nPower of unit = " << getPower();
+	std::cout << "Health of unit = " << getHealth() << std::endl;
+
 }
 
 

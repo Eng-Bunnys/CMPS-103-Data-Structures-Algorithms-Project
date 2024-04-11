@@ -4,14 +4,14 @@
 
 int main()
 {
-	//GameManager Game;
+	GameManager Game;
 	
-	std::cout << "Testing Create Unit...\n";
-	unit  U (0, "EarthSoldier", 12, 100, 100, 100);
+	/*std::cout << "Testing Create Unit...\n";
+	unit  U (0, 80, 12, 20, 100, 100);
 	U.print();
 
 	std::cout << "Testing set health\n";
-	U.setHealth(80);
+	U.setHealth(80.0);
 	U.print();
 
 	std::cout << "Testing set power\n";
@@ -20,9 +20,9 @@ int main()
 
 	std::cout << "Testing set attCap\n";
 	U.setAttackCapacity(16);
-	U.print();
+	U.print();*/
 
-	//Game.Start();
+	Game.Start();
 
 	return 0;
 }
