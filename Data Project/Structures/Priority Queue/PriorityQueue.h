@@ -1,136 +1,169 @@
-#pragma once
+#ifndef PriorityQueue_H
+#define PriorityQueue_H
+
 #include "../Nodes/PriorityNode.h"
 
 template <typename T>
 class PriorityQueue
 {
-	PriorityNode<T>* head;
-	int count;
+	/**
+	 *  Pointer to the head node of the priority queue.
+	 */
+	PriorityNode<T> *Head;
+
+	/**
+	 *  Number of nodes in the priority queue.
+	 */
+	int Count;
 
 public:
-	PriorityQueue() : head(nullptr), count(0) {}
+	/**
+	 *  Default constructor that initializes an empty linked priority queue.
+	 */
+	PriorityQueue() : Head(nullptr), Count(0) {}
 
 	/**
-	 * Constructor that initializes the linked priority queue with a given head node
-	 * @param {PriorityNode<T>*} head - The head node of the linked priority queue
+	 *  Constructor that initializes the linked priority queue with a given head node.
+	 *
+	 * @param {PriorityNode<T>*} head - The head node of the linked priority queue.
 	 */
-	PriorityQueue(PriorityNode<T>* Head) : head(Head), count(0) {}
+	PriorityQueue(PriorityNode<T> *Head) : Head(Head), Count(0) {}
 
 	/**
-	 * Enqueues a new element according to its priority
-	 * @param value The value of the element to be enqueued and priority of element
+	 *  Enqueues a new element into the priority queue with the given priority.
+	 *
+	 * @param U Type of the priority.
+	 * @param {T&} Value - The value to be enqueued.
+	 * @param {double} Priority - The priority of the value.
 	 */
-	void enqueue(const T& data, int priority)
+	void enqueue(const T &Value, double Priority)
 	{
-		PriorityNode<T>* newNode = new PriorityNode<T>(data, priority);
-		// special case if it was empty or if the priority was greater than first element priority
-		if (head == nullptr || priority > head->GetPriority())
+		PriorityNode<T> *NewNode = new PriorityNode<T>(Value, Priority);
+		if (this->Head == nullptr || Priority > this->Head->GetPriority())
 		{
-			newNode->SetNext(head);
-			head = newNode;
-			count++;
+			NewNode->SetNext(Head);
+			this->Head = NewNode;
+			this->Count++;
 			return;
 		}
-		PriorityNode<T>* current = head;
+		PriorityNode<T> *Current = this->Head;
 
-		while (current->GetNext() && priority <= current->GetNext()->GetPriority())
-			current = current->GetNext();
-		// current is last element and prev is the element just before it or it reached point to insert new node
+		while (Current->GetNext() && Priority <= Current->GetNext()->GetPriority())
+			Current = Current->GetNext();
 
-		// setting the element in order of priority
-		if (current->GetNext())
+		if (Current->GetNext())
 		{
-			newNode->SetNext(current->GetNext());
-			current->SetNext(newNode);
-			count++;
+			NewNode->SetNext(Current->GetNext());
+			Current->SetNext(NewNode);
+			this->Count++;
 		}
 	}
 
 	/**
-	 * Dequeues an element from the front of the queue
-	 * @param Value Reference to store the value of the dequeued element and Priority Refrence to store the priority of the dequeued element
-	 * @return True if dequeuing was successful, false if the queue is empty
+	 * Dequeues an element from the priority queue.
+	 *
+	 * @param U Type of the priority.
+	 * @param {T&} Value - Reference to store the dequeued value.
+	 * @param {double&} Priority - Reference to store the priority of the dequeued value.
+	 * @return {bool} - True if dequeue operation is successful, false otherwise.
 	 */
-	bool dequeue(T& x, double pri)
+
+	bool dequeue(T &Value, double &Priority)
 	{
-		// if empty then it can't be dequeued
-		if (isEmpty)
+		if (isEmpty())
 			return false;
 
-		// x will hold the value of the dequeued element
-		x = head->GetValue();
-		// pri will holf the priority of the dequeued element
-		pri = head->GetPriority();
-		// storing the head in another node to delete it later
-		PriorityNode<T>* tempNode = head;
-		// removing the head without affecting the queue
-		head = head->GetNext();
-		// deleting the head
-		delete tempNode;
-		// returning that the element is dequeud successfully
+		Value = this->Head->GetValue();
+		Priority = this->Head->GetPriority();
+		PriorityNode<T> *Temp = Head;
+		this->Head = this->Head->GetNext();
+		delete Temp;
 		return true;
 	}
 
 	/**
-	 * Checks if the pri-queue is empty or not
-	 * @return True if it is empty, false if the pri-queue is not empty
+	 *  Checks if the priority queue is empty.
+	 *
+	 * @return {bool} - True if the priority queue is empty, false otherwise.
 	 */
 	bool isEmpty()
 	{
-		// according to count we will return if it is empty or not ==> if count is 0 then it is empty , else it is not
-		return count == 0;
+		return this->Count == 0;
 	}
 
 	/**
-	 * Peeks an element from the front of the queue
-	 * @param Value Reference to store the value of the dequeued element and Priority Refrence to store the priority of the dequeued element
-	 * @return True if dequeuing was successful, false if the queue is empty
+	 *  Retrieves the element at the front of the priority queue without removing it.
+	 *
+	 * @param U Type of the priority.
+	 * @param {T&} Value - Reference to store the value at the front.
+	 * @param {double&} Priority - Reference to store the priority of the value at the front.
+	 * @return {bool} - True if the operation is successful, false if the queue is empty.
 	 */
-	bool peek(T& data, int& pri)
+
+	bool peek(T &Value, double&Priority)
 	{
 		if (isEmpty)
 			return false;
 
-		// data will hold element on first element
-		data = head->GetValue();
-		// pri will store the priority of the first element
-		pri = head->GetPriority();
+		Value = this->Head->GetValue();
+		Priority = this->Head->GetPriority();
 		return true;
 	}
 
-	/*
-	 * Prints the priority queue
+	/**
+	 *  Prints the elements of the priority queue.
 	 */
 	void print() const
 	{
 		if (isEmpty())
 			return;
 
-		PriorityNode<T>* current = head;
+		PriorityNode<T> *Current = this->Head;
 
-		while (current != nullptr)
+		while (Current != nullptr)
 		{
-			std::cout << current->GetValue();
+			std::cout << Current->GetValue();
 
-			if (current->GetNext() != nullptr)
+			if (Current->GetNext() != nullptr)
 				std::cout << " <- ";
 
-			current = current->GetNext();
+			Current = Current->GetNext();
 		}
 
 		std::cout << " <- NULL" << std::endl;
 	}
 
+	/**
+	 * Clears the priority queue.
+	 */
+	void Clear()
+	{
+		PriorityNode<T> *Current = this->Head;
+		while (Current)
+		{
+			PriorityNode<T> *Temp = Current;
+			Current = Current->GetNext();
+			delete Current;
+		}
+		this->Head = nullptr;
+		this->Count = 0;
+	}
+
+	/*
+	 * Returns the number of nodes
+	 */
+	void GetCount() const
+	{
+		return this->Count;
+	}
+
+	/**
+	 * Destructor to clean up memory.
+	 */
 	~PriorityQueue()
 	{
-		PriorityNode<T>* current = head;
-		while (current)
-		{
-			PriorityNode<T>* temp = current;
-			current = current->GetNext();
-			delete current;
-		}
-		head = nullptr;
-		count = 0;
+		Clear();
 	}
 };
+
+#endif // !PriorityQueue_H

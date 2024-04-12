@@ -60,13 +60,13 @@
     <ClInclude Include="Units\Earth\Earth Unit\Earth Unit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Units\Earth\Earth Army\Earth Army.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Units\Earth\Earth Units\Earth Gunnery\Earth Gunnery.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Generator\Generator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Manager\Game Manager Start\ManagerStart.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -87,9 +87,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Earth\Earth Unit\Earth Unit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Units\Earth\Earth Army\Earth Army.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Earth\Earth Units\Earth Gunnery\Earth Gunnery.cpp">

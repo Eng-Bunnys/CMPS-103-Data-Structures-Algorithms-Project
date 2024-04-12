@@ -127,12 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Game Manager\Game Manager Start\ManagerStart.h" />
+    <ClInclude Include="Platform.h" />
     <ClInclude Include="Generator\Generator.h" />
     <ClInclude Include="Units\Earth\Earth Army\Earth Army.h" />
     <ClInclude Include="Units\Earth\Earth Units\Earth Gunnery\Earth Gunnery.h" />
     <ClInclude Include="Units\Earth\Earth Unit\Earth Unit.h" />
     <ClInclude Include="Units\Unit.h" />
-    <ClInclude Include="Units\Earth\Earth Army\EarthArmy.h" />
     <ClInclude Include="Structures\Bag\Bag.h" />
     <ClInclude Include="Structures\Nodes\PriorityNode.h" />
     <ClInclude Include="Structures\Priority Queue\PriorityQueue.h" />
@@ -147,12 +148,12 @@
     <ClInclude Include="Utils\Utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Game Manager\Game Manager Start\ManagerStart.cpp" />
     <ClCompile Include="Generator\Generator.cpp" />
-    <ClCompile Include="Units\Earth\Earth Army\Earth Army.cpp" />
-    <ClCompile Include="Units\Earth\Earth Army\EarthArmy.cpp" />
     <ClCompile Include="Structures\Nodes\Node.h" />
     <ClCompile Include="Game Manager\GameManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Units\Earth\Earth Army\Earth Army.cpp" />
     <ClCompile Include="Units\Earth\Earth Units\Earth Gunnery\Earth Gunnery.cpp" />
     <ClCompile Include="Units\Earth\Earth Unit\Earth Unit.cpp" />
     <ClCompile Include="Units\Unit.cpp" />

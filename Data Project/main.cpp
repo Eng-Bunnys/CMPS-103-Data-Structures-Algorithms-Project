@@ -1,7 +1,7 @@
-#include "Game Manager/GameManager.h"
+#include "../../Game Manager/GameManager.h"
 
-int main()
-{
+int main() {
+	
 	GameManager Game;
 
 	Game.Start();

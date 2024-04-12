@@ -8,7 +8,7 @@ private:
     /* The value of the node */
     T Value;
     /* The node's priority */
-    T Priority;
+    double Priority;
     /* Pointer to the next node */
     PriorityNode<T> *Next;
 
@@ -23,7 +23,7 @@ public:
      * @param {T} Value - The value to be stored in the node.
      * @param {T} Priority - The priority of the node.
      */
-    PriorityNode(const T &Value, const T &Priority) : Value(Value), Priority(Priority), Next(nullptr) {}
+    PriorityNode(const T &Value, const double &Priority) : Value(Value), Priority(Priority), Next(nullptr) {}
 
     /**
      * Construct a new PriorityNode object with given value, priority, and next pointer.
@@ -31,7 +31,7 @@ public:
      * @param {T} Priority - The priority of the node.
      * @param {PriorityNode<T>*} Next - Pointer to the next node.
      */
-    PriorityNode(const T &Value, const T &Priority, PriorityNode<T> *Next) : Value(Value), Priority(Priority), Next(Next) {}
+    PriorityNode(const T &Value, const double&Priority, PriorityNode<T> *Next) : Value(Value), Priority(Priority), Next(Next) {}
 
     /**
      * Sets the value of the node.
@@ -48,7 +48,7 @@ public:
      * @param {T} NewPriority - The new priority to set for the node.
      * @returns {void}
      */
-    void SetPriority(const T &NewPriority)
+    void SetPriority(const double&NewPriority)
     {
         this->Priority = NewPriority;
     }
@@ -59,7 +59,7 @@ public:
      * @param {T} NewPriority - The new priority to set for the node.
      * @returns {void}
      */
-    void SetNode(const T &NewValue, const T &NewPriority)
+    void SetNode(const T &NewValue, const double &NewPriority)
     {
         this->Value = NewValue;
         this->Priority = NewPriority;
@@ -86,9 +86,9 @@ public:
 
     /**
      * Gets the priority of the node.
-     * @returns {T} The priority of the node.
+     * @returns {double} The priority of the node.
      */
-    T GetPriority() const
+    double GetPriority() const
     {
         return this->Priority;
     }

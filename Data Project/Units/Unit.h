@@ -1,6 +1,11 @@
 #ifndef Unit_H
 #define Unit_H
 
+constexpr int AlienUnitMinID = 2000;
+constexpr int AlienUnitMaxID = 2999;
+constexpr int EarthUnitMinID = 0;
+constexpr int EarthUnitMaxID = 999;
+
 class Unit
 {
 protected:
@@ -43,7 +48,7 @@ public:
 	 */
 	Unit(int ID, double Health, int Power, int AttackCapacity, int JoinTime) :
 		ID(ID), Health(Health), Power(Power), AttackCapacity(AttackCapacity), JoinTime(JoinTime) {}
-
+	/// To-Do: Delete any Unit with ID -1 in GameManager / EarthArmy
 	/// Getters & Setters
 
 	/**

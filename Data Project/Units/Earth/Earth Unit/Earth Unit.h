@@ -4,6 +4,7 @@
 #include "../../Unit.h"
 
 #define MaxHealth 100;
+#define MaxID 999;
 
 class EarthUnit : public Unit {
 private:

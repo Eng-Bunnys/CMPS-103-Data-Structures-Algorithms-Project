@@ -217,6 +217,8 @@ public:
 		Count = 0;
 	}
 
+	/// To-Do: Add GetCount
+
 	~LinkedQueue()
 	{
 		clear();
