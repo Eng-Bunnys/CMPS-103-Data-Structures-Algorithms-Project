@@ -121,6 +121,15 @@ public:
 		std::cout << " <- NULL" << std::endl;
 	}
 
+
+	/**
+   * Gets how many items are there in the list
+   * @return {int} - number of items
+   */
+	int getCount() {
+		return count;
+	}
+
 	~PriorityQueue()
 	{
 		PriorityNode<T> *current = head;

@@ -216,6 +216,13 @@ public:
     }
 
     /**
+    * Gets how many items are there in the list
+    * @return {int} - number of items
+    */
+    int getCount() {
+        return Count;
+    }
+    /**
      * Clears the Deque by removing all elements and deallocating memory.
      * @param {void}
      * @returns {void}

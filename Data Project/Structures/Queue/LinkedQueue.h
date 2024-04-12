@@ -217,6 +217,14 @@ public:
 		Count = 0;
 	}
 
+	/**
+   * Gets how many items are there in the list
+   * @return {int} - number of items
+   */
+	int getCount() {
+		return Count;
+	}
+
 	~LinkedQueue()
 	{
 		clear();

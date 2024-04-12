@@ -23,8 +23,10 @@ private:
 	T items[MAX_SIZE]; // Array of stack items
 	int top;		   // Index to top of stack
 
+	int count; //count of items
+
 public:
-	ArrayStack()
+	ArrayStack():count(0)
 	{
 		top = -1;
 	} // end default constructor
@@ -40,6 +42,7 @@ public:
 			return false; // Stack is FULL
 
 		top++;
+		count++;
 		items[top] = newEntry;
 		return true;
 	} // end push
@@ -51,6 +54,7 @@ public:
 
 		TopEntry = items[top];
 		top--;
+		count--;
 		return true;
 	} // end pop
 
@@ -62,6 +66,15 @@ public:
 		TopEntry = items[top];
 		return true;
 	} // end peek
+
+
+	 /**
+	* Gets how many items are there in the list
+	* @return {int} - number of items
+	*/
+	int getCount() {
+		return count ;
+	}
 
 }; // end ArrayStack
 
