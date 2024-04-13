@@ -5,6 +5,6 @@
 class earthTanks :public earthUnit {
 	//static int ETcount = 0;
 public:
-	earthTanks(int ID, int attackCap, int joinedTime, int bTime, int power, double health);
+	earthTanks(int ID, int attackCap, int joinedTime, int power, double health);
 	//void print() override {};
 };

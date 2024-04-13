@@ -6,6 +6,6 @@ class earthUnit :
     public unit
 {
 public:
-    earthUnit(int ID, int attackCap, int joinedTime, int bTime, int power, double health);
+    earthUnit(int ID, int attackCap, int joinedTime, int power, double health);
 };
 

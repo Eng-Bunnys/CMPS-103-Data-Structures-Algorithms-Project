@@ -2,7 +2,7 @@
 
 unit::unit(int ID) : id(ID) {}
 
-unit::unit(int ID, int attCap, int jt, int bTime, int p, double h) : id(ID) {
+unit::unit(int ID, int attCap, int jt, int p, double h) : id(ID) {
 
 	health = h;
 	power = p;
@@ -37,7 +37,7 @@ int unit::getBattleTime() { return battleTime; }
 void unit::print() {
 	std::cout << "\nID of tank = " << getID();
 	std::cout << "\nMaximum attack capacity of unit = " << getAttackCapacity();
-	std::cout << "\nJoin time of unit = " << getJoinTime() ;
+	std::cout << "\nJoin time of unit = " << getJoinTime();
 	std::cout << "\n Battle time of uniy= " << getBattleTime();
 	std::cout << "\nPower of unit = " << getPower();
 	std::cout << "Health of unit = " << getHealth() << std::endl;
