@@ -1,6 +1,8 @@
 #ifndef Unit_H
 #define Unit_H
 
+#include <iostream>
+
 constexpr int AlienUnitMinID = 2000;
 constexpr int AlienUnitMaxID = 2999;
 constexpr int EarthUnitMinID = 0;
@@ -31,12 +33,13 @@ protected:
 	int DestructionTime;
 	/* The timestep when the unit first got attacked */
 	int FirstAttackedTime;
-	
-	/// Delay properties 
+
+	/// Delay properties
 	/* The time spent until a unit got hit by an enemy*/
 	int FirstAttackedDelay;
 	/* The time spent from the first attack from an enemy till removal / destruction */
 	int DestructionDelay;
+
 public:
 	/**
 	 * Constructor for Unit class
@@ -46,8 +49,7 @@ public:
 	 * @param {int} AttackCapacity - The attack capacity of the unit
 	 * @param {int} JoinTime - The join time of the unit
 	 */
-	Unit(int ID, double Health, int Power, int AttackCapacity, int JoinTime) :
-		ID(ID), Health(Health), Power(Power), AttackCapacity(AttackCapacity), JoinTime(JoinTime) {}
+	Unit(int ID, double Health, int Power, int AttackCapacity, int JoinTime) : ID(ID), Health(Health), Power(Power), AttackCapacity(AttackCapacity), JoinTime(JoinTime) {}
 	/// To-Do: Delete any Unit with ID -1 in GameManager / EarthArmy
 	/// Getters & Setters
 
@@ -87,11 +89,26 @@ public:
 	 */
 	static int GetDeathCount();
 
+	/*
+	 * Returns the unit's Power
+	 */
+	int GetPower() const;
+
+	/*
+	 * Returns the unit's Attack Capacity
+	 */
+	int GetAttackCapacity() const;
+
+	/*
+	 * Returns the unit's Join Time
+	 */
+	int GetJoinTime() const;
+
 	/**
 	 * Setter for updating the health of the unit
-	 * @param {int} NewHealth - The new health value
+	 * @param {double} NewHealth - The new health value
 	 */
-	void SetHealth(int NewHealth);
+	void SetHealth(double NewHealth);
 
 	/**
 	 * Setter for updating the destruction time of the unit
@@ -106,8 +123,8 @@ public:
 	void SetFirstAttackedTime(int FirstAttackedTime);
 
 	/*
-	* Prints the unit's details
-	*/
+	 * Prints the unit's details
+	 */
 	void Print();
 };
 
