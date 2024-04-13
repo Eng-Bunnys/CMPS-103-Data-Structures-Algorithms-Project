@@ -20,7 +20,7 @@ protected:
 public:
 	unit(int ID);
 
-	unit(int ID, int attCap, int jt, int bTime, int p, double h);
+	unit(int ID, int attCap, int jt, int p, double h);
 
 
 	/**
