@@ -141,7 +141,6 @@
     <ClInclude Include="Structures\ADTs\QueueADT.h" />
     <ClInclude Include="Structures\Stack\ArrayStack.h" />
     <ClInclude Include="Structures\ADTs\StackADT.h" />
-    <ClInclude Include="Units\Unit.h" />
     <ClInclude Include="Utils\Utils.h" />
   </ItemGroup>
   <ItemGroup>

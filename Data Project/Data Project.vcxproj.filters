@@ -54,10 +54,10 @@
     <ClInclude Include="Structures\Priority Queue\linkedPriorityQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Units\Unit.h">
+    <ClInclude Include="Units\Earth\EarthArmy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Units\Earth\EarthArmy.h">
+    <ClInclude Include="Units\Earth\Earth Tank\Earth Tank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
