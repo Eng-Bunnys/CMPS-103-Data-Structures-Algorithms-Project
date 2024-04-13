@@ -130,10 +130,4 @@ static std::ostream &operator<<(std::ostream &out, const Unit *unit)
 	return out;
 }
 
-static std::ostream &operator<<(std::ofstream &out, const Unit &unit)
-{
-	out << unit.GetID();
-	return out;
-}
-
 #endif // !Unit_H
