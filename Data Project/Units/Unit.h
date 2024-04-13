@@ -1,115 +1,114 @@
-#pragma once
-#include <iostream>
-//#include "../Game Manager/GameManager.h"
+#ifndef Unit_H
+#define Unit_H
 
+constexpr int AlienUnitMinID = 2000;
+constexpr int AlienUnitMaxID = 2999;
+constexpr int EarthUnitMinID = 0;
+constexpr int EarthUnitMaxID = 999;
 
-#define MAX_EARTH_ID 999;
-#define MAX_ALIEN_ID 2999;
-
-class unit
+class Unit
 {
 protected:
-	//GameManager* gManager = nullptr;
-	int power = 100, attackCapacity = 100, joinTime = 0, battleTime = 0;
-	double health = 0.0;
-	//int deletedEarthID[1000];
-	//int deletedAlienID[1000];
-	std::string type = "unit";
-	const int id; // const to be unchanged
+	/// Properties for all units
+	/* Total number of deaths for the output file */
+	static int NumberOfDeaths;
+	/// Base properties for all units
+	/* The unit's unique ID*/
+	const int ID;
+	/* The unit's attack capacity */
+	int AttackCapacity;
+	/* The unit's health */
+	double Health;
+	/* The unit's power */
+	int Power;
 
-
-
-	//static int countOfunits = 0;
-
+	/// Time properties
+	/* The timestep at which the unit joined the battle */
+	int JoinTime;
+	/* The total time the unit spends in battle */
+	int BattleTime;
+	/* The timestep when the unit gets destroyed / removed from battle */
+	int DestructionTime;
+	/* The timestep when the unit first got attacked */
+	int FirstAttackedTime;
+	
+	/// Delay properties 
+	/* The time spent until a unit got hit by an enemy*/
+	int FirstAttackedDelay;
+	/* The time spent from the first attack from an enemy till removal / destruction */
+	int DestructionDelay;
 public:
-	unit(int ID);
-
-	unit(int ID, int attCap, int jt, int p, double h);
-
+	/**
+	 * Constructor for Unit class
+	 * @param {int} ID - The ID of the unit
+	 * @param {double} Health - The health of the unit
+	 * @param {int} Power - The power of the unit
+	 * @param {int} AttackCapacity - The attack capacity of the unit
+	 * @param {int} JoinTime - The join time of the unit
+	 */
+	Unit(int ID, double Health, int Power, int AttackCapacity, int JoinTime) :
+		ID(ID), Health(Health), Power(Power), AttackCapacity(AttackCapacity), JoinTime(JoinTime) {}
+	/// To-Do: Delete any Unit with ID -1 in GameManager / EarthArmy
+	/// Getters & Setters
 
 	/**
-	 * Sets the value of the power
-	 * @param int p - The new value to set for the power.
-	 * @returns {void}
+	 * Getter for retrieving the ID of the unit
+	 * @returns {int} The ID of the unit
 	 */
-	void setPower(int p);
+	int GetID() const;
 
 	/**
-	 * Sets the value of the health
-	 * @param int h - The new value to set for the health.
-	 * @returns {void}
+	 * Getter for retrieving the health of the unit
+	 * @returns {double} The health of the unit
 	 */
-	void setHealth(double h);
+	double GetHealth() const;
 
 	/**
-	 * Sets the value of the maximum attck capacity
-	 * @param int cap - The new value to set for the maximum attacj capacity.
-	 * @returns {void}
+	 * Getter for retrieving the first attack delay of the unit
+	 * @returns {int} The first attack delay of the unit
 	 */
-	void setAttackCapacity(int cap);
+	int GetFirstAttackDelay() const;
 
 	/**
-	 * Sets the value of the join time
-	 * @param int jt - The new value to set for the join time.
-	 * @returns {void}
+	 * Getter for retrieving the destruction delay of the unit
+	 * @returns {int} The destruction delay of the unit
 	 */
-	void setJoinTime(int jt);
+	int GetDestructionDelay() const;
 
 	/**
-	 * Sets the value of the type
-	 * @param string t - The new value to set for the type.
-	 * @returns {void}
+	 * Getter for retrieving the battle time of the unit
+	 * @returns {int} The battle time of the unit
 	 */
-	void setType(std::string t);
+	int GetBattleTime() const;
 
 	/**
-	 * Gets the value of the power
-	 * @returns {const int}
+	 * Static method for retrieving the death count of all units
+	 * @returns {int} The total death count of all units
 	 */
-	int getPower() const;
+	static int GetDeathCount();
 
 	/**
-	 * Gets the value of the healthe
-	 * @returns {const int}
+	 * Setter for updating the health of the unit
+	 * @param {int} NewHealth - The new health value
 	 */
-	double getHealth() const;
+	void SetHealth(int NewHealth);
 
 	/**
-	 * Gets the value of the maximum attack capacity
-	 * @returns {const int}
+	 * Setter for updating the destruction time of the unit
+	 * @param {int} DestructionTime - The new destruction time value
 	 */
-	int getAttackCapacity() const;
+	void SetDestructionTime(int DestructionTime);
 
 	/**
-	 * Gets the value of the join time
-	 * @returns {const int}
+	 * Setter for updating the first attacked time of the unit
+	 * @param {int} FirstAttackedTime - The new first attacked time value
 	 */
-	int getJoinTime() const;
+	void SetFirstAttackedTime(int FirstAttackedTime);
 
-	/**
-	 * Gets the value of the type
-	 * @returns {const string}
-	 */
-	std::string getType() const;
-
-	/**
-	 * Gets the value of the unit id
-	 * @returns {const int}
-	 */
-	const int getID() const;
-
-	/**
-	 * Print unit details
-	 * @returns {void}
-	 */
-	void print();
-
-
+	/*
+	* Prints the unit's details
+	*/
+	void Print();
 };
 
-// operator overloading if needed ... implementation not complete
-// template<typename T>
-// std::ostream& operator <<(std::ostream& output, unit<T>& ut) {
-//	output << ;
-//	//return output;
-// }
+#endif // !Unit_H
