@@ -1,4 +1,5 @@
 #pragma once
+#include<iostream>
 #include "../Nodes/PriorityNode.h"
 
 template <typename T>

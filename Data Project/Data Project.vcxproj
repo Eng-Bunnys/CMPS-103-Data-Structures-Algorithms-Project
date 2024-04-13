@@ -127,10 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Units\Alien\Alien Unit.h" />
+    <ClInclude Include="Units\Earth\Earth Army\Earth Army.h" />
+    <ClInclude Include="Units\Earth\Earth Tanks\Earth Tanks.h" />
+    <ClInclude Include="Units\Earth\Earth Unit.h" />
     <ClInclude Include="Structures\Bag\Bag.h" />
     <ClInclude Include="Structures\Nodes\PriorityNode.h" />
     <ClInclude Include="Structures\Priority Queue\linkedPriorityQueue.h" />
     <ClInclude Include="Structures\Queue\LinkedQueue.h" />
+    <ClInclude Include="Units\Unit.h" />
     <ClInclude Include="Units\Earth\Earth Tank\Earth Tank.h" />
     <ClInclude Include="Units\Earth\EarthArmy.h" />
     <ClInclude Include="Units\Earth\EarthUnit.h" />
@@ -144,9 +149,14 @@
     <ClInclude Include="Utils\Utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Units\Alien\Alien Unit.cpp" />
+    <ClCompile Include="Units\Earth\Earth Army\Earth Army.cpp" />
+    <ClCompile Include="Units\Earth\Earth Tanks\Earth Tanks.cpp" />
+    <ClCompile Include="Units\Earth\Earth Unit.cpp" />
     <ClCompile Include="Structures\Nodes\Node.h" />
     <ClCompile Include="Game Manager\GameManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Units\Unit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

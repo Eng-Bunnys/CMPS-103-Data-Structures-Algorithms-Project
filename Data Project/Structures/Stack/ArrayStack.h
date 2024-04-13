@@ -146,7 +146,7 @@ public:
 	* @return {int} - number of items
 	*/
 	int getCount() {
-		return Count;
+		return count;
 	}
 
 
