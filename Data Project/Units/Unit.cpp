@@ -1,45 +1,77 @@
-#include"Unit.h"
+#include "Unit.h"
 
-unit::unit(int ID) : id(ID) {}
-
-unit::unit(int ID, int attCap, int jt, int p, double h) : id(ID) {
-
-	health = h;
-	power = p;
-	attackCapacity = attCap;
-	joinTime = jt;
+int Unit::GetID() const
+{
+	return this->ID;
 }
 
-void unit::setPower(int p) { power = p; }
-
-void unit::setHealth(double h) { health = h > 100 ? 100 : h; }
-
-void unit::setAttackCapacity(int cap) { attackCapacity = cap; }
-
-void unit::setJoinTime(int jt) { joinTime = jt; }
-
-void unit::setType(std::string t) { type = t; };
-
-int unit::getPower() const { return power; };
-
-double unit::getHealth() const { return health; };
-
-int unit::getAttackCapacity() const { return attackCapacity; };
-
-int unit::getJoinTime() const { return joinTime; };
-
-std::string unit::getType() const { return type; };
-
-const int unit::getID() const { return id; };
-
-void unit::print() {
-	std::cout << "Health of unit = " << getHealth();
-	std::cout << "\nPower of unit = " << getPower();
-	std::cout << "\nMaximum attack capacity of unit = " << getAttackCapacity();
-	std::cout << "\nID of tank = " << getID();
-	std::cout << "\nJoin time of unit = " << getJoinTime() << std::endl;
+double Unit::GetHealth() const
+{
+	return this->Health;
 }
 
+void Unit::SetHealth(double NewHealth)
+{
+	this->Health = NewHealth > 100 ? 100 : NewHealth;
+}
 
+int Unit::GetFirstAttackDelay() const
+{
+	return this->FirstAttackedDelay;
+}
 
+int Unit::GetDestructionDelay() const
+{
+	return this->DestructionDelay;
+}
 
+int Unit::GetBattleTime() const
+{
+	return this->BattleTime;
+}
+
+int Unit::GetDeathCount()
+{
+	return NumberOfDeaths;
+}
+
+int Unit::GetPower() const
+{
+	return this->Power;
+}
+
+int Unit::GetAttackCapacity() const
+{
+	return this->AttackCapacity;
+}
+
+int Unit::GetJoinTime() const
+{
+	return this->JoinTime;
+}
+
+void Unit::SetDestructionTime(int DestructionTime)
+{
+	this->DestructionTime = DestructionTime;
+	this->DestructionDelay = this->DestructionTime - this->FirstAttackedTime;
+	this->BattleTime = this->DestructionTime - this->JoinTime;
+	this->NumberOfDeaths++;
+}
+
+void Unit::SetFirstAttackedTime(int FirstAttackTime)
+{
+	this->FirstAttackedTime = FirstAttackTime;
+	this->FirstAttackedDelay = this->FirstAttackedTime - this->JoinTime;
+}
+
+void Unit::Print()
+{
+	std::cout << "Health = " << this->GetHealth()
+			  << "\nPower  = " << this->GetPower()
+			  << "\nAttack Capacity = " << this->GetAttackCapacity()
+			  << "\nID  = " << this->GetID()
+			  << "\nJoin Time = " << this->GetJoinTime() << std::endl;
+}
+
+// Setting the inital value of the number of deaths to 0
+int Unit::NumberOfDeaths = 0;
