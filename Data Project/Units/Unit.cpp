@@ -64,14 +64,5 @@ void Unit::SetFirstAttackedTime(int FirstAttackTime)
 	this->FirstAttackedDelay = this->FirstAttackedTime - this->JoinTime;
 }
 
-void Unit::Print()
-{
-	std::cout << "Health = " << this->GetHealth()
-			  << "\nPower  = " << this->GetPower()
-			  << "\nAttack Capacity = " << this->GetAttackCapacity()
-			  << "\nID  = " << this->GetID()
-			  << "\nJoin Time = " << this->GetJoinTime() << std::endl;
-}
-
 // Setting the inital value of the number of deaths to 0
 int Unit::NumberOfDeaths = 0;

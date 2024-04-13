@@ -39,9 +39,6 @@
     <ClInclude Include="Utils\Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Units\Earth\EarthUnit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Structures\Nodes\PriorityNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -51,28 +48,43 @@
     <ClInclude Include="Structures\Bag\Bag.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Structures\Priority Queue\linkedPriorityQueue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Units\Earth\EarthArmy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Units\Earth\Earth Tank\Earth Tank.h">
+    <ClInclude Include="Structures\Priority Queue\PriorityQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Unit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Units\Earth\Earth Unit.h">
+    <ClInclude Include="Units\Earth\Earth Unit\Earth Unit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Units\Earth\Earth Tanks\Earth Tanks.h">
+    <ClInclude Include="Units\Earth\Earth Units\Earth Gunnery\Earth Gunnery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Generator\Generator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Manager\Game Manager Start\ManagerStart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Earth\Earth Army\Earth Army.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Units\Alien\Alien Unit.h">
+    <ClInclude Include="Units\Alien\Alien Unit\Alien Unit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\Alien\Alien Army\Alien Army.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\Earth\Earth Units\Earth Tanks\Earth Tank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\Earth\Earth Units\Earth Soldier\Earth Soldier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\Values.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -89,20 +101,32 @@
     <ClCompile Include="Units\Unit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Units\Earth\Earth Unit.cpp">
+    <ClCompile Include="Units\Earth\Earth Unit\Earth Unit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Units\Earth\Earth Tanks\Earth Tanks.cpp">
+    <ClCompile Include="Units\Earth\Earth Units\Earth Gunnery\Earth Gunnery.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Generator\Generator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Manager\Game Manager Start\ManagerStart.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Earth\Earth Army\Earth Army.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Units\Alien\Alien Unit.cpp">
+    <ClCompile Include="Units\Alien\Alien Unit\Alien Unit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include=".gitignore" />
+    <ClCompile Include="Units\Alien\Alien Army\Alien Army.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Units\Earth\Earth Units\Earth Tanks\Earth Tank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Units\Earth\Earth Units\Earth Soldier\Earth Soldier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

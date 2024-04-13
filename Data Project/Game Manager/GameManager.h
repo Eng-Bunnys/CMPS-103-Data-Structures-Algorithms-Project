@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "../Enums/Enums.h"
+#include "../../Platform.h"
 
 class GameManager
 {
@@ -11,30 +12,37 @@ private:
 	int TimeStep = 0;
 	/* The war winner */
 	Army Winner;
-
+	/* A pointer to the earth army instance */
 public:
 	GameManager();
-	~GameManager();
 
-	/* Runs the simulation */
+	/* Runs the simulation, consider it the start button for the application */
 	void Start();
+
+	///// Modes
+	///* Runs the interactive simulation */
+	//void StartInteractive();
+	///* Runs the silent simulation */
+	//void StartSilent();
+
+	//void PrintAlive();
+	//void PrintDead();
 
 	/// Getters
 	int GetTimeStep() const;
-	Army GetWinner() const;
+	//Army GetWinner() const;
 
-	/// Modes
-	/* Runs the interactive simulation */
-	void StartInteractive();
-	/* Runs the silent simulation */
-	void StartSilent();
 
-	/// Texts
-	/* String to prompt the user to run in either interactive or silent mode */
-	std::string ModeType = "To run \"Interactive Mode\", enter 1. To run \"Silent Mode\", enter 0.";
+	//// Calls increment timestep and runs the logic for fight
+	//void RunStep();
 
-	/// Other functions
-	void incrementTimeStep();
+	///// Other functions
+	//void incrementTimeStep();
+
+	///// Phase 2
+	//// void battle();
+
+	//~GameManager();
 };
 
 #endif // !GameManager_H

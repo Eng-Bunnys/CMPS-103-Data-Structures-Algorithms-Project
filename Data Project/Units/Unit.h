@@ -2,11 +2,10 @@
 #define Unit_H
 
 #include <iostream>
+#include <fstream>
+#include <string>
 
-constexpr int AlienUnitMinID = 2000;
-constexpr int AlienUnitMaxID = 2999;
-constexpr int EarthUnitMinID = 0;
-constexpr int EarthUnitMaxID = 999;
+#include "Values.h"
 
 class Unit
 {
@@ -121,11 +120,20 @@ public:
 	 * @param {int} FirstAttackedTime - The new first attacked time value
 	 */
 	void SetFirstAttackedTime(int FirstAttackedTime);
-
-	/*
-	 * Prints the unit's details
-	 */
-	void Print();
 };
+
+/// Operator overloading for the print functions
+
+static std::ostream &operator<<(std::ostream &out, const Unit *unit)
+{
+	out << unit->GetID();
+	return out;
+}
+
+static std::ostream &operator<<(std::ofstream &out, const Unit &unit)
+{
+	out << unit.GetID();
+	return out;
+}
 
 #endif // !Unit_H

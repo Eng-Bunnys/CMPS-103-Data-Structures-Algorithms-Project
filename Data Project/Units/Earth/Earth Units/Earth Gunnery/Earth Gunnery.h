@@ -4,24 +4,14 @@
 #include "../../Earth Unit/Earth Unit.h"
 #include <algorithm>
 
-class EarthGunnery : public EarthUnit {
+class EarthGunnery : public EarthUnit
+{
 private:
 	/* The weight of the health */
-	double HealthWeight; 
+	double HealthWeight;
 	/* The weight of the power */
 	double PowerWeight;
 
-	/**
-  * Calculates the weighting factor based on the value and weight.
-  * @param {double} value - The value to calculate the weighting factor for.
-  * @param {double} weight - The weight to be applied to the value.
-  * @returns {double} The weighting factor.
-  */
-	double CalculateWeight(double Value, double Weight) {
-		const double MaxValue = std::max(Value, Weight);
-
-		return Value / MaxValue * Weight;
-	}
 public:
 	/**
 	 * Constructor for EarthGunnery class
@@ -38,7 +28,6 @@ public:
 	 * @returns {double} The priority of the EarthGunnery
 	 */
 	double GetPriority();
-
 };
 
 #endif // !EarthGunnery_H

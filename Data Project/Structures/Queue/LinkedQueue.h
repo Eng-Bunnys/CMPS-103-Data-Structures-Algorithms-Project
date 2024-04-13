@@ -13,7 +13,7 @@ private:
 	/* Pointer to the last node */
 	Node<T> *Tail;
 	/* The number of nodes in the queue */
-	int Count;
+	int Count = 0;
 
 public:
 	LinkedQueue() : Head(nullptr), Tail(nullptr), Count(0) {}
@@ -64,7 +64,7 @@ public:
 	LinkedQueue(const LinkedQueue &OtherList) : Head(nullptr), Tail(nullptr)
 	{
 		// Adjusting the count
-		Count += OtherList.Count;
+		this->Count += OtherList.Count;
 
 		// Pointers for traversal
 		Node<T> *CurrentOther = OtherList.Head;
@@ -77,14 +77,14 @@ public:
 			Node<T> *NewNode = new Node<T>(CurrentOther->GetValue());
 
 			// If it's the first node, set it as the head
-			if (Head == nullptr)
-				Head = NewNode;
+			if (this->Head == nullptr)
+				this->Head = NewNode;
 			// Link the previous node to the new node
 			else
 				PreviousCopy->SetNext(NewNode);
 
 			// Update the tail
-			Tail = NewNode;
+			this->Tail = NewNode;
 
 			// Move to the next node in the other queue
 			CurrentOther = CurrentOther->GetNext();
@@ -105,14 +105,14 @@ public:
 
 		// If the queue is empty, set both head and tail to the new node
 		if (isEmpty())
-			Head = Tail = NewNode;
+			this->Head = Tail = NewNode;
 		else
 		{
 			// Otherwise, link the current tail to the new node and update the tail pointer
-			Tail->SetNext(NewNode);
-			Tail = NewNode;
+			this->Tail->SetNext(NewNode);
+			this->Tail = NewNode;
 		}
-		Count++;
+		this->Count++;
 		return true;
 	}
 
@@ -128,17 +128,17 @@ public:
 			return false;
 
 		// Store the value of the head node
-		Value = Head->GetValue();
+		Value = this->Head->GetValue();
 
 		// Move the head pointer to the next node
-		Node<T> *Temp = Head;
-		Head = Head->GetNext();
+		Node<T> *Temp = this->Head;
+		this->Head = this->Head->GetNext();
 
 		// If the queue becomes empty after dequeuing, update the tail pointer to null
-		if (!Head || Head == Tail)
-			Tail = nullptr;
+		if (!this->Head)
+			this->Tail = nullptr;
 
-		Count--;
+		this->Count--;
 		delete Temp;
 		return true;
 	}
@@ -155,7 +155,7 @@ public:
 			return false;
 
 		// Set the value to the data of the head node
-		FrontElement = Head->GetValue();
+		FrontElement = this->Head->GetValue();
 		return true;
 	}
 
@@ -174,24 +174,26 @@ public:
 	 * @param {void}
 	 * @returns {void}
 	 */
-	void print() const
+	void Print() const
 	{
 		if (isEmpty())
 			return;
 
-		Node<T> *Current = Head;
+		Node<T> *Current = this->Head;
+
+		std::cout << "[";
 
 		while (Current != nullptr)
 		{
 			std::cout << Current->GetValue();
 
 			if (Current->GetNext() != nullptr)
-				std::cout << " <- ";
+				std::cout << ", ";
 
 			Current = Current->GetNext();
 		}
 
-		std::cout << " <- NULL" << std::endl;
+		std::cout << "]" << std::endl;
 	}
 
 	/**
@@ -202,7 +204,7 @@ public:
 	void clear()
 	{
 		// Start from the head of the queue
-		Node<T> *Current = Head;
+		Node<T> *Current = this->Head;
 
 		// Iterate through the queue and deallocate memory for each node
 		while (Current != nullptr)
@@ -213,16 +215,12 @@ public:
 		}
 
 		// Reset Head, Tail, and Count to nullptr and 0 respectively
-		Head = Tail = nullptr;
-		Count = 0;
+		this->Head = this->Tail = nullptr;
+		this->Count = 0;
 	}
 
-	/**
-   * Gets how many items are there in the list
-   * @return {int} - number of items
-   */
-	int getCount() {
-		return Count;
+	int GetCount() const {
+		return this->Count;
 	}
 
 	~LinkedQueue()

@@ -1,28 +1,30 @@
-#include "Game Manager/GameManager.h"
-
-#include"Units/Unit.h"
-
-int main()
-{
+#include "../../Game Manager/GameManager.h"
+#include "../../Units/Earth/Earth Army/Earth Army.h"
+int main() {
 	GameManager Game;
-	
-	/*std::cout << "Testing Create Unit...\n";
-	unit  U (0, 80, 12, 20, 100, 100);
-	U.print();
 
-	std::cout << "Testing set health\n";
-	U.setHealth(80.0);
-	U.print();
+	EarthArmy Army(&Game);
 
-	std::cout << "Testing set power\n";
-	U.setPower(50);
-	U.print();
+	Army.AddGunnery(20.0, 20, 20);
+	Army.AddGunnery(20.0, 20, 20);
+	Army.AddGunnery(20.0, 20, 20);
+	Army.AddGunnery(20.0, 20, 20);
 
-	std::cout << "Testing set attCap\n";
-	U.setAttackCapacity(16);
-	U.print();*/
+	Army.AddSoldier(30.0, 30, 30);
+	Army.AddSoldier(30.0, 30, 30);
+	Army.AddSoldier(30.0, 30, 30);
+	Army.AddSoldier(30.0, 30, 30);
+	Army.AddSoldier(30.0, 30, 30);
 
-	Game.Start();
+	Army.AddTank(40.0, 40, 40);
+	Army.AddTank(40.0, 40, 40);
+	Army.AddTank(40.0, 40, 40);
+	Army.AddTank(40.0, 40, 40);
+	Army.AddTank(40.0, 40, 40);
+	Army.AddTank(40.0, 40, 40);
+	Army.AddTank(40.0, 40, 40);
+	Army.AddTank(40.0, 40, 40);
+	Army.AddTank(40.0, 40, 40);
 
-	return 0;
+	Army.Print();
 }

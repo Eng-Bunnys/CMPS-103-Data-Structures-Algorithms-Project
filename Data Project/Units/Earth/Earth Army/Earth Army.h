@@ -1,152 +1,143 @@
-#pragma once
+#ifndef EarthArmy_H
+#define EarthArmy_H
 
-
-/// Just uncomment and adjust the includes/wording of variables , classes , etc.. if there is error , I have tested this and it works
-
-
-
-#include "../../Structures/Priority Queue/linkedPriorityQueue.h"
-#include "../../Structures/Queue/LinkedQueue.h"
-#include "../../Structures/Stack/ArrayStack.h"
-
-//#include "../Earth Soldiers/Earth Soldiers.h"
-//#include "../Earth Gunnery/Earth Gunnery.h"
-#include "../Earth Tanks/Earth Tanks.h"
-
+/// General Imports
 #include "../../Game Manager/GameManager.h"
 
-class earthArmy {
-        // Lists for the 3 main subunits
-        //PriorityQueue<earthGunnery*> earthGunneries; // Priority queue for Earth Gunnery units
-        //linkedQueue<earthSoldier*> earthSoldiers;          // Queue for Earth Soldier units
-        ArrayStack<earthTank*> earthTanks;                 // Stack for Earth Tank units
+/// Structure Imports
+#include "../../Structures/Stack/ArrayStack.h"
+#include "../../Structures/Priority Queue/PriorityQueue.h"
+#include "../../Structures/Queue/LinkedQueue.h"
 
-        // IDs for the units
-        int nextSoldierID = 0;    // Next ID for Earth Soldier
-        int nextTankID = 0;        // Next ID for Earth Tank
-        int nextGunneryID = 0;     // Next ID for Earth Gunnery
+/// Unit Imports
+#include "../Earth Units/Earth Gunnery/Earth Gunnery.h"
+#include "../Earth Units/Earth Tanks/Earth Tank.h"
+#include "../Earth Units/Earth Soldier/Earth Soldier.h"
 
-        // Counters for the units
-        int EScount = 0;  // Counter for Earth Soldiers
-        int EGcount = 0;  // Counter for Earth Gunneries
-        int ETcount = 0;  // Counter for Earth Tanks
+class GameManager;
+class EarthArmy
+{
+private:
+	/// General properties
+	/** A pointer to the game manager instance */
+	GameManager *Game;
+	/** The next free ID */
+	int NextID;
 
-        GameManager* gManager;  // Pointer to the game manager
+	/// Units
+	/* A queue to store all of the Earth Gunnery */
+	PriorityQueue<EarthGunnery *> Gunnery;
+	/* A stack to store all of the Earth Tanks */
+	ArrayStack<EarthTank *> Tanks;
+	/* A queue to store all of the Earth Soldiers */
+	LinkedQueue<EarthSoldier *> Soldiers;
 
- public:
-        earthArmy();  // Default constructor
-        earthArmy(GameManager* gameManager);  // Constructor with a game manager parameter
+public:
+	/*
+	 * The Earth Army Constructor
+	 *
+	 * @param {GameManager*} Game - Pointer to an instance of the Game Manager
+	 */
+	EarthArmy(GameManager *Game);
 
-        // ========================= Soldiers functions =========================
-        
+	/// Unit Getters
 
+	/*
+	 * Returns the Earth Gunnery List
+	 *
+	 * @returns {PriorityQueue<EarthGunnery*>}
+	 */
+	PriorityQueue<EarthGunnery *> GetGunnery() const;
 
-        /**
-         * Gets the list of Earth Soldiers.
-         * @return {linkedQueue<earthSoldier*>} - The list of Earth Soldiers.
-         */
- //       linkedQueue<earthSoldier*> getEarthSoldiersList();
+	/*
+	 * Returns the Earth Tank List
+	 *
+	 * @returns {ArrayStack<EarthTank*>}
+	 */
+	ArrayStack<EarthTank *> GetTanks() const;
 
-        /**
-         * Adds a new Earth Soldier to the army.
-         * @param Power - The power of the soldier.
-         * @param Health - The health of the soldier.
-         * @param AttackCapacity - The attack capacity of the soldier.
-         * @return {bool} - True if the addition was successful, false otherwise.
-         */
- //       bool addSoldier(int Power, double Health, int AttackCapacity);
+	/*
+	 * Returns the Earth Soldier List
+	 *
+	 * @returns {LinkedQueue<EarthSoldier*>}
+	 */
+	LinkedQueue<EarthSoldier *> GetSoldiers() const;
 
-        /**
-         * Removes an Earth Soldier from the army.
-         * @param pointer to soldier - The Earth Soldier to be removed.
-         * @return {bool} - True if the removal was successful, false otherwise.
-         */
- //       bool removeSoldier(earthSoldier*& soldier);
+	/// Unit Setters
 
-        /**
-        * Checks if the Earth Soldier list is empty or not
-        * @return {bool} - True if empty , false if not empty
-        */
- //       bool isES_Empty();
+	/*
+	 * Adds a Gunnery to the Gunnery queue
+	 *
+	 * @param {double} Health - The Gunnery's health
+	 * @param {int} Power - The Gunnery's power
+	 * @param {int} AttackCapacity - The Gunnery's attack capacity
+	 * @returns {bool} - If the add operation was successful
+	 */
+	bool AddGunnery(double Health, int Power, int AttackCapacity);
 
-        /**
-         * Prints the list of Earth Soldiers.
-         */
- //       void printSoldiers();
+	/*
+	 * Adds a Tank to the Tank stack
+	 *
+	 * @param {double} Health - The Tank's health
+	 * @param {int} Power - The Tank's power
+	 * @param {int} AttackCapacity - The Tank's attack capacity
+	 * @returns {bool} - If the add operation was successful
+	 */
+	bool AddTank(double Health, int Power, int AttackCapacity);
 
+	/*
+	 * Adds a Soldier to the Soldier queue
+	 *
+	 * @param {double} Health - The Soldier's health
+	 * @param {int} Power - The Soldier's power
+	 * @param {int} AttackCapacity - The Soldier's attack capacity
+	 * @returns {bool} - If the add operation was successful
+	 */
+	bool AddSoldier(double Health, int Power, int AttackCapacity);
 
+	/// Unit Removers
 
-        // ========================= Tanks functions =========================
+	/*
+	 * Removes a Gunnery
+	 *
+	 * @param {EarthGunnery*&} RemovedGunnery - The removed gunnery
+	 * @returns {bool} - Whether the remove operation was a success or not
+	 */
+	bool RemoveGunnery(EarthGunnery *&RemovedGunnery);
 
-        /**
-         * Gets the list of Earth Tanks.
-         * @return {linkedStack<earthTank*>} - The list of Earth Tanks.
-         */
-        ArrayStack<earthTank*> getTanksList();
+	/*
+	 * Removes a Tank
+	 *
+	 * @param {EarthTank*&} RemovedTank - The removed tank
+	 * @returns {bool} - Whether the remove operation was a success or not
+	 */
+	bool RemoveTank(EarthTank *&RemovedTank);
 
-        /**
-         * Adds a new Earth Tank to the army.
-         * @param Power - The power of the tank.
-         * @param Health - The health of the tank.
-         * @param AttackCapacity - The attack capacity of the tank.
-         * @return {bool} - True if the addition was successful, false otherwise.
-         */
-        bool addTank(int Power, double Health, int AttackCapacity);
+	/*
+	 * Removes a Soldier
+	 *
+	 * @param {EarthSoldier*&} RemovedSoldier - The removed soldier
+	 * @returns {bool} - Whether the remove operation was a success or not
+	 */
+	bool RemoveSoldier(EarthSoldier *&RemovedSoldier);
 
-        /**
-         * Removes an Earth Tank from the army.
-         * @param pointer to tank - The Earth Tank to be removed.
-         * @return {bool} - True if the removal was successful, false otherwise.
-         */
-        bool removeTank(earthTank*& tank);
+	/// Print & Misc
 
-        /**
-        * Checks if the Earth Soldier list is empty or not
-        * @return {bool} - True if empty , false if not empty
-        */
-        bool isET_Empty();
+	/*
+	 * Prints all the data for the Alive Earth Units
+	 *
+	 * @param {void}
+	 * @returns {void}
+	 */
+	void Print() const;
 
+	/// To-Do: Phase 2
+	// virtual void attack();
 
-        /**
-         * Prints the list of Earth Tanks.
-         */
-        void printTanks();
-
-        // ========================= Gunneries functions =========================
-
-        /**
-         * Gets the list of Earth Gunneries.
-         * @return {linkedPriorityQueue<earthGunnery*>} - The list of Earth Gunneries.
-         */
-//        PriorityQueue<earthGunnery*> getGunneryList();
-
-        /**
-         * Adds a new Earth Gunnery to the army.
-         * @param Power - The power of the gunnery.
-         * @param Health - The health of the gunnery.
-         * @param AttackCapacity - The attack capacity of the gunnery.
-         * @param Priority - The priority of the gunnery.
-         * @return {bool} - True if the addition was successful, false otherwise.
-         */
- //       bool addGunnery(int Power, double Health, int AttackCapacity);
-
-        /**
-         * Removes an Earth Gunnery from the army.
-         * @param pointer to gunnery - The Earth Gunnery to be removed.
-         * @return {bool} - True if the removal was successful, false otherwise.
-         */
-  //      bool removeGunnery(earthGunnery*& gunnery, int& priority);
-
-        /**
-        * Checks if the Earth Soldier list is empty or not
-        * @return {bool} - True if empty , false if not empty
-        */
-  //      bool isEG_Empty();
-
-        /**
-        * Prints the list of Earth Gunneries.
-        */
- //     void printGunneries();
+	/*
+	 * Earth Army Destructor
+	 */
+	~EarthArmy();
 };
 
-
+#endif // !EarthArmy_H

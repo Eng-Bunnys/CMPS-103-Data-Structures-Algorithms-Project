@@ -194,34 +194,27 @@ public:
     {
         // Check if the deque is empty
         if (isEmpty())
-        {
-            std::cout << "NULL" << std::endl;
             return;
-        }
+        
         // Iterate through the deque and print each element
         DoublyNode<T> *Current = Head;
+        
+        std::cout << "[";
+
         while (Current != nullptr)
         {
             std::cout << Current->GetValue();
 
             // Print arrow if the current node is not the last node
             if (Current->GetNext() != nullptr)
-                std::cout << " <-> ";
+                std::cout << ", ";
 
             Current = Current->GetNext();
         }
 
-        // Print "NULL" at the end of the deque
-        std::cout << " <-> NULL" << std::endl;
+        std::cout << "]" << std::endl;
     }
 
-    /**
-    * Gets how many items are there in the list
-    * @return {int} - number of items
-    */
-    int getCount() {
-        return Count;
-    }
     /**
      * Clears the Deque by removing all elements and deallocating memory.
      * @param {void}
