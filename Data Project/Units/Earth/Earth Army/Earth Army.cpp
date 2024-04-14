@@ -2,6 +2,8 @@
 
 EarthArmy::EarthArmy(GameManager *Game)
 {
+	this->Soldiers = LinkedQueue<EarthSoldier*>();
+	this->Tanks = ArrayStack<EarthTank*>();
 	this->Gunnery = PriorityQueue<EarthGunnery *>();
 	this->NextID = 1;
 }
@@ -110,7 +112,8 @@ void EarthArmy::Print() const
 	{
 		std::cout << this->Gunnery.GetCount() << " EG ";
 		this->Gunnery.Print();
-	} else
+	}
+	else
 		std::cout << "0 EG []\n";
 }
 

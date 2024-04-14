@@ -1,30 +1,54 @@
 #include "ManagerStart.h"
 
-void ManagerStart::ClearConsole() {
-    char UserInput;
+void ManagerStart::ClearConsole(bool ForceClear)
+{
+    if (!ForceClear)
+    {
+        char UserInput;
 
-    std::cout << "To clear the console, enter [1]. To continue, press on any key.";
-    std::cin.get(UserInput);
+        std::cout << "To clear the console, enter [1]. To continue, press on any key. ";
+        std::cin >> UserInput;
 
-    if (UserInput == '1') {
+        if (UserInput == '1')
+        {
+            if (IS_WINDOWS)
+                system("cls");
+            else
+                system("clear");
+        }
+        else
+            return;
+
+        // Clear the input buffer
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin.clear();
+
+        std::cout << "\nConsole cleared. Press any key to continue...";
+        std::cin.ignore();
+    }
+    else
+    {
         if (IS_WINDOWS)
             system("cls");
         else
             system("clear");
     }
-    else return;
 }
 
-void ManagerStart::SetSettings() {
+void ManagerStart::SetSettings()
+{
     std::cout << this->WelcomeMessage << std::endl;
 
-    while (true) {
-        std::cout << ScenarioSettings;
+    while (true)
+    {
+        std::cout << "\n"
+                  << this->ScenarioSettings;
 
         int ChoiceScenario;
         std::cin >> ChoiceScenario;
 
-        switch (ChoiceScenario) {
+        switch (ChoiceScenario)
+        {
         case 1:
             GameScenario = Scenario::BothStrong;
             break;
@@ -50,21 +74,26 @@ void ManagerStart::SetSettings() {
         break;
     }
 
-    while (true) {
-        std::cout << this->SimulationType;
+    while (true)
+    {
+        std::cout << "\n"
+                  << this->SimulationType;
 
         int ChoiceSimulation;
         std::cin >> ChoiceSimulation;
 
-        if (ChoiceSimulation == 1) {
+        if (ChoiceSimulation == 1)
+        {
             this->GameSimulation = Simulation::Grand;
             break;
         }
-        else if (ChoiceSimulation == 2) {
+        else if (ChoiceSimulation == 2)
+        {
             this->GameSimulation = Simulation::Simple;
             break;
         }
-        else {
+        else
+        {
             std::cout << "Invalid simulation type choice, choose a valid simulation type." << std::endl;
 
             ClearConsole();
@@ -73,27 +102,59 @@ void ManagerStart::SetSettings() {
         }
     }
 
-    while (true) {
-        std::cout << this->ModeType;
+    while (true)
+    {
+        std::cout << "\n"
+                  << this->ModeType;
 
         int ChoiceMode;
 
         std::cin >> ChoiceMode;
 
-        if (ChoiceMode == 1) {
+        if (ChoiceMode == 1)
+        {
             this->GameMode = Mode::Interactive;
             break;
         }
-        else if (ChoiceMode == 2) {
+        else if (ChoiceMode == 2)
+        {
             this->GameMode = Mode::Silent;
             break;
         }
-        else {
+        else
+        {
             std::cout << "Invalid mode choice, choose a valid mode." << std::endl;
 
             ClearConsole();
 
             continue;
+        }
+    }
+
+    std::cout << "\n\nVerify the following settings:\n"
+              << "- Scenario: "
+              << ScenarioToString(GameScenario) << "\n"
+              << "- Simulation Type: "
+              << SimulationToString(GameSimulation) << "\n"
+              << "- Mode: " << ModeToString(GameMode) << "\n"
+              << "Enter [No] to confirm or press any key to continue. ";
+
+    std::string UserConfirmation;
+
+    while (true)
+    {
+        std::getline(std::cin >> std::ws, UserConfirmation);
+
+        std::transform(UserConfirmation.begin(), UserConfirmation.end(), UserConfirmation.begin(), ::tolower);
+
+        if (UserConfirmation != "no")
+            break;
+        else
+        {
+            std::cout << "Restarting Selection..." << std::endl;
+            ClearConsole(true);
+            SetSettings();
+            break;
         }
     }
 }

@@ -67,4 +67,24 @@ enum Simulation
     Simple = 2
 };
 
+/**
+ * @enum {UnitType}
+ * Represents different types of units in the game
+ */
+enum UnitType
+{
+    /** Human soldier unit */
+    HumanSoldierEnum,
+    /** Human tank unit */
+    HumanTankEnum,
+    /** Human healer unit */
+    HumanHealerEnum,
+    /** Alien soldier unit */
+    AlienSoldierEnum,
+    /** Alien monster unit */
+    AlienMonsterEnum,
+    /** Alien drone unit */
+    AlienDroneEnum
+};
+
 #endif // !Enums_H

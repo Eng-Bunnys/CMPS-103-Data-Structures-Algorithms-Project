@@ -1,30 +1,16 @@
-#include "../../Game Manager/GameManager.h"
-#include "../../Units/Earth/Earth Army/Earth Army.h"
+#include "../../Units/Alien/Alien Army/Alien Army.h"
+#include "../../Game Manager/Game Manager.h"
 int main() {
 	GameManager Game;
+	AlienArmy Army(&Game);
 
-	EarthArmy Army(&Game);
+	Army.AddSoldier(20.0, 20, 20);
+	Army.AddSoldier(20.0, 20, 20);
 
-	Army.AddGunnery(20.0, 20, 20);
-	Army.AddGunnery(20.0, 20, 20);
-	Army.AddGunnery(20.0, 20, 20);
-	Army.AddGunnery(20.0, 20, 20);
+	Army.AddDrone(1.0, 1, 2);
 
-	Army.AddSoldier(30.0, 30, 30);
-	Army.AddSoldier(30.0, 30, 30);
-	Army.AddSoldier(30.0, 30, 30);
-	Army.AddSoldier(30.0, 30, 30);
-	Army.AddSoldier(30.0, 30, 30);
-
-	Army.AddTank(40.0, 40, 40);
-	Army.AddTank(40.0, 40, 40);
-	Army.AddTank(40.0, 40, 40);
-	Army.AddTank(40.0, 40, 40);
-	Army.AddTank(40.0, 40, 40);
-	Army.AddTank(40.0, 40, 40);
-	Army.AddTank(40.0, 40, 40);
-	Army.AddTank(40.0, 40, 40);
-	Army.AddTank(40.0, 40, 40);
+	Army.AddMonster(1.0, 1, 2);
+	Army.AddMonster(1.0, 1, 2);
 
 	Army.Print();
 }

@@ -3,6 +3,7 @@
 
 #include "../../Unit.h"
 
+class EarthArmy;
 class AlienUnit : public Unit
 {
 public:
@@ -14,7 +15,7 @@ public:
      * @param AttackCapacity The attack capacity of the unit.
      * @param JoinTime The time at which the unit joined.
      */
-    AlienUnit(int ID, double Health, int Power, int AttackCapacity, int JoinTime) : Unit(ID, Health, Power, AttackCapacity, JoinTime){};
+    AlienUnit(int ID, double Health, int Power, int AttackCapacity, int JoinTime);
     /// Phase 2
     // virtual void attack(...) = 0;
 };

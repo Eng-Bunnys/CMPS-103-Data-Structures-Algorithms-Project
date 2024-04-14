@@ -219,7 +219,8 @@ public:
 		this->Count = 0;
 	}
 
-	int GetCount() const {
+	int GetCount() const
+	{
 		return this->Count;
 	}
 

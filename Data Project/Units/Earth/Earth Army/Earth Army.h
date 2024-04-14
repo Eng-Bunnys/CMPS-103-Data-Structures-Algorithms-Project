@@ -1,9 +1,6 @@
 #ifndef EarthArmy_H
 #define EarthArmy_H
 
-/// General Imports
-#include "../../Game Manager/GameManager.h"
-
 /// Structure Imports
 #include "../../Structures/Stack/ArrayStack.h"
 #include "../../Structures/Priority Queue/PriorityQueue.h"
@@ -15,6 +12,7 @@
 #include "../Earth Units/Earth Soldier/Earth Soldier.h"
 
 class GameManager;
+class AlienArmy;
 class EarthArmy
 {
 private:

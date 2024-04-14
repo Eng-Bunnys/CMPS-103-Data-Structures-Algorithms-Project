@@ -3,6 +3,7 @@
 
 #include "../../Unit.h"
 
+class AlienArmy;
 class EarthUnit : public Unit
 {
 public:

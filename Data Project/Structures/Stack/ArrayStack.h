@@ -50,7 +50,7 @@ public:
      * @param {T&} NewEntry - The new entry to be pushed onto the stack.
      * @returns {bool} - True if the operation is successful, false if the stack is full.
      */
-    bool push(const T& NewEntry)
+    bool push(const T &NewEntry)
     {
         if (this->TopElement == this->MAX_SIZE - 1)
             return false;
@@ -67,7 +67,7 @@ public:
      * @param {T&} TopEntry - Reference to store the popped entry.
      * @returns {bool} - True if the operation is successful, false if the stack is empty.
      */
-    bool pop(T& TopEntry)
+    bool pop(T &TopEntry)
     {
         if (isEmpty())
             return false;
@@ -84,7 +84,7 @@ public:
      * @param {T&} TopEntry - Reference to store the top entry.
      * @returns {bool} - True if the operation is successful, false if the stack is empty.
      */
-    bool peek(T& TopEntry) const
+    bool peek(T &TopEntry) const
     {
         if (isEmpty())
             return false;

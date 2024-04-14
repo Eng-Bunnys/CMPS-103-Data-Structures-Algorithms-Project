@@ -185,6 +185,16 @@ public:
         return !(Count > 0);
     }
 
+    /*
+     * Returns the number of nodes in the deque
+     *
+     * @returns {int} - The number of nodes in the deque
+     */
+    int GetCount() const
+    {
+        return this->Count;
+    }
+
     /**
      * Prints the elements of the Deque.
      * @param {void}
@@ -195,10 +205,10 @@ public:
         // Check if the deque is empty
         if (isEmpty())
             return;
-        
+
         // Iterate through the deque and print each element
         DoublyNode<T> *Current = Head;
-        
+
         std::cout << "[";
 
         while (Current != nullptr)
