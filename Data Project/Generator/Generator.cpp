@@ -1,4 +1,10 @@
 #include "Generator.h"
+#include "../Game Manager/Game Manager.h"
+#include "../../Utils/Utils.h"
+
+Generator::Generator(GameManager* Game) {
+	this->Game = Game;
+}
 
 bool Generator::AssignGeneral(int UnitCount, int Probability)
 {
@@ -69,7 +75,93 @@ bool Generator::AssignAlien(int AlienSoldier, int AlienMonster, int AlienDrone, 
 	return true;
 }
 
-bool Generator::Generate()
+UnitStats Generator::GenerateStats(double MinHealth, double MaxHealth, int MinPower, int MaxPower, int MinAttackCapacity, int MaxAttackCapacity) {
+	UnitStats Generated;
+
+	Generated.Health = GenerateRandomNumber(MinHealth, MaxHealth);
+	Generated.Power = GenerateRandomNumber(MinPower, MaxPower);
+	Generated.AttackCapacity = GenerateRandomNumber(MinAttackCapacity, MaxAttackCapacity);
+
+	return Generated;
+}
+
+void Generator::GenerateEarth(int RandomNumber) {
+	if (RandomNumber <= this->GenerationProbability) {
+		int Generated;
+
+		int Sum = 0;
+
+		for (int i = 0; i < this->GenerationCount; i++) {
+			Generated = GenerateRandomNumber();
+
+			if (Generated <= this->EarthSoldierPercentage) {
+				UnitStats GeneratedSoldier = GenerateStats(this->EarthArmyParameters.MinHealth, this->EarthArmyParameters.MaxHealth, this->EarthArmyParameters.MinPower, this->EarthArmyParameters.MaxPower, this->EarthArmyParameters.MinAttackCapacity, this->EarthArmyParameters.MaxAttackCapacity);
+				
+				Sum += this->EarthSoldierPercentage;
+				
+				this->Game->GetEarthArmy()->AddSoldier(GeneratedSoldier.Health, GeneratedSoldier.Power, GeneratedSoldier.AttackCapacity);
+			}
+
+			else if (Generated <= Sum + this->EarthTankPercentage) {
+				UnitStats GeneratedTank = GenerateStats(this->EarthArmyParameters.MinHealth, this->EarthArmyParameters.MaxHealth, this->EarthArmyParameters.MinPower, this->EarthArmyParameters.MaxPower, this->EarthArmyParameters.MinAttackCapacity, this->EarthArmyParameters.MaxAttackCapacity);
+
+				Sum += this->EarthTankPercentage;
+				
+				this->Game->GetEarthArmy()->AddTank(GeneratedTank.Health, GeneratedTank.Power, GeneratedTank.AttackCapacity);
+			}
+
+			else if (Generated <= Sum + this->EarthGunneryPercentage) {
+				UnitStats GeneratedGunnery = GenerateStats(this->EarthArmyParameters.MinHealth, this->EarthArmyParameters.MaxHealth, this->EarthArmyParameters.MinPower, this->EarthArmyParameters.MaxPower, this->EarthArmyParameters.MinAttackCapacity, this->EarthArmyParameters.MaxAttackCapacity);
+
+				Sum += this->EarthGunneryPercentage;
+
+				this->Game->GetEarthArmy()->AddTank(GeneratedGunnery.Health, GeneratedGunnery.Power, GeneratedGunnery.AttackCapacity);
+			}
+		}
+	}
+}
+
+void Generator::GenerateAlien(int RandomNumber) {
+	if (RandomNumber <= this->GenerationProbability) {
+		int Generated;
+
+		int Sum = 0;
+
+		for (int i = 0; i < this->GenerationCount; i++) {
+			Generated = GenerateRandomNumber();
+
+			if (Generated <= this->AlienSoldierPercentage) {
+				UnitStats GeneratedSoldier = GenerateStats(this->AlienArmyParameters.MinHealth, this->AlienArmyParameters.MaxHealth, this->AlienArmyParameters.MinPower, this->AlienArmyParameters.MaxPower, this->AlienArmyParameters.MinAttackCapacity, this->AlienArmyParameters.MaxAttackCapacity);
+
+				Sum += this->AlienSoldierPercentage;
+
+				this->Game->GetAlienArmy()->AddSoldier(GeneratedSoldier.Health, GeneratedSoldier.Power, GeneratedSoldier.AttackCapacity);
+			}
+
+			else if (Generated <= Sum + this->AlienMonsterPercentage) {
+				UnitStats GeneratedTank = GenerateStats(this->AlienArmyParameters.MinHealth, this->AlienArmyParameters.MaxHealth, this->AlienArmyParameters.MinPower, this->AlienArmyParameters.MaxPower, this->AlienArmyParameters.MinAttackCapacity, this->AlienArmyParameters.MaxAttackCapacity);
+
+				Sum += this->AlienMonsterPercentage;
+
+				this->Game->GetAlienArmy()->AddMonster(GeneratedTank.Health, GeneratedTank.Power, GeneratedTank.AttackCapacity);
+			}
+
+			else if (Generated <= Sum + this->AlienDronePercentage) {
+				UnitStats GeneratedGunnery = GenerateStats(this->AlienArmyParameters.MinHealth, this->AlienArmyParameters.MaxHealth, this->AlienArmyParameters.MinPower, this->AlienArmyParameters.MaxPower, this->AlienArmyParameters.MinAttackCapacity, this->AlienArmyParameters.MaxAttackCapacity);
+
+				Sum += this->AlienDronePercentage;
+
+				this->Game->GetAlienArmy()->AddDrone(GeneratedGunnery.Health, GeneratedGunnery.Power, GeneratedGunnery.AttackCapacity);
+			}
+		}
+	}
+}
+
+void Generator::Generate()
 {
-	return true;
+	int RandomNumberEarth = GenerateRandomNumber();
+	int RandomNumberAlien = GenerateRandomNumber();
+
+	GenerateEarth(RandomNumberEarth);
+	GenerateAlien(RandomNumberAlien);
 }

@@ -1,7 +1,9 @@
 #include "Earth Army.h"
+#include "../../Game Manager/Game Manager.h"
 
-EarthArmy::EarthArmy(GameManager *Game)
+EarthArmy::EarthArmy(GameManager *Game) 
 {
+	this->Game = Game;
 	this->Soldiers = LinkedQueue<EarthSoldier*>();
 	this->Tanks = ArrayStack<EarthTank*>();
 	this->Gunnery = PriorityQueue<EarthGunnery *>();
@@ -17,7 +19,10 @@ LinkedQueue<EarthSoldier *> EarthArmy::GetSoldiers() const
 
 bool EarthArmy::AddSoldier(double Health, int Power, int AttackCapacity)
 {
-	EarthSoldier *NewSoldier = new EarthSoldier(++this->NextID, Health, Power, AttackCapacity, 0);
+	if (!CanAdd())
+		return;
+
+	EarthSoldier *NewSoldier = new EarthSoldier(++this->NextID, Health, Power, AttackCapacity, this->Game->GetTimeStep());
 
 	if (this->Soldiers.enqueue(NewSoldier))
 		return true;
@@ -42,9 +47,10 @@ PriorityQueue<EarthGunnery *> EarthArmy::GetGunnery() const
 
 bool EarthArmy::AddGunnery(double Health, int Power, int AttackCapacity)
 {
-	/// To-Do: Complete game manager and add a GetTimeStep function & replace it in the last parameter
-	/// To-Do: Check if the ID is negative 1, if so then don't add
-	EarthGunnery *NewGunnery = new EarthGunnery(++this->NextID, Health, Power, AttackCapacity, 0);
+	if (!CanAdd())
+		return;
+
+	EarthGunnery *NewGunnery = new EarthGunnery(++this->NextID, Health, Power, AttackCapacity, this->Game->GetTimeStep());
 	if (this->Gunnery.enqueue(NewGunnery, NewGunnery->GetPriority()))
 		return true;
 	else
@@ -71,7 +77,10 @@ ArrayStack<EarthTank *> EarthArmy::GetTanks() const
 
 bool EarthArmy::AddTank(double Health, int Power, int AttackCapacity)
 {
-	EarthTank *NewTank = new EarthTank(++this->NextID, Health, Power, AttackCapacity, 0);
+	if (!CanAdd())
+		return;
+
+	EarthTank *NewTank = new EarthTank(++this->NextID, Health, Power, AttackCapacity, this->Game->GetTimeStep());
 
 	if (this->Tanks.push(NewTank))
 		return true;
@@ -96,25 +105,36 @@ void EarthArmy::Print() const
 	{
 		std::cout << this->Soldiers.GetCount() << " ES ";
 		this->Soldiers.Print();
+		std::cout << std::endl;
 	}
 	else
-		std::cout << "0 ES []\n";
+		std::cout << "0 ES []\n\n";
 
 	if (this && !this->Tanks.isEmpty())
 	{
 		std::cout << this->Tanks.GetCount() << " ET ";
 		this->Tanks.Print();
+		std::cout << std::endl;
 	}
 	else
-		std::cout << "0 ET []\n";
+		std::cout << "0 ET []\n\n";
 
 	if (this && !this->Gunnery.isEmpty())
 	{
 		std::cout << this->Gunnery.GetCount() << " EG ";
 		this->Gunnery.Print();
+		std::cout << std::endl;
 	}
 	else
-		std::cout << "0 EG []\n";
+		std::cout << "0 EG []\n\n";
+}
+
+bool EarthArmy::isEmpty() const {
+	return (this->Soldiers.isEmpty() && this->Tanks.isEmpty() && this->Gunnery.isEmpty());
+}
+
+bool EarthArmy::CanAdd() const {
+	return ((this->NextID + 1) >= EarthUnitMinID && (this->NextID + 1) <= EarthUnitMaxID);
 }
 
 EarthArmy::~EarthArmy()

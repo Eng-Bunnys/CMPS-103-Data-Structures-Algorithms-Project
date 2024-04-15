@@ -6,8 +6,6 @@
 
 /// Misc Imports
 
-#include "./Game Manager Start/ManagerStart.h"
-
 #include "../Generator/Generator.h"
 
 /// Army Imports
@@ -16,6 +14,7 @@
 #include "../../Units/Earth/Earth Army/Earth Army.h"
 #include "../../Units/Alien/Alien Army/Alien Army.h"
 
+class ManagerStart;
 class GameManager
 {
 private:
@@ -28,7 +27,7 @@ private:
     AlienArmy* Aliens;
     /* A pointer to the generator instance */
     Generator *GeneratorInstance;
-
+    ManagerStart* StartHandler;
 public:
     GameManager();
 
@@ -55,9 +54,14 @@ public:
 
     /// Prints & Other
 
-    void IncrementStep();
+    Army GetWinner();
 
-    void PrintDead();
+    void RunNextTimeStep();
+
+    void PrintAvailableUnits() const;
+    void PrintTime() const;
+    void Print() const;
+
 };
 
 #endif // !GameManager_H

@@ -7,6 +7,8 @@
  */
 enum Army
 {
+    /* For GetWinners, if all conditions aren't met */
+    None,
     /* Represents the Earth Army */
     Earth,
     /* Represents the Alien Army */
@@ -64,7 +66,7 @@ enum Simulation
     /* Grand simulation mode */
     Grand = 1,
     /* Simple simulation mode */
-    Simple = 2
+    Simple = 0
 };
 
 /**

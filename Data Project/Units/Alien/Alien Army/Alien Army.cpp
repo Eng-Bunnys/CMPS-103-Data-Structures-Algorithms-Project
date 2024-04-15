@@ -17,6 +17,9 @@ LinkedQueue<AlienSoldier *> AlienArmy::GetSoldiers() const
 
 bool AlienArmy::AddSoldier(double Health, int Power, int AttackCapacity)
 {
+	if (!CanAdd())
+		return;
+
 	AlienSoldier*NewSoldier = new AlienSoldier(++this->NextID, Health, Power, AttackCapacity, 0);
 
 	if (this->AlienSoldierQueue.enqueue(NewSoldier))
@@ -42,6 +45,9 @@ Bag<AlienMonsters *> AlienArmy::GetMonster() const
 
 bool AlienArmy::AddMonster(double Health, int Power, int AttackCapacity)
 {
+	if (!CanAdd())
+		return;
+
 	AlienMonsters *NewMonster = new AlienMonsters(++this->NextID, Health, Power, AttackCapacity, 0);
 
 	if (Monsters.Add(NewMonster))
@@ -70,6 +76,9 @@ Deque<AlienDrones *> AlienArmy::GetDrone() const
 
 bool AlienArmy::AddDrone(double Health, int Power, int AttackCapacity)
 {
+	if (!CanAdd())
+		return;
+
 	AlienDrones *NewDrone = new AlienDrones(++this->NextID, Health, Power, AttackCapacity, 0);
 
 	if (Drones.EnqueueBack(NewDrone))
@@ -98,25 +107,36 @@ void AlienArmy::Print() const
 	{
 		std::cout << AlienSoldierQueue.GetCount() << " AS ";
 		this->AlienSoldierQueue.Print();
+		std::cout << std::endl;
 	}
 	else
-		std::cout << "0 AS []\n";
+		std::cout << "0 AS []\n\n";
 
 	if (!Monsters.isEmpty())
 	{
 		std::cout << Monsters.GetCount() << " AM ";
 		Monsters.Print();
+		std::cout << std::endl;
 	}
 	else
-		std::cout << "0 Monsters []\n";
+		std::cout << "0 Monsters []\n\n";
 
 	if (!Drones.isEmpty())
 	{
 		std::cout << Drones.GetCount() << " AD ";
 		Drones.Print();
+		std::cout << std::endl;
 	}
 	else
-		std::cout << "0 Drones []\n";
+		std::cout << "0 Drones []\n\n";
+}
+
+bool AlienArmy::isEmpty() const {
+	return (this->AlienSoldierQueue.isEmpty() && this->Drones.isEmpty() && this->Monsters.isEmpty());
+}
+
+bool AlienArmy::CanAdd() const {
+	return ((this->NextID + 1) >= AlienUnitMinID && (this->NextID + 1) <= AlienUnitMaxID);
 }
 
 AlienArmy::~AlienArmy()
@@ -126,10 +146,10 @@ AlienArmy::~AlienArmy()
 	while (this->AlienSoldierQueue.dequeue(TempSoldier))
 		delete TempSoldier;
 
-	//AlienMonsters* TempMonster;
-	//int i = 0;
-	//while (this->Monsters.Remove(TempMonster, i++))
-	//	delete TempMonster;
+	AlienMonsters* TempMonster;
+	int i = 0;
+	while (this->Monsters.Remove(TempMonster, i++))
+		delete TempMonster;
 
 	AlienDrones* TempDrone;
 

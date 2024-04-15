@@ -129,6 +129,10 @@ public:
 	 */
 	void Print() const;
 
+	bool isEmpty() const;
+
+	bool CanAdd() const;
+
 	/// To-Do: Phase 2
 	// virtual void attack();
 

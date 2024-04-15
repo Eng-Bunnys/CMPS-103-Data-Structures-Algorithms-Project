@@ -1,4 +1,14 @@
 #include "ManagerStart.h"
+#include "../Game Manager.h"
+
+void ManagerStart::PressAnyContinue() {
+    std::cout << "Press any button to continue." << std::endl;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
+ManagerStart::ManagerStart(GameManager* Game) {
+    this->Game = Game;
+}
 
 void ManagerStart::ClearConsole(bool ForceClear)
 {
@@ -156,5 +166,52 @@ void ManagerStart::SetSettings()
             SetSettings();
             break;
         }
+    }
+
+    HandleStart();
+}
+
+void ManagerStart::HandleStart() {
+    switch (GameScenario)
+    {
+    case BothStrong:
+        this->FilePath += "BothStrong.txt";
+        break;
+    case BothWeak:
+        this->FilePath += "BothWeak.txt";
+        break;
+    case EarthStrongAlienWeak:
+        this->FilePath += "StrongEarth.txt";
+        break;
+    case EarthWeakAlienStrong:
+        this->FilePath += "StrongAlien.txt";
+        break;
+    case StructureTest:
+        this->FilePath += "StructureTest.txt";
+        break;
+
+        std::cout << "Reading Input File for Game Scenario..." << std::endl;
+
+        if (!this->Game->ReadInput(this->FilePath, false)) {
+            std::cout << "Failed to read input file." << std::endl;
+            return;
+        }
+    }
+
+    if (!this->Game->ReadInput(this->FilePath, this->GameSimulation)) {
+        std::cout << "Failed to read input file." << std::endl;
+        return;
+    }
+
+    switch (GameMode)
+    {
+    case Interactive:
+        this->Game->RunInteractive();
+        break;
+    case Silent:
+        this->Game->RunSilent();
+        break;
+    default:
+        break;
     }
 }

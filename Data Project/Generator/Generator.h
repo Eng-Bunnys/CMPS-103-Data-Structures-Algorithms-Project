@@ -3,6 +3,12 @@
 
 #include "../../Enums/Enums.h"
 
+struct UnitStats {
+    double Health;
+    int Power;
+    int AttackCapacity;
+};
+
 /**
  * Struct to store parameters for army units
  * @typedef {Object} ArmyParameters
@@ -24,14 +30,11 @@ struct ArmyParameters
 };
 
 class GameManager;
-/**
- * Class representing a Generator for army units
- */
 class Generator
 {
 private:
     /*Pointer to the game manager instance */
-    GameManager *Game;
+    GameManager* Game;
 
     /// Probability Parameters
     /*Parameters for Earth army units generation probability */
@@ -61,11 +64,25 @@ private:
     /* Percentage of Alien drones */
     int AlienDronePercentage;
 
+    /**
+     * Validates a percentage value
+     *
+     * @param {number} Percentage - The percentage value to validate
+     * @returns {boolean} - True if the percentage is within the valid range, otherwise false
+     */
     bool ValidatePercentage(int Percentage)
     {
         return Percentage >= 0 && Percentage <= 100;
     }
 
+    /**
+     * Validates parameter range
+     *
+     * @template
+     * @param {T} Min - The minimum value
+     * @param {T} Max - The maximum value
+     * @returns {boolean} - True if the range is valid, otherwise false
+     */
     template <typename T = int>
     bool ValidateParamRange(T Min, T Max)
     {
@@ -78,7 +95,7 @@ public:
      *
      * @param {GameManager*} Game - Pointer to the game manager instance
      */
-    Generator(GameManager *Game) {}
+    Generator(GameManager* Game);
 
     /**
      * Assigns general unit parameters
@@ -116,11 +133,40 @@ public:
     bool AssignAlien(int AlienSoldier, int AlienMonster, int AlienDrone, double Health[], int Power[], int AttackCapacity[]);
 
     /**
+     * Generates statistics for army units
+     *
+     * @param {number} MinHealth - Minimum health value
+     * @param {number} MaxHealth - Maximum health value
+     * @param {number} MinPower - Minimum power value
+     * @param {number} MaxPower - Maximum power value
+     * @param {number} MinAttackCapacity - Minimum attack capacity value
+     * @param {number} MaxAttackCapacity - Maximum attack capacity value
+     * @returns {UnitStats} - The generated unit statistics
+     */
+    UnitStats GenerateStats(double MinHealth, double MaxHealth, int MinPower, int MaxPower, int MinAttackCapacity, int MaxAttackCapacity);
+
+    /**
+     * Generates Earth army units
+     *
+     * @param {number} RandomNumber - Random number for generation
+     * @returns {void} 
+     */
+    void GenerateEarth(int RandomNumber);
+
+    /**
+     * Generates Alien army units
+     *
+     * @param {number} RandomNumber - Random number for generation
+     * @returns {void} 
+     */
+    void GenerateAlien(int RandomNumber);
+
+    /**
      * Generates army units based on assigned parameters
      *
-     * @returns {boolean} - True if generation successful, false otherwise
+     * @returns {void} 
      */
-    bool Generate();
+    void Generate();
 };
 
 #endif // !Generator_H

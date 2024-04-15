@@ -158,6 +158,9 @@
   <ItemGroup>
     <ClCompile Include="Game Manager\Game Manager Start\ManagerStart.cpp" />
     <ClCompile Include="Game Manager\Game Manager.cpp" />
+    <ClCompile Include="Game Manager\GetHandlers.cpp" />
+    <ClCompile Include="Game Manager\HandlePrint.cpp" />
+    <ClCompile Include="Game Manager\ReadInput.cpp" />
     <ClCompile Include="Generator\Generator.cpp" />
     <ClCompile Include="Structures\Nodes\Node.h" />
     <ClCompile Include="main.cpp" />
@@ -174,7 +177,11 @@
     <ClCompile Include="Units\Unit.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Scenarios\input.txt" />
+    <Text Include="Scenarios\BothStrong.txt" />
+    <Text Include="Scenarios\BothWeak.txt" />
+    <Text Include="Scenarios\StrongAlien.txt" />
+    <Text Include="Scenarios\StrongEarth.txt" />
+    <Text Include="Scenarios\StructureTest.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,4 +1,14 @@
-﻿  main.cpp
+﻿  ManagerStart.cpp
+  Game Manager.cpp
+  GetHandlers.cpp
+  HandlePrint.cpp
+  ReadInput.cpp
+  Generator.cpp
+  Alien Army.cpp
+C:\Users\bunnys\OneDrive\Desktop\Data Project\Data Project\Generator\Generator.cpp(81,53): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\bunnys\OneDrive\Desktop\Data Project\Data Project\Generator\Generator.cpp(81,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  main.cpp
+  Generating Code...
   Data Project.vcxproj -> C:\Users\bunnys\OneDrive\Desktop\Data Project\x64\Debug\Data Project.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.

@@ -3,7 +3,7 @@
 
 #include <iostream> 
 
-constexpr int MaxSize = 100;
+constexpr int MaxSize = 500;
 
 template <typename T>
 class Bag

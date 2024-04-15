@@ -11,15 +11,20 @@
 
 #include "../Game Manager.h"
 
+class GameManager;
 class ManagerStart
 {
 public:
+    GameManager* Game;
+    ManagerStart(GameManager* Game);
     /* The chosen game mode */
     Mode GameMode;
     /* The chosen scenario */
     Scenario GameScenario;
     /* The chosen simulation type */
     Simulation GameSimulation;
+    /* The path to the txt */
+    std::string FilePath;
 
     /* Project Name */
     std::string GameName = "Annihilate";
@@ -45,7 +50,11 @@ public:
 
     void SetSettings();
 
+    void HandleStart();
+
     void ClearConsole(bool ForceClear = false);
+
+    void PressAnyContinue();
 
     std::string ScenarioToString(Scenario ChosenScenario)
     {
