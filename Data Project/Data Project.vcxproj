@@ -175,6 +175,7 @@
     <ClCompile Include="Units\Earth\Earth Units\Earth Tanks\Earth Tank.cpp" />
     <ClCompile Include="Units\Earth\Earth Unit\Earth Unit.cpp" />
     <ClCompile Include="Units\Unit.cpp" />
+    <ClCompile Include="Utils\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Scenarios\BothStrong.txt" />

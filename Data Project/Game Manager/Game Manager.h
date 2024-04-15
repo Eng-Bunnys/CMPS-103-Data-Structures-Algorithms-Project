@@ -28,6 +28,7 @@ private:
     /* A pointer to the generator instance */
     Generator *GeneratorInstance;
     ManagerStart* StartHandler;
+    LinkedQueue<Unit*>* KilledList;
 public:
     GameManager();
 
@@ -58,6 +59,7 @@ public:
 
     void RunNextTimeStep();
 
+    void PrintDead() const;
     void PrintAvailableUnits() const;
     void PrintTime() const;
     void Print() const;

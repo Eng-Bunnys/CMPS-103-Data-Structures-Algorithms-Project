@@ -20,7 +20,7 @@ LinkedQueue<EarthSoldier *> EarthArmy::GetSoldiers() const
 bool EarthArmy::AddSoldier(double Health, int Power, int AttackCapacity)
 {
 	if (!CanAdd())
-		return;
+		return false;
 
 	EarthSoldier *NewSoldier = new EarthSoldier(++this->NextID, Health, Power, AttackCapacity, this->Game->GetTimeStep());
 
@@ -48,7 +48,7 @@ PriorityQueue<EarthGunnery *> EarthArmy::GetGunnery() const
 bool EarthArmy::AddGunnery(double Health, int Power, int AttackCapacity)
 {
 	if (!CanAdd())
-		return;
+		return false;
 
 	EarthGunnery *NewGunnery = new EarthGunnery(++this->NextID, Health, Power, AttackCapacity, this->Game->GetTimeStep());
 	if (this->Gunnery.enqueue(NewGunnery, NewGunnery->GetPriority()))
@@ -78,7 +78,7 @@ ArrayStack<EarthTank *> EarthArmy::GetTanks() const
 bool EarthArmy::AddTank(double Health, int Power, int AttackCapacity)
 {
 	if (!CanAdd())
-		return;
+		return false;
 
 	EarthTank *NewTank = new EarthTank(++this->NextID, Health, Power, AttackCapacity, this->Game->GetTimeStep());
 

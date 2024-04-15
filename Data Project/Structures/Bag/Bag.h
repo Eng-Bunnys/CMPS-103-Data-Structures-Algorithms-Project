@@ -41,11 +41,11 @@ public:
 		return true;
 	}
 
-	bool Remove(T& RemovedItem, int Index = 0) {
+	T Remove(int Index = 0) {
 		if (isEmpty() || (Index < 0 || Index >= Count))
-			return false;
+			return T{};
 
-		///To-Do: Handle the removed item
+		T Removed = *this->Array[Index];
 
 		delete this->Array[Index];
 
@@ -53,7 +53,8 @@ public:
 			this->Array[i] = this->Array[i + 1];
 		}
 		this->Count--;
-		return true;
+
+		return Removed;
 	}
 
 	void Print() const {

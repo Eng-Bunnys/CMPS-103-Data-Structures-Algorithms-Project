@@ -155,6 +155,9 @@
     <ClCompile Include="Game Manager\ReadInput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Utils\Utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Scenarios\BothStrong.txt" />

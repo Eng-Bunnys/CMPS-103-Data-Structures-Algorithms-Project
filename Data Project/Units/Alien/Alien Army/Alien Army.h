@@ -53,14 +53,14 @@ public:
 	 *
 	 * @returns {Bag<AlienMonsters*>}
 	 */
-	Bag<AlienMonsters *> GetMonster() const;
+	Bag<AlienMonsters *> GetMonsters() const;
 
 	/*
 	 * Returns the Alien Drones List
 	 *
 	 * @returns {Deque<AlienDrones*>}
 	 */
-	Deque<AlienDrones *> GetDrone() const;
+	Deque<AlienDrones *> GetDrones() const;
 
 	/// Unit Setters
 

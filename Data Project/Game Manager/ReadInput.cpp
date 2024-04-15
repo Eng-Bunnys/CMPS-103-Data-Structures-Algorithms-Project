@@ -11,7 +11,8 @@ bool GameManager::ReadInput(std::string FileName, bool Grand)
 
     if (!InputFile.is_open())
     {
-        std::cout << "Invalid File Path Specified." << std::endl;
+        ///To-Do: Re-add when the Bag is fixed
+       // std::cout << "Invalid File Path Specified." << std::endl;
         return false;
     }
     else

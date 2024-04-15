@@ -18,7 +18,7 @@ LinkedQueue<AlienSoldier *> AlienArmy::GetSoldiers() const
 bool AlienArmy::AddSoldier(double Health, int Power, int AttackCapacity)
 {
 	if (!CanAdd())
-		return;
+		return false;
 
 	AlienSoldier*NewSoldier = new AlienSoldier(++this->NextID, Health, Power, AttackCapacity, 0);
 
@@ -38,7 +38,7 @@ bool AlienArmy::RemoveSoldier(AlienSoldier*&RemovedSoldier)
 
 /// Monsters
 
-Bag<AlienMonsters *> AlienArmy::GetMonster() const
+Bag<AlienMonsters *> AlienArmy::GetMonsters() const
 {
 	return this->Monsters;
 }
@@ -46,7 +46,7 @@ Bag<AlienMonsters *> AlienArmy::GetMonster() const
 bool AlienArmy::AddMonster(double Health, int Power, int AttackCapacity)
 {
 	if (!CanAdd())
-		return;
+		return false;
 
 	AlienMonsters *NewMonster = new AlienMonsters(++this->NextID, Health, Power, AttackCapacity, 0);
 
@@ -61,7 +61,9 @@ bool AlienArmy::AddMonster(double Health, int Power, int AttackCapacity)
 
 bool AlienArmy::RemoveMonster(AlienMonsters *&RemovedMonster, const int& index)
 {
-	if (Monsters.Remove(RemovedMonster, index))
+	AlienMonsters* Removed = Monsters.Remove(index);
+
+	if (Removed)
 		return true;
 	else
 		return false;
@@ -69,7 +71,7 @@ bool AlienArmy::RemoveMonster(AlienMonsters *&RemovedMonster, const int& index)
 
 /// Drones
 
-Deque<AlienDrones *> AlienArmy::GetDrone() const
+Deque<AlienDrones *> AlienArmy::GetDrones() const
 {
 	return this->Drones;
 }
@@ -77,7 +79,7 @@ Deque<AlienDrones *> AlienArmy::GetDrone() const
 bool AlienArmy::AddDrone(double Health, int Power, int AttackCapacity)
 {
 	if (!CanAdd())
-		return;
+		return false;
 
 	AlienDrones *NewDrone = new AlienDrones(++this->NextID, Health, Power, AttackCapacity, 0);
 
@@ -148,7 +150,7 @@ AlienArmy::~AlienArmy()
 
 	AlienMonsters* TempMonster;
 	int i = 0;
-	while (this->Monsters.Remove(TempMonster, i++))
+	while ((TempMonster = Monsters.Remove(i++)) != nullptr)
 		delete TempMonster;
 
 	AlienDrones* TempDrone;

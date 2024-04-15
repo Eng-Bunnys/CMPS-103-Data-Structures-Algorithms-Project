@@ -188,18 +188,22 @@ void ManagerStart::HandleStart() {
         break;
     case StructureTest:
         this->FilePath += "StructureTest.txt";
-        break;
 
         std::cout << "Reading Input File for Game Scenario..." << std::endl;
 
         if (!this->Game->ReadInput(this->FilePath, false)) {
-            std::cout << "Failed to read input file." << std::endl;
+             ///To-Do: Re-add this after fixing the Bag
+            //  std::cout << "Failed to read input file." << std::endl;
             return;
         }
+
+        this->Game->RunTestCode();
+        break;
     }
 
     if (!this->Game->ReadInput(this->FilePath, this->GameSimulation)) {
-        std::cout << "Failed to read input file." << std::endl;
+            ///To-Do: Re-add this after fixing the Bag
+            //  std::cout << "Failed to read input file." << std::endl;
         return;
     }
 

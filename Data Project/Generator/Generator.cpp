@@ -78,9 +78,9 @@ bool Generator::AssignAlien(int AlienSoldier, int AlienMonster, int AlienDrone, 
 UnitStats Generator::GenerateStats(double MinHealth, double MaxHealth, int MinPower, int MaxPower, int MinAttackCapacity, int MaxAttackCapacity) {
 	UnitStats Generated;
 
-	Generated.Health = GenerateRandomNumber(MinHealth, MaxHealth);
-	Generated.Power = GenerateRandomNumber(MinPower, MaxPower);
-	Generated.AttackCapacity = GenerateRandomNumber(MinAttackCapacity, MaxAttackCapacity);
+	Generated.Health = Utils::GenerateRandomNumber(MinHealth, MaxHealth);
+	Generated.Power = Utils::GenerateRandomNumber(MinPower, MaxPower);
+	Generated.AttackCapacity = Utils::GenerateRandomNumber(MinAttackCapacity, MaxAttackCapacity);
 
 	return Generated;
 }
@@ -92,7 +92,7 @@ void Generator::GenerateEarth(int RandomNumber) {
 		int Sum = 0;
 
 		for (int i = 0; i < this->GenerationCount; i++) {
-			Generated = GenerateRandomNumber();
+			Generated = Utils::GenerateRandomNumber();
 
 			if (Generated <= this->EarthSoldierPercentage) {
 				UnitStats GeneratedSoldier = GenerateStats(this->EarthArmyParameters.MinHealth, this->EarthArmyParameters.MaxHealth, this->EarthArmyParameters.MinPower, this->EarthArmyParameters.MaxPower, this->EarthArmyParameters.MinAttackCapacity, this->EarthArmyParameters.MaxAttackCapacity);
@@ -128,7 +128,7 @@ void Generator::GenerateAlien(int RandomNumber) {
 		int Sum = 0;
 
 		for (int i = 0; i < this->GenerationCount; i++) {
-			Generated = GenerateRandomNumber();
+			Generated = Utils::GenerateRandomNumber();
 
 			if (Generated <= this->AlienSoldierPercentage) {
 				UnitStats GeneratedSoldier = GenerateStats(this->AlienArmyParameters.MinHealth, this->AlienArmyParameters.MaxHealth, this->AlienArmyParameters.MinPower, this->AlienArmyParameters.MaxPower, this->AlienArmyParameters.MinAttackCapacity, this->AlienArmyParameters.MaxAttackCapacity);
@@ -159,8 +159,8 @@ void Generator::GenerateAlien(int RandomNumber) {
 
 void Generator::Generate()
 {
-	int RandomNumberEarth = GenerateRandomNumber();
-	int RandomNumberAlien = GenerateRandomNumber();
+	int RandomNumberEarth = Utils::GenerateRandomNumber();
+	int RandomNumberAlien = Utils::GenerateRandomNumber();
 
 	GenerateEarth(RandomNumberEarth);
 	GenerateAlien(RandomNumberAlien);
