@@ -15,8 +15,8 @@ void GameManager::PrintAvailableUnits() const {
 }
 
 void GameManager::PrintDead() const {
-	std::cout << "============== Alien Army Alive Units ==============" << std::endl;
-	std::cout << this->KilledList->GetCount() << " Dead Units ";
+	std::cout << "============== Killed/Destructed Units ==============" << std::endl;
+	std::cout << this->KilledList->GetCount() << " units ";
 	this->KilledList->Print();
 }
 

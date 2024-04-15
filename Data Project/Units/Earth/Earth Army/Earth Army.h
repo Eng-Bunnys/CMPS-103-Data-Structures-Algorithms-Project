@@ -99,9 +99,10 @@ public:
 	 * Removes a Gunnery
 	 *
 	 * @param {EarthGunnery*&} RemovedGunnery - The removed gunnery
+	 * @param {int& Priority} Priority of removed gunnery - The removed gunnery priority
 	 * @returns {bool} - Whether the remove operation was a success or not
 	 */
-	bool RemoveGunnery(EarthGunnery *&RemovedGunnery);
+	bool RemoveGunnery(EarthGunnery *&RemovedGunnery , int& Priority);
 
 	/*
 	 * Removes a Tank

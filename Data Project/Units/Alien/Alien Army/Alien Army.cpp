@@ -94,10 +94,18 @@ bool AlienArmy::AddDrone(double Health, int Power, int AttackCapacity)
 
 bool AlienArmy::RemoveDrone(AlienDrones *&RemovedDrone)
 {
-	if (Drones.DequeueFront(RemovedDrone))
+	/*if (Drones.DequeueFront(RemovedDrone))
 		return true;
 	else
-		return false;
+		return false;*/
+	if (Drones.isEmpty()) return false;
+	if (Drones.GetCount() % 2 == 0) {
+		Drones.DequeueFront(RemovedDrone);
+	}
+	else {
+		Drones.DequeueBack(RemovedDrone);
+	}
+	return true;
 }
 
 /// Other
@@ -121,7 +129,7 @@ void AlienArmy::Print() const
 		std::cout << std::endl;
 	}
 	else
-		std::cout << "0 Monsters []\n\n";
+		std::cout << "0 AM []\n\n";
 
 	if (!Drones.isEmpty())
 	{
@@ -130,7 +138,7 @@ void AlienArmy::Print() const
 		std::cout << std::endl;
 	}
 	else
-		std::cout << "0 Drones []\n\n";
+		std::cout << "0 AD []\n\n";
 }
 
 bool AlienArmy::isEmpty() const {

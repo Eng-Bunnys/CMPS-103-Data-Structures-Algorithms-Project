@@ -57,9 +57,9 @@ bool EarthArmy::AddGunnery(double Health, int Power, int AttackCapacity)
 		return false;
 }
 
-bool EarthArmy::RemoveGunnery(EarthGunnery *&RemovedGunnery)
+bool EarthArmy::RemoveGunnery(EarthGunnery *&RemovedGunnery , int& Priority)
 {
-	int Priority;
+	
 
 	if (this->Gunnery.dequeue(RemovedGunnery, Priority))
 		return true;

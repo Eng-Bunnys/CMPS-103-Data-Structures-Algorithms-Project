@@ -72,7 +72,7 @@ void GameManager::RunTestCode() {
 
         int RandomNumber = Utils::GenerateRandomNumber();
 
-        if (RandomNumber >= 1 && RandomNumber <= 10) {
+        if (RandomNumber > 0 && RandomNumber < 10) {
             EarthSoldier* ESoldier;
 
             if (this->Earth->GetSoldiers().dequeue(ESoldier)) {
@@ -80,7 +80,7 @@ void GameManager::RunTestCode() {
             }
         }
 
-        if (RandomNumber >= 11 && RandomNumber <= 20) {
+        if (RandomNumber > 10 && RandomNumber < 20) {
             EarthTank* ETank;
 
             if (this->Earth->GetTanks().pop(ETank)) {
@@ -88,12 +88,12 @@ void GameManager::RunTestCode() {
             }
         }
 
-        if (RandomNumber >= 21 && RandomNumber <= 30) {
+        if (RandomNumber > 20 && RandomNumber < 30) {
             int FakePriority;
 
             EarthGunnery* EGunnery;
 
-            if (this->Earth->GetGunnery().dequeue(EGunnery, FakePriority)) {
+            if (this->Earth->RemoveGunnery( EGunnery , FakePriority)) {
                 double NewHealth = EGunnery->GetHealth() / 2;
                 EGunnery->SetHealth(NewHealth);
 
@@ -101,7 +101,7 @@ void GameManager::RunTestCode() {
             }
         }
 
-        if (RandomNumber >= 31 && RandomNumber <= 40) {
+        if (RandomNumber > 30 && RandomNumber < 40) {
             AlienSoldier* ASoldier;
 
             LinkedQueue<AlienSoldier*>* TempList = new LinkedQueue<AlienSoldier*>;
@@ -120,7 +120,7 @@ void GameManager::RunTestCode() {
             delete TempList;
         }
 
-   /*     if (RandomNumber >= 41 && RandomNumber <= 50) {
+  /*      if (RandomNumber >= 41 && RandomNumber <= 50) {
             AlienMonsters* AMonster;
             for (int i = 0; i < 5; i++) {
                 AMonster = this->Aliens->GetMonsters().Remove();
@@ -130,9 +130,9 @@ void GameManager::RunTestCode() {
             }
         }*/
 
-        if (RandomNumber >= 41 && RandomNumber < 60) {
+        if (RandomNumber > 50 && RandomNumber < 60) {
             AlienDrones* ADrone;
-            for (int i = 0; i < 3; i++) {
+           /* for (int i = 0; i < 3; i++) {
                 if ((this->Aliens->GetDrones()).DequeueFront(ADrone))
                     this->KilledList->enqueue(ADrone);
             }
@@ -140,7 +140,12 @@ void GameManager::RunTestCode() {
             for (int i = 0; i < 3; i++) {
                 if ((this->Aliens->GetDrones()).DequeueBack(ADrone))
                     this->KilledList->enqueue(ADrone);
+            }*/
+
+            for (int i = 0; i < 6; i++) {
+                if (this->Aliens->RemoveDrone(ADrone)) this->KilledList->enqueue(ADrone);
             }
+
         }
 
         this->Print();
