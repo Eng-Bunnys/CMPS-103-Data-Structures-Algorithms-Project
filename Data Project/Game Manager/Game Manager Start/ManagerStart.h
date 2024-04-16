@@ -1,3 +1,5 @@
+#pragma warning disable 26495
+
 #ifndef GameManagerStart_H
 #define GameManagerStart_H
 
@@ -17,10 +19,10 @@ class ManagerStart
 {
 public:
     /* Pointer to the GameManager object */
-    GameManager* Game;
+    GameManager *Game;
 
     /* Constructor for ManagerStart class */
-    ManagerStart(GameManager* Game);
+    ManagerStart(GameManager *Game);
 
     /* The chosen game mode */
     Mode GameMode;
@@ -39,19 +41,19 @@ public:
 
     /* Welcome message */
     std::string WelcomeMessage = "Welcome to " + GameName +
-        " player, you will be prompted to choose the game settings!" +
-        std::string("\nTo pick a setting you input the number next to the desiered setting or simply use the arrow keys");
+                                 " player, you will be prompted to choose the game settings!" +
+                                 std::string("\nTo pick a setting you input the number next to the desiered setting or simply use the arrow keys");
 
     /* String to prompt the user to run in either interactive or silent mode */
     std::string ModeType = "Choose a mode to run:\n- Interactive [1]\n- Silent [2]\nYour input: ";
 
     /* String to prompt the user to choose a scenario to run */
     std::string ScenarioSettings = "Choose a scenario to run:\n" + std::string("- Both Strong [1]\n") +
-        std::string("- Both Weak [2]\n") +
-        std::string("- Earth Strong, Alien Weak [3]\n") +
-        std::string("- Earth Weak, Alien Strong [4]\n") +
-        std::string("- Structure Test [0]\n") +
-        std::string("Your input: ");
+                                   std::string("- Both Weak [2]\n") +
+                                   std::string("- Earth Strong, Alien Weak [3]\n") +
+                                   std::string("- Earth Weak, Alien Strong [4]\n") +
+                                   std::string("- Structure Test [0]\n") +
+                                   std::string("Your input: ");
 
     /* String to let the user choose between grand or simple simulation */
     std::string SimulationType = "Choose the simulation type:\n- Grand [1]\n- Simple [2]\nYour input: ";

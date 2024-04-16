@@ -14,14 +14,15 @@ https://en.cppreference.com/w/cpp/numeric/random/uniform_int_distribution
 
 #include <random>
 
-namespace Utils {
+namespace Utils
+{
     /**
- * Generates a random number between the specified minimum and maximum values
- *
- * @param Min Minimum value of the range
- * @param Max Maximum value of the range
- * @return Random number within the specified range [min, max]
- */
+     * Generates a random number between the specified minimum and maximum values
+     *
+     * @param Min Minimum value of the range
+     * @param Max Maximum value of the range
+     * @return Random number within the specified range [min, max]
+     */
     int GenerateRandomNumber(int Min = 0, int Max = 100);
 }
 #endif // !Utils_H

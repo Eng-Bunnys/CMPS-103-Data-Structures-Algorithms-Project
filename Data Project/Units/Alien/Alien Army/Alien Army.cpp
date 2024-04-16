@@ -2,9 +2,9 @@
 
 AlienArmy::AlienArmy(GameManager *Game)
 {
-	this->AlienSoldierQueue = LinkedQueue<AlienSoldier*>();
-	this->Monsters = Bag<AlienMonsters*>();
-	this->Drones = Deque<AlienDrones*>();
+	this->AlienSoldierQueue = LinkedQueue<AlienSoldier *>();
+	this->Monsters = Bag<AlienMonsters *>();
+	this->Drones = Deque<AlienDrones *>();
 	this->NextID = 2000;
 }
 
@@ -20,7 +20,7 @@ bool AlienArmy::AddSoldier(double Health, int Power, int AttackCapacity)
 	if (!CanAdd())
 		return false;
 
-	AlienSoldier*NewSoldier = new AlienSoldier(++this->NextID, Health, Power, AttackCapacity, 0);
+	AlienSoldier *NewSoldier = new AlienSoldier(++this->NextID, Health, Power, AttackCapacity, 0);
 
 	if (this->AlienSoldierQueue.enqueue(NewSoldier))
 		return true;
@@ -28,7 +28,7 @@ bool AlienArmy::AddSoldier(double Health, int Power, int AttackCapacity)
 		return false;
 }
 
-bool AlienArmy::RemoveSoldier(AlienSoldier*&RemovedSoldier)
+bool AlienArmy::RemoveSoldier(AlienSoldier *&RemovedSoldier)
 {
 	if (this->AlienSoldierQueue.dequeue(RemovedSoldier))
 		return true;
@@ -59,9 +59,9 @@ bool AlienArmy::AddMonster(double Health, int Power, int AttackCapacity)
 	}
 }
 
-bool AlienArmy::RemoveMonster(AlienMonsters *&RemovedMonster, const int& index)
+bool AlienArmy::RemoveMonster(AlienMonsters *&RemovedMonster, const int &index)
 {
-	AlienMonsters* Removed = Monsters.Remove(index);
+	AlienMonsters *Removed = Monsters.Remove(index);
 
 	if (Removed)
 		return true;
@@ -98,11 +98,14 @@ bool AlienArmy::RemoveDrone(AlienDrones *&RemovedDrone)
 		return true;
 	else
 		return false;*/
-	if (Drones.isEmpty()) return false;
-	if (Drones.GetCount() % 2 == 0) {
+	if (Drones.isEmpty())
+		return false;
+	if (Drones.GetCount() % 2 == 0)
+	{
 		Drones.DequeueFront(RemovedDrone);
 	}
-	else {
+	else
+	{
 		Drones.DequeueBack(RemovedDrone);
 	}
 	return true;
@@ -112,15 +115,14 @@ bool AlienArmy::RemoveDrone(AlienDrones *&RemovedDrone)
 
 void AlienArmy::Print() const
 {
-	std::cout << "============== Alien Army Alive Units ==============" << std::endl;
-	if (this && !this->AlienSoldierQueue.isEmpty())
+	if (!this->AlienSoldierQueue.isEmpty())
 	{
 		std::cout << AlienSoldierQueue.GetCount() << " AS ";
 		this->AlienSoldierQueue.Print();
 		std::cout << std::endl;
 	}
 	else
-		std::cout << "0 AS []\n\n";
+		std::cout << "AS []" << std::endl;
 
 	if (!Monsters.isEmpty())
 	{
@@ -129,7 +131,7 @@ void AlienArmy::Print() const
 		std::cout << std::endl;
 	}
 	else
-		std::cout << "0 AM []\n\n";
+		std::cout << "AM []" << std::endl;
 
 	if (!Drones.isEmpty())
 	{
@@ -138,30 +140,32 @@ void AlienArmy::Print() const
 		std::cout << std::endl;
 	}
 	else
-		std::cout << "0 AD []\n\n";
+		std::cout << "AD []" << std::endl;
 }
 
-bool AlienArmy::isEmpty() const {
+bool AlienArmy::isEmpty() const
+{
 	return (this->AlienSoldierQueue.isEmpty() && this->Drones.isEmpty() && this->Monsters.isEmpty());
 }
 
-bool AlienArmy::CanAdd() const {
+bool AlienArmy::CanAdd() const
+{
 	return ((this->NextID + 1) >= AlienUnitMinID && (this->NextID + 1) <= AlienUnitMaxID);
 }
 
 AlienArmy::~AlienArmy()
 {
-	AlienSoldier* TempSoldier;
+	AlienSoldier *TempSoldier;
 
 	while (this->AlienSoldierQueue.dequeue(TempSoldier))
 		delete TempSoldier;
 
-	AlienMonsters* TempMonster;
+	AlienMonsters *TempMonster;
 	int i = 0;
 	while ((TempMonster = Monsters.Remove(i++)) != nullptr)
 		delete TempMonster;
 
-	AlienDrones* TempDrone;
+	AlienDrones *TempDrone;
 
 	while (this->Drones.DequeueFront(TempDrone))
 		delete TempDrone;

@@ -24,7 +24,8 @@ GameManager::GameManager()
     this->KilledList = new LinkedQueue<Unit*>();
 }
 
-void GameManager::RunNextTimeStep() {
+void GameManager::RunNextTimeStep()
+{
     this->GeneratorInstance->Generate();
     this->TimeStep++;
 }
@@ -34,14 +35,16 @@ void GameManager::Start()
     StartHandler->SetSettings();
 }
 
-void GameManager::RunInteractive() {
+void GameManager::RunInteractive()
+{
     this->StartHandler->ClearConsole(true);
 
     std::cout << "Welcome to the Interactive Mode of " << this->StartHandler->GameName << "!\n";
 
     this->StartHandler->PressAnyContinue();
 
-    while (this->GetWinner() == Army::None) {
+    while (this->GetWinner() == Army::None)
+    {
         this->Print();
 
         std::cout << std::endl;
@@ -52,62 +55,73 @@ void GameManager::RunInteractive() {
     }
 };
 
-void GameManager::RunSilent() {
+void GameManager::RunSilent()
+{
     std::cout << "Welcome to the Silent Mode of " << this->StartHandler->GameName << "!\n";
 
     this->StartHandler->PressAnyContinue();
 
-    while (this->GetWinner() == Army::None) {
+    while (this->GetWinner() == Army::None)
+    {
         this->RunNextTimeStep();
     }
 };
 
-void GameManager::RunTestCode() {
+void GameManager::RunTestCode()
+{
     std::cout << "Running Structure Test!\n";
 
     this->StartHandler->PressAnyContinue();
 
-    while (this->TimeStep != 50) {
+    while (this->TimeStep != 50)
+    {
         this->GeneratorInstance->Generate();
 
         int RandomNumber = Utils::GenerateRandomNumber();
 
-        if (RandomNumber > 0 && RandomNumber < 10) {
+        if (RandomNumber >= 1 && RandomNumber <= 10)
+        {
             EarthSoldier* ESoldier;
 
-            if (this->Earth->GetSoldiers().dequeue(ESoldier)) {
+            if (this->Earth->GetSoldiers().dequeue(ESoldier))
+            {
                 this->Earth->GetSoldiers().enqueue(ESoldier);
             }
         }
 
-        if (RandomNumber > 10 && RandomNumber < 20) {
+        if (RandomNumber >= 11 && RandomNumber <= 20)
+        {
             EarthTank* ETank;
 
-            if (this->Earth->GetTanks().pop(ETank)) {
+            if (this->Earth->GetTanks().pop(ETank))
+            {
                 this->KilledList->enqueue(ETank);
             }
         }
 
-        if (RandomNumber > 20 && RandomNumber < 30) {
-            int FakePriority;
-
+        if (RandomNumber >= 21 && RandomNumber <= 30)
+        {
             EarthGunnery* EGunnery;
 
-            if (this->Earth->RemoveGunnery( EGunnery , FakePriority)) {
+            if (this->Earth->RemoveGunnery(EGunnery))
+            {
                 double NewHealth = EGunnery->GetHealth() / 2;
                 EGunnery->SetHealth(NewHealth);
 
-                this->Earth->GetGunnery().enqueue(EGunnery, EGunnery->GetPriority());
+                this->Earth->AddGunnery(EGunnery->GetHealth(), EGunnery->GetPower(), EGunnery->GetAttackCapacity());
             }
         }
 
-        if (RandomNumber > 30 && RandomNumber < 40) {
+        if (RandomNumber >= 31 && RandomNumber <= 40)
+        {
             AlienSoldier* ASoldier;
 
             LinkedQueue<AlienSoldier*>* TempList = new LinkedQueue<AlienSoldier*>;
 
-            for (int i = 0; i < 5; i++) {
-                if (this->Aliens->GetSoldiers().dequeue(ASoldier)) {
+            for (int i = 0; i < 5; i++)
+            {
+                if (this->Aliens->GetSoldiers().dequeue(ASoldier))
+                {
                     double NewHealth = ASoldier->GetHealth() - 30;
                     ASoldier->SetHealth(NewHealth);
 
@@ -120,27 +134,27 @@ void GameManager::RunTestCode() {
             delete TempList;
         }
 
-  /*      if (RandomNumber >= 41 && RandomNumber <= 50) {
-            AlienMonsters* AMonster;
-            for (int i = 0; i < 5; i++) {
-                AMonster = this->Aliens->GetMonsters().Remove();
-                if (AMonster != nullptr) {
-                    (this->Aliens->GetMonsters()).Add(AMonster);
-                }
-            }
-        }*/
+  /*           if (RandomNumber >= 41 && RandomNumber <= 50) {
+                 AlienMonsters* AMonster;
+                 for (int i = 0; i < 5; i++) {
+                     AMonster = this->Aliens->GetMonsters().Remove();
+                     if (AMonster != nullptr) {
+                         (this->Aliens->GetMonsters()).Add(AMonster);
+                     }
+                 }
+             }*/
 
-        if (RandomNumber > 50 && RandomNumber < 60) {
+        if (RandomNumber > 40 && RandomNumber < 60) {
             AlienDrones* ADrone;
-           /* for (int i = 0; i < 3; i++) {
-                if ((this->Aliens->GetDrones()).DequeueFront(ADrone))
-                    this->KilledList->enqueue(ADrone);
-            }
+            /* for (int i = 0; i < 3; i++) {
+                 if ((this->Aliens->GetDrones()).DequeueFront(ADrone))
+                     this->KilledList->enqueue(ADrone);
+             }
 
-            for (int i = 0; i < 3; i++) {
-                if ((this->Aliens->GetDrones()).DequeueBack(ADrone))
-                    this->KilledList->enqueue(ADrone);
-            }*/
+             for (int i = 0; i < 3; i++) {
+                 if ((this->Aliens->GetDrones()).DequeueBack(ADrone))
+                     this->KilledList->enqueue(ADrone);
+             }*/
 
             for (int i = 0; i < 6; i++) {
                 if (this->Aliens->RemoveDrone(ADrone)) this->KilledList->enqueue(ADrone);
@@ -149,7 +163,7 @@ void GameManager::RunTestCode() {
         }
 
         this->Print();
-        
+
         this->StartHandler->HandleStart();
         this->TimeStep++;
     }

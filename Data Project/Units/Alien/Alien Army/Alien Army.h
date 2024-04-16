@@ -13,6 +13,10 @@
 
 class GameManager;
 class EarthArmy;
+
+/**
+ * Represents the Alien Army in the game.
+ */
 class AlienArmy
 {
 private:
@@ -23,7 +27,6 @@ private:
 	int NextID;
 
 	/// Units
-
 	/* A queue to store all of the Alien Soldiers */
 	LinkedQueue<AlienSoldier *> AlienSoldierQueue;
 	/* A Bag to store all of the Alien Monsters */
@@ -44,21 +47,21 @@ public:
 	/*
 	 * Returns the Alien Soldier List
 	 *
-	 * @returns {LinkedQueue<AlienSoldier*>}
+	 * @returns {LinkedQueue<AlienSoldier*>} - The Alien Soldier List
 	 */
 	LinkedQueue<AlienSoldier *> GetSoldiers() const;
 
 	/*
 	 * Returns the Alien Monsters List
 	 *
-	 * @returns {Bag<AlienMonsters*>}
+	 * @returns {Bag<AlienMonsters*>} - The Alien Monsters List
 	 */
 	Bag<AlienMonsters *> GetMonsters() const;
 
 	/*
 	 * Returns the Alien Drones List
 	 *
-	 * @returns {Deque<AlienDrones*>}
+	 * @returns {Deque<AlienDrones*>} - The Alien Drones List
 	 */
 	Deque<AlienDrones *> GetDrones() const;
 
@@ -82,7 +85,7 @@ public:
 	 * @param {int} AttackCapacity - The Monster's attack capacity
 	 * @returns {bool} - If the add operation was successful
 	 */
-	bool AddMonster(double Health, int Power, int AttacCapacity);
+	bool AddMonster(double Health, int Power, int AttackCapacity);
 
 	/*
 	 * Adds a Drone to the Drone queue
@@ -99,19 +102,19 @@ public:
 	/*
 	 * Removes a Soldier
 	 *
-	 * @param {ALienSoldier*&} RemovedSoldier - The removed soldier
+	 * @param {AlienSoldier*&} RemovedSoldier - The removed soldier
 	 * @returns {bool} - Whether the remove operation was a success or not
 	 */
-	bool RemoveSoldier(AlienSoldier*&RemovedSoldier);
+	bool RemoveSoldier(AlienSoldier *&RemovedSoldier);
 
 	/*
 	 * Removes a Monster
 	 *
 	 * @param {AlienMonsters*&} RemovedMonster - The removed monster
-	 * @parma {const int&} index - The index to be removed
+	 * @param {const int&} index - The index to be removed
 	 * @returns {bool} - Whether the remove operation was a success or not
 	 */
-	bool RemoveMonster(AlienMonsters *&RemovedMonster, const int& index);
+	bool RemoveMonster(AlienMonsters *&RemovedMonster, const int &index);
 
 	/*
 	 * Removes a Drone
@@ -131,16 +134,24 @@ public:
 	 */
 	void Print() const;
 
+	/*
+	 * Checks if the Alien Army is empty
+	 *
+	 * @returns {bool} - True if the Alien Army is empty, false otherwise
+	 */
 	bool isEmpty() const;
 
+	/*
+	 * Checks if units can be added to the Alien Army
+	 *
+	 * @returns {bool} - True if units can be added, false otherwise
+	 */
 	bool CanAdd() const;
-
-	/// To-Do: Phase 2
-	// virtual void attack();
 
 	/*
 	 * Alien Army Destructor
 	 */
 	~AlienArmy();
 };
+
 #endif // !AlienArmy_H

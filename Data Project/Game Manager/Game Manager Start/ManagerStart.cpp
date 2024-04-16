@@ -1,12 +1,14 @@
 #include "ManagerStart.h"
 #include "../Game Manager.h"
 
-void ManagerStart::PressAnyContinue() {
+void ManagerStart::PressAnyContinue()
+{
     std::cout << "Press any button to continue." << std::endl;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
-ManagerStart::ManagerStart(GameManager* Game) {
+ManagerStart::ManagerStart(GameManager *Game)
+{
     this->Game = Game;
 }
 
@@ -147,7 +149,7 @@ void ManagerStart::SetSettings()
               << "- Simulation Type: "
               << SimulationToString(GameSimulation) << "\n"
               << "- Mode: " << ModeToString(GameMode) << "\n"
-              << "Enter [No] to confirm or press any key to continue. ";
+              << "Enter [No] to restart or enter anything to continue. ";
 
     std::string UserConfirmation;
 
@@ -171,7 +173,8 @@ void ManagerStart::SetSettings()
     HandleStart();
 }
 
-void ManagerStart::HandleStart() {
+void ManagerStart::HandleStart()
+{
     switch (GameScenario)
     {
     case BothStrong:
@@ -191,19 +194,23 @@ void ManagerStart::HandleStart() {
 
         std::cout << "Reading Input File for Game Scenario..." << std::endl;
 
-        if (!this->Game->ReadInput(this->FilePath, false)) {
-             ///To-Do: Re-add this after fixing the Bag
+        if (!this->Game->ReadInput(this->FilePath, false))
+        {
+            /// To-Do: Re-add this after fixing the Bag
             //  std::cout << "Failed to read input file." << std::endl;
             return;
         }
+
+        ClearConsole(true);
 
         this->Game->RunTestCode();
         break;
     }
 
-    if (!this->Game->ReadInput(this->FilePath, this->GameSimulation)) {
-            ///To-Do: Re-add this after fixing the Bag
-            //  std::cout << "Failed to read input file." << std::endl;
+    if (!this->Game->ReadInput(this->FilePath, this->GameSimulation))
+    {
+        /// To-Do: Re-add this after fixing the Bag
+        //  std::cout << "Failed to read input file." << std::endl;
         return;
     }
 

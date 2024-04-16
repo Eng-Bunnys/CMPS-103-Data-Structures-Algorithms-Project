@@ -99,10 +99,9 @@ public:
 	 * Removes a Gunnery
 	 *
 	 * @param {EarthGunnery*&} RemovedGunnery - The removed gunnery
-	 * @param {int& Priority} Priority of removed gunnery - The removed gunnery priority
 	 * @returns {bool} - Whether the remove operation was a success or not
 	 */
-	bool RemoveGunnery(EarthGunnery *&RemovedGunnery , int& Priority);
+	bool RemoveGunnery(EarthGunnery *&RemovedGunnery);
 
 	/*
 	 * Removes a Tank
@@ -121,7 +120,6 @@ public:
 	bool RemoveSoldier(EarthSoldier *&RemovedSoldier);
 
 	/// Print & Misc
-
 	/*
 	 * Prints all the data for the Alive Earth Units
 	 *
@@ -130,8 +128,18 @@ public:
 	 */
 	void Print() const;
 
+	/*
+	 * Checks if the Earth Army is empty
+	 *
+	 * @returns {bool} - True if the Earth Army is empty, false otherwise
+	 */
 	bool isEmpty() const;
 
+	/*
+	 * Checks if units can be added to the Earth Army
+	 *
+	 * @returns {bool} - True if units can be added, false otherwise
+	 */
 	bool CanAdd() const;
 
 	/// To-Do: Phase 2

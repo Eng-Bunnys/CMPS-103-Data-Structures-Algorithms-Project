@@ -1,33 +1,38 @@
 #include "Game Manager.h"
 
-void GameManager::PrintTime() const {
+void GameManager::PrintTime() const
+{
 	std::cout << "Current Timestep: " << GetTimeStep() << std::endl;
 }
 
-void GameManager::PrintAvailableUnits() const {
+void GameManager::PrintAvailableUnits() const
+{
 	PrintTime();
 
+	std::cout << "============== Earth Army Alive Units ==============" << std::endl;
 	this->Earth->Print();
-
 	std::cout << std::endl;
 
+	std::cout << "============== Alien Army Alive Units ==============" << std::endl;
 	this->Aliens->Print();
 }
 
-void GameManager::PrintDead() const {
-	std::cout << "============== Killed/Destructed Units ==============" << std::endl;
-	std::cout << this->KilledList->GetCount() << " units ";
+void GameManager::PrintDead() const
+{
+	std::cout << "============== Dead Units ==============" << std::endl;
+	std::cout << this->KilledList->GetCount() << " Dead Units ";
 	this->KilledList->Print();
 }
 
-void GameManager::Print() const {
+void GameManager::Print() const
+{
 	std::cout << "==========================================" << std::endl;
 
-	this->PrintAvailableUnits();
+	PrintAvailableUnits();
 
 	std::cout << "==========================================" << std::endl;
 
-	this->PrintDead();
+	PrintDead();
 
 	std::cout << "==========================================" << std::endl;
 }

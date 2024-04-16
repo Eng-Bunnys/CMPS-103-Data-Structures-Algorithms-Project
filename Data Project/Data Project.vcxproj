@@ -131,6 +131,7 @@
     <ClInclude Include="Game Manager\Game Manager.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Generator\Generator.h" />
+    <ClInclude Include="Temp List\Temp List.h" />
     <ClInclude Include="Units\Alien\Alien Army\Alien Army.h" />
     <ClInclude Include="Units\Alien\Alien Units\Alien Drones\Alien Drones.h" />
     <ClInclude Include="Units\Alien\Alien Units\Alien Monsters\Alien Monsters.h" />
@@ -164,6 +165,7 @@
     <ClCompile Include="Generator\Generator.cpp" />
     <ClCompile Include="Structures\Nodes\Node.h" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Temp List\Temp List.cpp" />
     <ClCompile Include="Units\Alien\Alien Army\Alien Army.cpp" />
     <ClCompile Include="Units\Alien\Alien Units\Alien Drones\Alien Drones.cpp" />
     <ClCompile Include="Units\Alien\Alien Units\Alien Monsters\Alien Monsters.cpp" />

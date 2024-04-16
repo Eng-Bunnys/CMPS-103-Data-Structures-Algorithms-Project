@@ -1,6 +1,7 @@
 #include "Utils.h"
 
-namespace Utils {
+namespace Utils
+{
     int GenerateRandomNumber(int Min, int Max)
     {
         // Seed for the random number generator

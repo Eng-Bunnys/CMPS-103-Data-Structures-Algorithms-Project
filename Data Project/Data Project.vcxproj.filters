@@ -96,6 +96,9 @@
     <ClInclude Include="Units\Alien\Alien Units\Alien Soldier\Alien Soldier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Temp List\Temp List.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -156,6 +159,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Utils\Utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Temp List\Temp List.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

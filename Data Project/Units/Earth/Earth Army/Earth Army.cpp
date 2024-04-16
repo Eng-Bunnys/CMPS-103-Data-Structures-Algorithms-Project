@@ -1,11 +1,11 @@
 #include "Earth Army.h"
 #include "../../Game Manager/Game Manager.h"
 
-EarthArmy::EarthArmy(GameManager *Game) 
+EarthArmy::EarthArmy(GameManager *Game)
 {
 	this->Game = Game;
-	this->Soldiers = LinkedQueue<EarthSoldier*>();
-	this->Tanks = ArrayStack<EarthTank*>();
+	this->Soldiers = LinkedQueue<EarthSoldier *>();
+	this->Tanks = ArrayStack<EarthTank *>();
 	this->Gunnery = PriorityQueue<EarthGunnery *>();
 	this->NextID = 1;
 }
@@ -57,9 +57,9 @@ bool EarthArmy::AddGunnery(double Health, int Power, int AttackCapacity)
 		return false;
 }
 
-bool EarthArmy::RemoveGunnery(EarthGunnery *&RemovedGunnery , int& Priority)
+bool EarthArmy::RemoveGunnery(EarthGunnery *&RemovedGunnery)
 {
-	
+	int Priority;
 
 	if (this->Gunnery.dequeue(RemovedGunnery, Priority))
 		return true;
@@ -100,40 +100,41 @@ bool EarthArmy::RemoveTank(EarthTank *&RemovedTank)
 
 void EarthArmy::Print() const
 {
-	std::cout << "============== Earth Army Alive Units ==============" << std::endl;
-	if (this && !this->Soldiers.isEmpty())
+	if (!this->Soldiers.isEmpty())
 	{
 		std::cout << this->Soldiers.GetCount() << " ES ";
 		this->Soldiers.Print();
 		std::cout << std::endl;
 	}
 	else
-		std::cout << "0 ES []\n\n";
+		std::cout << "EG []" << std::endl;
 
-	if (this && !this->Tanks.isEmpty())
+	if (!this->Tanks.isEmpty())
 	{
 		std::cout << this->Tanks.GetCount() << " ET ";
 		this->Tanks.Print();
 		std::cout << std::endl;
 	}
 	else
-		std::cout << "0 ET []\n\n";
+		std::cout << "EG []" << std::endl;
 
-	if (this && !this->Gunnery.isEmpty())
+	if (!this->Gunnery.isEmpty())
 	{
 		std::cout << this->Gunnery.GetCount() << " EG ";
 		this->Gunnery.Print();
 		std::cout << std::endl;
 	}
 	else
-		std::cout << "0 EG []\n\n";
+		std::cout << "EG []" << std::endl;
 }
 
-bool EarthArmy::isEmpty() const {
+bool EarthArmy::isEmpty() const
+{
 	return (this->Soldiers.isEmpty() && this->Tanks.isEmpty() && this->Gunnery.isEmpty());
 }
 
-bool EarthArmy::CanAdd() const {
+bool EarthArmy::CanAdd() const
+{
 	return ((this->NextID + 1) >= EarthUnitMinID && (this->NextID + 1) <= EarthUnitMaxID);
 }
 

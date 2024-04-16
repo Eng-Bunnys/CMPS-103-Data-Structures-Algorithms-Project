@@ -3,7 +3,8 @@
 
 #include "../../Enums/Enums.h"
 
-struct UnitStats {
+struct UnitStats
+{
     double Health;
     int Power;
     int AttackCapacity;
@@ -34,7 +35,7 @@ class Generator
 {
 private:
     /*Pointer to the game manager instance */
-    GameManager* Game;
+    GameManager *Game;
 
     /// Probability Parameters
     /*Parameters for Earth army units generation probability */
@@ -95,7 +96,7 @@ public:
      *
      * @param {GameManager*} Game - Pointer to the game manager instance
      */
-    Generator(GameManager* Game);
+    Generator(GameManager *Game);
 
     /**
      * Assigns general unit parameters
@@ -149,7 +150,7 @@ public:
      * Generates Earth army units
      *
      * @param {number} RandomNumber - Random number for generation
-     * @returns {void} 
+     * @returns {void}
      */
     void GenerateEarth(int RandomNumber);
 
@@ -157,14 +158,14 @@ public:
      * Generates Alien army units
      *
      * @param {number} RandomNumber - Random number for generation
-     * @returns {void} 
+     * @returns {void}
      */
     void GenerateAlien(int RandomNumber);
 
     /**
      * Generates army units based on assigned parameters
      *
-     * @returns {void} 
+     * @returns {void}
      */
     void Generate();
 };
