@@ -120,6 +120,10 @@ public:
 	 * @param {int} FirstAttackedTime - The new first attacked time value
 	 */
 	void SetFirstAttackedTime(int FirstAttackedTime);
+
+	//template<typename T>
+	//template<typename U>
+	//virtual void Attack(T* Attacker, U* Attacked) = 0;
 };
 
 /// Operator overloading for the print functions
