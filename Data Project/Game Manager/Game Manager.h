@@ -67,7 +67,7 @@ public:
      * This method executes the simulation with predefined test cases
      * @returns {void}
      */
-    void RunTestCode();
+   // void RunTestCode();
 
     /// File Methods
 
@@ -109,6 +109,10 @@ public:
      * @returns {AlienArmy*} - A pointer to the Alien Army instance
      */
     AlienArmy *GetAlienArmy() const;
+
+    /// Attack Logic
+
+    void EarthArmyAttack();
 
     /// Prints & Other
 
