@@ -28,6 +28,8 @@ public:
 	 * @returns {double} The priority of the EarthGunnery
 	 */
 	double GetPriority();
+
+	void Attack(GameManager* Game);
 };
 
 #endif // !EarthGunnery_H

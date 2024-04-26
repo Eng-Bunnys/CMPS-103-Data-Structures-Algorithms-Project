@@ -3,12 +3,14 @@
 
 #include "../../Unit.h"
 
-class AlienArmy;
+class GameManager;
+class AlienUnit;
 class EarthUnit : public Unit
 {
 public:
 	/**
 	 * Constructor for EarthUnit class
+	 * 
 	 * @param {int} ID - The ID of the EarthUnit
 	 * @param {double} Health - The health of the EarthUnit
 	 * @param {int} Power - The power of the EarthUnit

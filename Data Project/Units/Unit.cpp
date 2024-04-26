@@ -1,5 +1,7 @@
 #include "Unit.h"
 
+#include <cmath>
+
 int Unit::GetID() const
 {
 	return this->ID;
@@ -62,6 +64,10 @@ void Unit::SetFirstAttackedTime(int FirstAttackTime)
 {
 	this->FirstAttackedTime = FirstAttackTime;
 	this->FirstAttackedDelay = this->FirstAttackedTime - this->JoinTime;
+}
+
+double Unit::CalculateDamage(int AttackerPower, double AttackerHealth, double AttackedHealth) {
+	return (AttackerPower * (AttackedHealth / 100)) / sqrt(AttackedHealth);
 }
 
 // Setting the inital value of the number of deaths to 0

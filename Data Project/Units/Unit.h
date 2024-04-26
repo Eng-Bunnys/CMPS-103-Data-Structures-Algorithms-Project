@@ -7,6 +7,7 @@
 
 #include "Values.h"
 
+class GameManager;
 class Unit
 {
 protected:
@@ -121,9 +122,9 @@ public:
 	 */
 	void SetFirstAttackedTime(int FirstAttackedTime);
 
-	//template<typename T>
-	//template<typename U>
-	//virtual void Attack(T* Attacker, U* Attacked) = 0;
+	double CalculateDamage(int AttackerPower, double AttackerHealth, double AttackedHealth);
+
+	virtual void Attack(GameManager* Game) = 0;
 };
 
 /// Operator overloading for the print functions

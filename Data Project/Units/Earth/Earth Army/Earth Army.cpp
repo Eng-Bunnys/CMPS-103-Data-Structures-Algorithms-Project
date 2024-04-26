@@ -107,7 +107,7 @@ void EarthArmy::Print() const
 		std::cout << std::endl;
 	}
 	else
-		std::cout << "EG []" << std::endl;
+		std::cout << "0 EG []" << std::endl;
 
 	if (!this->Tanks.isEmpty())
 	{
@@ -116,7 +116,7 @@ void EarthArmy::Print() const
 		std::cout << std::endl;
 	}
 	else
-		std::cout << "EG []" << std::endl;
+		std::cout << "0 EG []" << std::endl;
 
 	if (!this->Gunnery.isEmpty())
 	{
@@ -125,7 +125,7 @@ void EarthArmy::Print() const
 		std::cout << std::endl;
 	}
 	else
-		std::cout << "EG []" << std::endl;
+		std::cout << "0 EG []" << std::endl;
 }
 
 bool EarthArmy::isEmpty() const
