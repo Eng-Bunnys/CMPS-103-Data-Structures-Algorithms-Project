@@ -1,59 +1,148 @@
-#pragma once
+#ifndef TempList_H
+#define TempList_H
 
-#include"../../Structures/Stack/ArrayStack.h"
-#include"../../Structures/Queue/LinkedQueue.h"
-#include"../../Structures/Priority Queue/PriorityQueue.h"
-#include"../../Structures/Bag/Bag.h"
-#include"../../Structures//Deque/Deque.h"
+/// Structure Imports
 
-#include "../../Units/Unit.h"
+#include "../../Structures/Stack/ArrayStack.h"
+#include "../../Structures/Queue/LinkedQueue.h"
+#include "../../Structures/Priority Queue/PriorityQueue.h"
+#include "../../Structures/Bag/Bag.h"
+#include "../../Structures//Deque/Deque.h"
 
-#include"../../Units/Earth/Earth Units/Earth Gunnery/Earth Gunnery.h"
-#include"../../Units/Earth/Earth Units/Earth Soldier/Earth Soldier.h"
-#include"../../Units/Earth/Earth Units/Earth Tanks/Earth Tank.h"
+/// Earth Unit Imports
 
-#include"../../Units/Alien/Alien Units/Alien Soldier/Alien Soldier.h"
-#include"../../Units/Alien/Alien Units/Alien Monsters/Alien Monsters.h"
-#include"../../Units/Alien/Alien Units/Alien Drones/Alien Drones.h"
+#include "../../Units/Earth/Earth Units/Earth Gunnery/Earth Gunnery.h"
+#include "../../Units/Earth/Earth Units/Earth Soldier/Earth Soldier.h"
+#include "../../Units/Earth/Earth Units/Earth Tanks/Earth Tank.h"
 
+/// Alien Unit Imports
 
+#include "../../Units/Alien/Alien Units/Alien Soldier/Alien Soldier.h"
+#include "../../Units/Alien/Alien Units/Alien Monsters/Alien Monsters.h"
+#include "../../Units/Alien/Alien Units/Alien Drones/Alien Drones.h"
 
 class TempList
 {
-	LinkedQueue<EarthSoldier*> ES_TempList;
-	ArrayStack<EarthTank*> ET_TempList;
-	PriorityQueue<EarthGunnery*> EG_TempList;
+private:
+    /* A queue of Earth soldiers */
+    LinkedQueue<EarthSoldier *> EarthSoldierList;
 
-	LinkedQueue<AlienSoldier*> AS_TempList;
-	Deque<AlienDrones*> AD_TempList;
-	Bag<AlienMonsters*> AM_TempList;
+    /* A stack of Earth tanks */
+    ArrayStack<EarthTank *> EarthTankList;
 
-	int TempCount;
+    /* A priority queue of Earth gunnery units */
+    PriorityQueue<EarthGunnery *> EarthGunneryList;
+
+    /* A queue of Alien soldiers */
+    LinkedQueue<AlienSoldier *> AlienSoldierList;
+
+    /* A deque of Alien drones */
+    Deque<AlienDrone *> AlienDroneList;
+
+    /* A bag of Alien monsters */
+    Bag<AlienMonster *> AlienMonsterList;
+
+    /* The total number of units in the TempList */
+    int Count;
 
 public:
-	TempList();
+    /**
+     * Constructs a new TempList with default initialization
+     */
+    TempList();
 
-	void AddESTemp(EarthSoldier* Soldier);
-	void RemoveESTemp(EarthSoldier*& Soldier);
+    /**
+     * Adds an Earth soldier to the list
+     *
+     * @param {EarthSoldier*} Soldier - A pointer to an Earth soldier to add
+     */
+    void AddEarthSoldier(EarthSoldier *Soldier);
 
-	void AddETTemp(EarthTank* Tank);
-	void RemoveETTemp(EarthTank*& Tank);
+    /**
+     * Removes an Earth soldier from the list
+     *
+     * @param {EarthSoldier*&} Soldier - A reference to a pointer where the removed Earth soldier will be stored
+     */
+    void RemoveEarthSoldier(EarthSoldier *&Soldier);
 
-	void AddEGTemp(EarthGunnery* Gunnery, int p);
-	void RemoveEGTemp(EarthGunnery*& Gunnery, int p);
+    /**
+     * Adds an Earth tank to the list
+     *
+     * @param {EarthTank*} Tank - A pointer to an Earth tank to add
+     */
+    void AddTank(EarthTank *Tank);
 
+    /**
+     * Removes an Earth tank from the list
+     *
+     * @param {EarthTank*&} Tank - A reference to a pointer where the removed Earth tank will be stored
+     */
+    void RemoveTank(EarthTank *&Tank);
 
-	void AddASTemp(AlienSoldier* Soldier);
-	void RemoveASTemp(AlienSoldier*& Soldier);
+    /**
+     * Adds an Earth gunnery unit to the list
+     *
+     * @param {EarthGunnery*} Gunnery - A pointer to an Earth gunnery unit to add
+     */
+    void AddGunnery(EarthGunnery *Gunnery);
 
-	void AddADTemp(AlienDrones* Drone);
-	void RemoveADTemp(AlienDrones*& Drone);
+    /**
+     * Removes an Earth gunnery unit from the list
+     *
+     * @param {EarthGunnery*&} Gunnery - A reference to a pointer where the removed Earth gunnery unit will be stored
+     */
+    void RemoveGunnery(EarthGunnery *&Gunnery);
 
-	/*void AddAMTemp(AlienMonsters* Monster);
-	void RemoveAMTemp(AlienMonsters*& Monster);*/
+    /**
+     * Adds an Alien soldier to the list
+     *
+     * @param {AlienSoldier*} Soldier - A pointer to an Alien soldier to add
+     */
+    void AddAlienSoldier(AlienSoldier *Soldier);
 
-	~TempList();
+    /**
+     * Removes an Alien soldier from the list
+     *
+     * @param {AlienSoldier*&} Soldier - A reference to a pointer where the removed Alien soldier will be stored
+     */
+    void RemoveAlienSoldier(AlienSoldier *&Soldier);
 
+    /**
+     * Adds an Alien drone to the list
+     *
+     * @param {AlienDrone*} Drone - A pointer to an Alien drone to add
+     */
+    void AddDrone(AlienDrone *Drone);
 
+    /**
+     * Removes an Alien drone from the list
+     *
+     * @param {AlienDrone*&} Drone - A reference to a pointer where the removed Alien drone will be stored
+     */
+    void RemoveDrone(AlienDrone *&Drone);
 
+    /**
+     * Adds an Alien monster to the list
+     *
+     * @param {AlienMonster*} Monster - A pointer to an Alien monster to add
+     */
+    void AddMonster(AlienMonster *Monster);
+
+    /**
+     * Removes an Alien monster from the list
+     *
+     * @param {AlienMonster*&} Monster - A reference to a pointer where the removed Alien monster will be stored
+     */
+    void RemoveMonster(AlienMonster *&Monster);
+
+    /*
+    * Returns the total number of units in the temp list
+    * 
+    * @returns {int} - The unit count
+    */
+    int GetCount() const;
+
+    ~TempList();
 };
+
+#endif // !TempList_H
