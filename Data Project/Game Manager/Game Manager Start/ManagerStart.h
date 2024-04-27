@@ -1,5 +1,3 @@
-#pragma warning disable 26495
-
 #ifndef GameManagerStart_H
 #define GameManagerStart_H
 
@@ -42,7 +40,7 @@ public:
     /* Welcome message */
     std::string WelcomeMessage = "Welcome to " + GameName +
                                  " player, you will be prompted to choose the game settings!" +
-                                 std::string("\nTo pick a setting you input the number next to the desiered setting or simply use the arrow keys");
+                                 std::string("\nTo pick a setting you input the number next to the desiered setting.");
 
     /* String to prompt the user to run in either interactive or silent mode */
     std::string ModeType = "Choose a mode to run:\n- Interactive [1]\n- Silent [2]\nYour input: ";

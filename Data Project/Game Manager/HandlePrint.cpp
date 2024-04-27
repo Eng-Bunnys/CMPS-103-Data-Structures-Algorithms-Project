@@ -2,7 +2,7 @@
 
 void GameManager::PrintTime() const
 {
-	std::cout << "Current Timestep: " << GetTimeStep() << std::endl;
+	std::cout << "Current Timestep: " << GetTimeStep() + 1 << std::endl;
 }
 
 void GameManager::PrintAvailableUnits() const

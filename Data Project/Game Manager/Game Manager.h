@@ -67,7 +67,7 @@ public:
      * This method executes the simulation with predefined test cases
      * @returns {void}
      */
-   // void RunTestCode();
+     void RunTestCode();
 
     /// File Methods
 

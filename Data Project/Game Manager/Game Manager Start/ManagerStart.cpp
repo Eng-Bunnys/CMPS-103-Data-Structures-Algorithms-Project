@@ -196,8 +196,6 @@ void ManagerStart::HandleStart()
 
         if (!this->Game->ReadInput(this->FilePath, false))
         {
-            /// To-Do: Re-add this after fixing the Bag
-            //  std::cout << "Failed to read input file." << std::endl;
             return;
         }
 
@@ -208,11 +206,7 @@ void ManagerStart::HandleStart()
     }
 
     if (!this->Game->ReadInput(this->FilePath, this->GameSimulation))
-    {
-        /// To-Do: Re-add this after fixing the Bag
-        //  std::cout << "Failed to read input file." << std::endl;
         return;
-    }
 
     switch (GameMode)
     {

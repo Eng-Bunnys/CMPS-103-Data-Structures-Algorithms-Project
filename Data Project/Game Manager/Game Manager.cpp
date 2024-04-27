@@ -134,27 +134,16 @@ void GameManager::RunTestCode()
             delete TempList;
         }
 
-  /*           if (RandomNumber >= 41 && RandomNumber <= 50) {
-                 AlienMonsters* AMonster;
-                 for (int i = 0; i < 5; i++) {
-                     AMonster = this->Aliens->GetMonsters().Remove();
-                     if (AMonster != nullptr) {
-                         (this->Aliens->GetMonsters()).Add(AMonster);
-                     }
-                 }
-             }*/
+        if (RandomNumber >= 41 && RandomNumber <= 50) {
+            AlienMonster* AMonster;
+            for (int i = 0; i < 5; i++) {
+                if (this->Aliens->RemoveMonster(AMonster))
+                    (this->Aliens->GetMonsters()).Add(AMonster);
+            }
+        }
 
-        if (RandomNumber > 40 && RandomNumber < 60) {
-            AlienDrones* ADrone;
-            /* for (int i = 0; i < 3; i++) {
-                 if ((this->Aliens->GetDrones()).DequeueFront(ADrone))
-                     this->KilledList->enqueue(ADrone);
-             }
-
-             for (int i = 0; i < 3; i++) {
-                 if ((this->Aliens->GetDrones()).DequeueBack(ADrone))
-                     this->KilledList->enqueue(ADrone);
-             }*/
+        if (RandomNumber > 50 && RandomNumber < 60) {
+            AlienDrone* ADrone;
 
             for (int i = 0; i < 6; i++) {
                 if (this->Aliens->RemoveDrone(ADrone)) this->KilledList->enqueue(ADrone);
