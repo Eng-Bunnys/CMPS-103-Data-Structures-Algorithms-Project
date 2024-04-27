@@ -1,6 +1,8 @@
 #ifndef Bag_H
 #define Bag_H
 
+#include "../../Utils/Utils.h"
+
 #include <iostream> 
 
 constexpr int MaxSize = 500;
@@ -31,30 +33,37 @@ public:
 		if (isFull())
 			return false;
 
-		if (isEmpty())
-			this->Array[0] = new T(NewElement);
-		else {
-			this->Array[this->Count] = new T(NewElement);
-		}
+		T* NewItem = new (std::nothrow) T(NewElement);
+
+			if (NewItem == nullptr)
+				return false;
+
+		this->Array[this->Count] = NewItem;
 
 		this->Count++;
 		return true;
 	}
 
-	T Remove(int Index = 0) {
-		if (isEmpty() || (Index < 0 || Index >= Count))
-			return T{};
+	bool Remove(T& Removed) {
+		if (isEmpty())
+			return false;
 
-		T Removed = *this->Array[Index];
+		int RandomIndex = Utils::GenerateRandomNumber(0, this->Count - 1);
 
-		delete this->Array[Index];
+		Removed = *this->Array[RandomIndex];
 
-		for (int i = Index; i < this->Count - 1; i++) {
-			this->Array[i] = this->Array[i + 1];
-		}
+		std::cout << Removed;
+
+		//delete this->Array[RandomIndex];
+
+	/*	if (this->Count > 1) {
+			this->Array[RandomIndex] = this->Array[this->Count - 1];
+			this->Array[this->Count - 1] = nullptr;
+		}*/
+
 		this->Count--;
 
-		return Removed;
+		return true;
 	}
 
 	void Print() const {
