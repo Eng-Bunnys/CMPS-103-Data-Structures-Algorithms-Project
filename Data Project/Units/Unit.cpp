@@ -52,6 +52,10 @@ int Unit::GetJoinTime() const
 	return this->JoinTime;
 }
 
+int Unit::GetFirstAttackedTime() const {
+	return this->FirstAttackedTime;
+}
+
 void Unit::SetDestructionTime(int DestructionTime)
 {
 	this->DestructionTime = DestructionTime;

@@ -3,7 +3,8 @@
 
 #include "../../Unit.h"
 
-class EarthArmy;
+class GameManager;
+class EarthUnit;
 class AlienUnit : public Unit
 {
 public:
@@ -16,8 +17,6 @@ public:
      * @param JoinTime The time at which the unit joined.
      */
     AlienUnit(int ID, double Health, int Power, int AttackCapacity, int JoinTime);
-    /// Phase 2
-    // virtual void attack(...) = 0;
 };
 
 #endif // !AlienUnit_H

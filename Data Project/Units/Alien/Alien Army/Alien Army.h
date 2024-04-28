@@ -30,9 +30,9 @@ private:
 	/* A queue to store all of the Alien Soldiers */
 	LinkedQueue<AlienSoldier *> AlienSoldierQueue;
 	/* A Bag to store all of the Alien Monsters */
-	Bag<AlienMonsters *> Monsters;
+	Bag<AlienMonster *> Monsters;
 	/* A Double Ended Queue to store all of the Alien Drones */
-	Deque<AlienDrones *> Drones;
+	Deque<AlienDrone *> Drones;
 
 public:
 	/*
@@ -56,14 +56,14 @@ public:
 	 *
 	 * @returns {Bag<AlienMonsters*>} - The Alien Monsters List
 	 */
-	Bag<AlienMonsters *> GetMonsters() const;
+	Bag<AlienMonster *> GetMonsters() const;
 
 	/*
 	 * Returns the Alien Drones List
 	 *
 	 * @returns {Deque<AlienDrones*>} - The Alien Drones List
 	 */
-	Deque<AlienDrones *> GetDrones() const;
+	Deque<AlienDrone *> GetDrones() const;
 
 	/// Unit Setters
 
@@ -111,10 +111,9 @@ public:
 	 * Removes a Monster
 	 *
 	 * @param {AlienMonsters*&} RemovedMonster - The removed monster
-	 * @param {const int&} index - The index to be removed
 	 * @returns {bool} - Whether the remove operation was a success or not
 	 */
-	bool RemoveMonster(AlienMonsters *&RemovedMonster, const int &index);
+	bool RemoveMonster(AlienMonster *&RemovedMonster);
 
 	/*
 	 * Removes a Drone
@@ -122,7 +121,7 @@ public:
 	 * @param {AlienDrones*&} RemovedDrone - The removed drone
 	 * @returns {bool} - Whether the remove operation was a success or not
 	 */
-	bool RemoveDrone(AlienDrones *&RemovedDrone);
+	bool RemoveDrone(AlienDrone *&RemovedDrone);
 
 	/// Prints & Misc
 

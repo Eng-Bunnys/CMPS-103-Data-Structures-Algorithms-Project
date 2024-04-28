@@ -18,6 +18,8 @@ public:
 	 * @param {int} JoinTime - The join time of the EarthUnit
 	 */
 	EarthUnit(int ID, double Health, int Power, int AttackCapacity, int JoinTime);
+
+	//virtual void Attack(GameManager* Game) = 0;
 };
 
 #endif // !EarthUnit_H

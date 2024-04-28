@@ -4,6 +4,7 @@
 #include "../../Earth Unit/Earth Unit.h"
 #include <algorithm>
 
+class GameManager;
 class EarthGunnery : public EarthUnit
 {
 private:
@@ -27,7 +28,7 @@ public:
 	 * Returns the priority of the EarthGunnery
 	 * @returns {double} The priority of the EarthGunnery
 	 */
-	double GetPriority();
+	double GetPriority() const;
 
 	void Attack(GameManager* Game);
 };

@@ -3,7 +3,7 @@
 
 #include "../../Alien Unit/Alien Unit.h"
 
-class AlienMonsters : public AlienUnit
+class AlienMonster : public AlienUnit
 {
 public:
     /**
@@ -15,7 +15,7 @@ public:
      * @param AttackCapacity The attack capacity of the Monster
      * @param JoinTime The time at which the Monster joined
      */
-    AlienMonsters(int ID, double Health, int Power, int AttackCapacity, int JoinTime);
+    AlienMonster(int ID, double Health, int Power, int AttackCapacity, int JoinTime);
 };
 
 #endif
