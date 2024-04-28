@@ -44,6 +44,10 @@ private:
 
     /* The total number of units in the TempList */
     int Count;
+    /* The total number of Earth Units */
+    int EarthCount;
+    /* The total number of Alien Units */
+    int AlienCount;
 
 public:
     /**
@@ -136,11 +140,25 @@ public:
     void RemoveMonster(AlienMonster *&Monster);
 
     /*
-    * Returns the total number of units in the temp list
-    * 
-    * @returns {int} - The unit count
-    */
+     * Returns the total number of units in the temp list
+     *
+     * @returns {int} - The unit count
+     */
     int GetCount() const;
+
+    /*
+     * Returns the total number of Earth units in the temp list
+     *
+     * @returns {int} - The unit count
+     */
+    int GetEarthCount() const;
+
+    /*
+     * Returns the total number of Alien units in the temp list
+     *
+     * @returns {int} - The unit count
+     */
+    int GetAlienCount() const;
 
     ~TempList();
 };
