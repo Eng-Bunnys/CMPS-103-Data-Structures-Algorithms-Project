@@ -23,7 +23,11 @@ void EarthSoldier::Attack(GameManager *Game, bool Interactive)
 		RemainingCapacity--;
 	}
 
-	int AttackedCount = Game->GetTempList()->AlienSoldierCount;
+	int AttackedCount = Game->GetTempList()->GetAlienSoldierCount();
+
+	if (Interactive) {
+		std::cout << "ES " << AttackedCount << " shots ";
+	}
 
 	AttackedSoldier = nullptr;
 

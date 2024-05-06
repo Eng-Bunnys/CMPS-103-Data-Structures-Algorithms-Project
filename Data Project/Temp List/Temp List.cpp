@@ -3,14 +3,21 @@
 
 #include "Temp List.h"
 
-TempList::TempList() : Count(0){};
+/// To-Do: Complete count for the rest of the units, complete the rest of the functions
 
-void TempList::AddEarthSoldier(EarthSoldier *Soldier)
+TempList::TempList() : EarthCount(0), AlienCount(0), EarthSoldierCount(0), AlienSoldierCount(0){};
+
+bool TempList::AddEarthSoldier(EarthSoldier *Soldier)
 {
-	this->EarthSoldierList.enqueue(Soldier);
-	this->Count++;
-	this->EarthCount++;
-	this->EarthSoldierCount++;
+	if (this->EarthSoldierList.enqueue(Soldier))
+	{
+		this->EarthCount++;
+		this->EarthSoldierCount++;
+
+		return true;
+	}
+	else
+		return false;
 }
 
 bool TempList::RemoveEarthSoldier(EarthSoldier *&Soldier)
@@ -18,93 +25,129 @@ bool TempList::RemoveEarthSoldier(EarthSoldier *&Soldier)
 	if (this->EarthSoldierList.isEmpty())
 		return false;
 
-	this->EarthSoldierList.dequeue(Soldier);
-	this->Count--;
-	this->EarthCount--;
-	this->EarthSoldierCount--;
-	return true;
+	if (this->EarthSoldierList.dequeue(Soldier))
+	{
+		this->EarthCount--;
+		this->EarthSoldierCount--;
+		return true;
+	}
+	else
+		return false;
 }
 
-void TempList::AddTank(EarthTank *Tank)
+bool TempList::AddTank(EarthTank *Tank)
 {
-	this->EarthTankList.push(Tank);
-	this->Count++;
-	this->EarthCount++;
+	if (this->EarthTankList.push(Tank))
+	{
+		this->EarthCount++;
+
+		return true;
+	}
+	else
+		return false;
 }
 
-void TempList::RemoveTank(EarthTank *&Tank)
+bool TempList::RemoveTank(EarthTank *&Tank)
 {
 	if (this->EarthTankList.isEmpty())
-		return;
+		return false;
 
-	this->EarthTankList.pop(Tank);
-	this->Count--;
-	this->EarthCount--;
+	if (this->EarthTankList.pop(Tank))
+	{
+		this->EarthCount--;
+		return true;
+	}
+	else
+		return false;
 }
 
-void TempList::AddGunnery(EarthGunnery *Gunnery)
+bool TempList::AddGunnery(EarthGunnery *Gunnery)
 {
 	int GunneryPriority = 0;
 
-	this->EarthGunneryList.enqueue(Gunnery, GunneryPriority);
-	this->Count++;
-	this->EarthCount++;
+	if (this->EarthGunneryList.enqueue(Gunnery, GunneryPriority))
+	{
+		this->EarthCount++;
+		return true;
+	}
+	else
+		return false;
 }
 
-void TempList::RemoveGunnery(EarthGunnery *&Gunnery)
+bool TempList::RemoveGunnery(EarthGunnery *&Gunnery)
 {
 	if (this->EarthGunneryList.isEmpty())
-		return;
+		return false;
 
 	int GunneryPriority = 0;
 
-	this->EarthGunneryList.dequeue(Gunnery, GunneryPriority);
-	this->Count--;
-	this->EarthCount--;
+	if (this->EarthGunneryList.dequeue(Gunnery, GunneryPriority))
+	{
+		this->EarthCount--;
+		return true;
+	}
+	else
+		return false;
 }
 
-void TempList::AddAlienSoldier(AlienSoldier *Soldier)
+bool TempList::AddAlienSoldier(AlienSoldier *Soldier)
 {
-	this->AlienSoldierList.enqueue(Soldier);
-	this->Count++;
-	this->AlienCount++;
-	this->AlienSoldierCount++;
+	if (this->AlienSoldierList.enqueue(Soldier))
+	{
+		this->AlienCount++;
+		this->AlienSoldierCount++;
+		return true;
+	}
+	else
+		return false;
 }
 
-bool TempList::RemoveAlienSoldier(AlienSoldier*& Soldier) {
-	if (this->AlienSoldierList.isEmpty()) {
-		Soldier = nullptr; 
+bool TempList::RemoveAlienSoldier(AlienSoldier *&Soldier)
+{
+	if (this->AlienSoldierList.isEmpty())
+	{
+		Soldier = nullptr;
 		return false;
 	}
 
-	this->AlienSoldierList.dequeue(Soldier);
-	this->Count--;
-	this->AlienCount--;
-	this->AlienSoldierCount--;
-	return true;
+	if (this->AlienSoldierList.dequeue(Soldier))
+	{
+		this->AlienCount--;
+		this->AlienSoldierCount--;
+		return true;
+	}
+	else
+		return false;
 }
 
-void TempList::AddDrone(AlienDrone *Drone)
+bool TempList::AddDrone(AlienDrone *Drone)
 {
-	this->AlienDroneList.enqueue(Drone);
-	this->Count++;
-	this->AlienCount++;
+	if (this->AlienDroneList.enqueue(Drone))
+	{
+		this->AlienCount++;
+		return true;
+	}
+	else
+		return false;
 }
 
-void TempList::RemoveDrone(AlienDrone *&Drone)
+bool TempList::RemoveDrone(AlienDrone *&Drone)
 {
 	if (this->AlienDroneList.isEmpty())
-		return;
+		return false;
 
-	this->AlienDroneList.dequeue(Drone);
-	this->Count--;
-	this->AlienCount--;
+	if (this->AlienDroneList.dequeue(Drone))
+	{
+		this->AlienCount--;
+		return true;
+	}
+	else
+		return false;
 }
 
 void TempList::AddMonster(AlienMonster *Monster)
 {
 	this->AlienMonsterList.Add(Monster);
-	this->Count++;
 	this->AlienCount++;
 }
 
@@ -114,13 +157,7 @@ void TempList::RemoveMonster(AlienMonster *&Monster)
 		return;
 
 	this->AlienMonsterList.Remove(Monster);
-	this->Count--;
 	this->AlienCount--;
-}
-
-int TempList::GetCount() const
-{
-	return this->Count;
 }
 
 int TempList::GetEarthCount() const
@@ -131,6 +168,15 @@ int TempList::GetEarthCount() const
 int TempList::GetAlienCount() const
 {
 	return this->AlienCount;
+}
+
+int TempList::GetCount() const
+{
+	return this->AlienCount + this->EarthCount;
+}
+
+int TempList::GetAlienSoldierCount() const {
+	return this->AlienSoldierCount;
 }
 
 TempList::~TempList()
