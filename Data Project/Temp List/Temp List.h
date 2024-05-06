@@ -42,6 +42,9 @@ private:
     /* A bag of Alien monsters */
     Bag<AlienMonster *> AlienMonsterList;
 
+    /* A Priority queue of Aliens & Drones */
+    PriorityQueue<EarthUnit*> AlienDroneAndMonsterList;
+
     /* The total number of Earth Units */
     int EarthCount;
     /* The total number of Alien Units */
@@ -155,19 +158,35 @@ public:
      */
     bool RemoveDrone(AlienDrone *&Drone);
 
+    /*
+     * Prints all of the available Alien Drones
+     *
+     * @returns {void}
+     */
+    void PrintAlienDrones();
+
     /**
      * Adds an Alien monster to the list
      *
      * @param {AlienMonster*} Monster - A pointer to an Alien monster to add
+     * @returns {bool} - If the operation was successful
      */
-    void AddMonster(AlienMonster *Monster);
+    bool AddMonster(AlienMonster* Monster);
 
     /**
      * Removes an Alien monster from the list
      *
      * @param {AlienMonster*&} Monster - A reference to a pointer where the removed Alien monster will be stored
+     * @returns {bool} - If the operation was successful
      */
-    void RemoveMonster(AlienMonster *&Monster);
+    bool RemoveMonster(AlienMonster *&Monster);
+
+    /*
+     * Prints all of the available Alien Monsters
+     *
+     * @returns {void}
+     */
+    void PrintAlienMonsters();
 
     /*
      * Returns the total number of units in the temp list

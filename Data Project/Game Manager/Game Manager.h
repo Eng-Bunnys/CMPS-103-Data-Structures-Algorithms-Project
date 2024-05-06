@@ -155,9 +155,10 @@ public:
     * Runs all of the attacks 
     * 
     * @param {bool} PrintAttack - If we want to print the current attacking
+    * @param {bool} TitlePrinted - If the "Current Units Attacking" Title was printed
     * @returns {void}
     */
-    void RunAttack(bool PrintAttack);
+    void RunAttack(bool PrintAttack, bool TitlePrinted);
 
     /**
      * Print the list of dead units

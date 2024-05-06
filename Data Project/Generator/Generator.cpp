@@ -24,7 +24,8 @@ bool Generator::AssignEarth(int EarthSoldier, int EarthTank, int EarthGunnery, d
 {
 	if (!ValidatePercentage(EarthSoldier) ||
 		!ValidatePercentage(EarthTank) ||
-		!ValidatePercentage(EarthGunnery))
+		!ValidatePercentage(EarthGunnery) ||
+		!ValidatePercentage(EarthSoldier + EarthTank + EarthGunnery))
 		return false;
 
 	if (!ValidateParamRange(Health[0], Health[1]) ||
@@ -114,7 +115,7 @@ void Generator::GenerateEarth(int RandomNumber)
 				this->Game->GetEarthArmy()->AddTank(GeneratedTank.Health, GeneratedTank.Power, GeneratedTank.AttackCapacity);
 			}
 
-			else if (Generated <= this->EarthSoldierPercentage +this->EarthTankPercentage + this->EarthGunneryPercentage)
+			else if (Generated <= this->EarthSoldierPercentage + this->EarthTankPercentage + this->EarthGunneryPercentage)
 			{
 				UnitStats GeneratedGunnery = GenerateStats(this->EarthArmyParameters.MinHealth, this->EarthArmyParameters.MaxHealth, this->EarthArmyParameters.MinPower, this->EarthArmyParameters.MaxPower, this->EarthArmyParameters.MinAttackCapacity, this->EarthArmyParameters.MaxAttackCapacity);
 

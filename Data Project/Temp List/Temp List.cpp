@@ -7,7 +7,12 @@
 
 /// To-Do: Complete count for the rest of the units, complete the rest of the functions
 
-TempList::TempList() : EarthCount(0), AlienCount(0), EarthSoldierCount(0), AlienSoldierCount(0) {};
+TempList::TempList() : EarthCount(0),
+					   AlienCount(0),
+					   EarthSoldierCount(0),
+					   AlienSoldierCount(0),
+					   AlienMonsterCount(0),
+					   AlienDroneCount(0){};
 
 bool TempList::AddEarthSoldier(EarthSoldier *Soldier)
 {
@@ -122,7 +127,8 @@ bool TempList::RemoveAlienSoldier(AlienSoldier *&Soldier)
 		return false;
 }
 
-void TempList::PrintAlienSoldier() {
+void TempList::PrintAlienSoldier()
+{
 	this->AlienSoldierList.Print();
 }
 
@@ -153,19 +159,43 @@ bool TempList::RemoveDrone(AlienDrone *&Drone)
 		return false;
 }
 
-void TempList::AddMonster(AlienMonster *Monster)
+void TempList::PrintAlienDrones()
 {
-	this->AlienMonsterList.Add(Monster);
-	this->AlienCount++;
+	this->AlienDroneList.Print();
 }
 
-void TempList::RemoveMonster(AlienMonster *&Monster)
+bool TempList::AddMonster(AlienMonster *Monster)
+{
+	if (this->AlienMonsterList.Add(Monster))
+	{
+		this->AlienCount++;
+		this->AlienMonsterCount++;
+
+		return true;
+	}
+	else
+		return false;
+}
+
+bool TempList::RemoveMonster(AlienMonster *&Monster)
 {
 	if (this->AlienMonsterList.isEmpty())
-		return;
+		return false;
 
-	this->AlienMonsterList.Remove(Monster);
-	this->AlienCount--;
+	if (this->AlienMonsterList.Remove(Monster))
+	{
+		this->AlienCount--;
+		this->AlienMonsterCount--;
+
+		return true;
+	}
+	else
+		return false;
+}
+
+void TempList::PrintAlienMonsters()
+{
+	this->AlienMonsterList.Print();
 }
 
 int TempList::GetEarthCount() const
@@ -183,8 +213,19 @@ int TempList::GetCount() const
 	return this->AlienCount + this->EarthCount;
 }
 
-int TempList::GetAlienSoldierCount() const {
+int TempList::GetAlienSoldierCount() const
+{
 	return this->AlienSoldierCount;
+}
+
+int TempList::GetAlienMonsterCount() const
+{
+	return this->AlienMonsterCount;
+}
+
+int TempList::GetAlienDroneCount() const
+{
+	return this->AlienDroneCount;
 }
 
 TempList::~TempList()

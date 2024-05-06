@@ -27,11 +27,15 @@ GameManager::GameManager()
 
 void GameManager::RunNextTimeStep(bool Print) {
     this->GeneratorInstance->Generate();
-    this->RunAttack(Print);
+    ///To-Do: Fix the title print
+    this->RunAttack(Print, Print);
     this->TimeStep++;
 }
 
-void GameManager::RunAttack(bool PrintAttack) {
+void GameManager::RunAttack(bool PrintAttack, bool TitlePrinted) {
+    if (TitlePrinted)
+        std::cout << "============== Units Fighting At Current Step ==============" << std::endl;
+
     this->EarthArmyAttack(this, PrintAttack);
 }
 

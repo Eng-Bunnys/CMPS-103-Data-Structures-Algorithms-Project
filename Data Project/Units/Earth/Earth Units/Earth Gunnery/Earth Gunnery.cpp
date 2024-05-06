@@ -2,7 +2,7 @@
 
 #include "../../Game Manager/Game Manager.h"
 
-#include "../../Structures/Deque/Deque.h"
+#include "../../Structures/Priority Queue/PriorityQueue.h"
 #include "../../Units/Alien/Alien Units/Alien Drones/Alien Drones.h"
 #include "../../Units/Alien/Alien Units/Alien Monsters/Alien Monsters.h"
 
@@ -18,19 +18,21 @@ double EarthGunnery::GetPriority() const
 	return ((this->Health * this->HealthWeight) + ((this->Power * this->PowerWeight)));
 }
 
-void EarthGunnery::Attack(GameManager* Game, bool Interactive) {
-	
+void EarthGunnery::Attack(GameManager *Game, bool Interactive)
+{
 	int RemainingCapacity = this->AttackCapacity;
 
-	AlienMonster* AttackedMonster = nullptr;
-	AlienDrone* FrontAttackedDrone = nullptr;
-	AlienDrone* BackAttackedDrone = nullptr;
+	AlienMonster *AttackedMonster = nullptr;
+	AlienDrone *FrontAttackedDrone = nullptr;
+	AlienDrone *BackAttackedDrone = nullptr;
 
-	while (RemainingCapacity > 0) {
+	while (RemainingCapacity > 0)
+	{
 
-		bool CapacityReduced= false;
+		bool CapacityReduced = false;
 
-		if (Game->GetAlienArmy()->RemoveMonster(AttackedMonster)) {
+		if (Game->GetAlienArmy()->RemoveMonster(AttackedMonster))
+		{
 			if (AttackedMonster->GetFirstAttackedTime() == -1)
 				AttackedMonster->SetFirstAttackedTime(Game->GetTimeStep());
 
@@ -38,7 +40,8 @@ void EarthGunnery::Attack(GameManager* Game, bool Interactive) {
 			CapacityReduced = true;
 		}
 
-		if (Game->GetAlienArmy()->GetDrones().DequeueFront(FrontAttackedDrone) && RemainingCapacity > 0) {
+		if (Game->GetAlienArmy()->GetDrones().DequeueFront(FrontAttackedDrone) && RemainingCapacity > 0)
+		{
 			if (FrontAttackedDrone->GetFirstAttackedTime() == -1)
 				FrontAttackedDrone->SetFirstAttackedTime(Game->GetTimeStep());
 
@@ -46,7 +49,8 @@ void EarthGunnery::Attack(GameManager* Game, bool Interactive) {
 			CapacityReduced = true;
 		}
 
-		if (Game->GetAlienArmy()->GetDrones().DequeueBack(BackAttackedDrone) && RemainingCapacity > 0) {
+		if (Game->GetAlienArmy()->GetDrones().DequeueBack(BackAttackedDrone) && RemainingCapacity > 0)
+		{
 			if (BackAttackedDrone->GetFirstAttackedTime() == -1)
 				BackAttackedDrone->SetFirstAttackedTime(Game->GetTimeStep());
 
@@ -59,5 +63,19 @@ void EarthGunnery::Attack(GameManager* Game, bool Interactive) {
 		else
 			break;
 	}
+
+	int AttackedCount = Game->GetTempList()->GetAlienDroneCount() + Game->GetTempList()->GetAlienMonsterCount();
+
+	///To-Do: Add All Units to Pri Queue 
+
+	if (Interactive && AttackedCount > 0)
+	{
+		std::cout << "EG " << AttackedCount << " shots";
+		/// To-Do: Add a print that supports both drones & monster
+	}
+
+	AttackedMonster = nullptr;
+	FrontAttackedDrone = nullptr;
+	BackAttackedDrone = nullptr;
 
 }

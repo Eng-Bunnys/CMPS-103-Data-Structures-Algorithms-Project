@@ -25,7 +25,8 @@ void EarthSoldier::Attack(GameManager *Game, bool Interactive)
 
 	int AttackedCount = Game->GetTempList()->GetAlienSoldierCount();
 
-	if (Interactive && AttackedCount > 0) {
+	if (Interactive && AttackedCount > 0)
+	{
 		std::cout << "ES " << AttackedCount << " shots ";
 		Game->GetTempList()->PrintAlienSoldier();
 	}
