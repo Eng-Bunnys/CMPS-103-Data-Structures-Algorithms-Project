@@ -1,5 +1,4 @@
 #include "../../Game Manager/Game Manager.h"
-#include "../../Units/Earth/Earth Army/Earth Army.h"
 
 int main()
 {

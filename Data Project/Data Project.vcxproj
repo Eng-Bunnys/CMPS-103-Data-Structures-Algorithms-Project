@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClInclude Include="Game Manager\Game Manager Start\ManagerStart.h" />
     <ClInclude Include="Game Manager\Game Manager.h" />
+    <ClInclude Include="Killed List\Killed List.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Generator\Generator.h" />
     <ClInclude Include="Temp List\Temp List.h" />
@@ -157,12 +158,16 @@
     <ClInclude Include="Utils\Utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Game Manager\Game Manager Attack Functions\Alien Army Attack.cpp" />
+    <ClCompile Include="Game Manager\Game Manager Attack Functions\Earth Army Attack.cpp" />
     <ClCompile Include="Game Manager\Game Manager Start\ManagerStart.cpp" />
     <ClCompile Include="Game Manager\Game Manager.cpp" />
-    <ClCompile Include="Game Manager\GetHandlers.cpp" />
-    <ClCompile Include="Game Manager\HandlePrint.cpp" />
-    <ClCompile Include="Game Manager\ReadInput.cpp" />
+    <ClCompile Include="Game Manager\Game Manager General Functions\GetHandlers.cpp" />
+    <ClCompile Include="Game Manager\Game Manager General Functions\HandlePrint.cpp" />
+    <ClCompile Include="Game Manager\Game Manager General Functions\ReadInput.cpp" />
+    <ClCompile Include="Game Manager\Test Code.cpp" />
     <ClCompile Include="Generator\Generator.cpp" />
+    <ClCompile Include="Killed List\Killed List.cpp" />
     <ClCompile Include="Structures\Nodes\Node.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Temp List\Temp List.cpp" />

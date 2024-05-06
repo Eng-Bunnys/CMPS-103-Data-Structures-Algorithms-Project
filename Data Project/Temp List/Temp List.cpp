@@ -3,9 +3,11 @@
 
 #include "Temp List.h"
 
+#include <iostream>
+
 /// To-Do: Complete count for the rest of the units, complete the rest of the functions
 
-TempList::TempList() : EarthCount(0), AlienCount(0), EarthSoldierCount(0), AlienSoldierCount(0){};
+TempList::TempList() : EarthCount(0), AlienCount(0), EarthSoldierCount(0), AlienSoldierCount(0) {};
 
 bool TempList::AddEarthSoldier(EarthSoldier *Soldier)
 {
@@ -120,10 +122,15 @@ bool TempList::RemoveAlienSoldier(AlienSoldier *&Soldier)
 		return false;
 }
 
+void TempList::PrintAlienSoldier() {
+	this->AlienSoldierList.Print();
+}
+
 bool TempList::AddDrone(AlienDrone *Drone)
 {
 	if (this->AlienDroneList.enqueue(Drone))
 	{
+		this->AlienDroneCount++;
 		this->AlienCount++;
 		return true;
 	}
@@ -139,6 +146,7 @@ bool TempList::RemoveDrone(AlienDrone *&Drone)
 	if (this->AlienDroneList.dequeue(Drone))
 	{
 		this->AlienCount--;
+		this->AlienDroneCount--;
 		return true;
 	}
 	else

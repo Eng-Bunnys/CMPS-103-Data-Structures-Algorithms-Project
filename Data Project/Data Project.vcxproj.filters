@@ -99,6 +99,9 @@
     <ClInclude Include="Temp List\Temp List.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Killed List\Killed List.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -149,19 +152,31 @@
     <ClCompile Include="Units\Alien\Alien Units\Alien Soldier\Alien Soldier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game Manager\HandlePrint.cpp">
+    <ClCompile Include="Game Manager\Game Manager General Functions\HandlePrint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game Manager\GetHandlers.cpp">
+    <ClCompile Include="Game Manager\Game Manager General Functions\GetHandlers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game Manager\ReadInput.cpp">
+    <ClCompile Include="Game Manager\Game Manager General Functions\ReadInput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Utils\Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Game Manager\Game Manager Attack Functions\Earth Army Attack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Temp List\Temp List.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Killed List\Killed List.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Manager\Test Code.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Manager\Game Manager Attack Functions\Alien Army Attack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

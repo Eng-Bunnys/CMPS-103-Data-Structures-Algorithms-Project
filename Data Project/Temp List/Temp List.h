@@ -50,6 +50,10 @@ private:
     int EarthSoldierCount;
     /* The total number of Alien Soldiers */
     int AlienSoldierCount;
+    /* The total number of Alien Monsters */
+    int AlienMonsterCount;
+    /* The total number of Alien Drones */
+    int AlienDroneCount;
 
 public:
     /**
@@ -186,13 +190,26 @@ public:
      */
     int GetAlienCount() const;
 
-
     /*
      * Returns the total number of Alien soldiers in the temp list
      *
      * @returns {int} - The unit count
      */
     int GetAlienSoldierCount() const;
+
+    /*
+     * Returns the total number of Alien Monsters in the temp list
+     *
+     * @returns {int} - The unit count
+     */
+    int GetAlienMonsterCount() const;
+
+    /*
+     * Returns the total number of Alien Drone in the temp list
+     *
+     * @returns {int} - The unit count
+     */
+    int GetAlienDroneCount() const;
 
     ~TempList();
 };
