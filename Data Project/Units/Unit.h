@@ -1,5 +1,5 @@
 #pragma warning(push)
-#pragma warning(disable: 26495)
+#pragma warning(disable : 26495)
 
 #ifndef Unit_H
 #define Unit_H
@@ -53,7 +53,7 @@ public:
 	 * @param {int} JoinTime - The join time of the unit
 	 */
 	Unit(int ID, double Health, int Power, int AttackCapacity, int JoinTime) : ID(ID), Health(Health), Power(Power), AttackCapacity(AttackCapacity), JoinTime(JoinTime) {}
-	
+
 	/// Getters & Setters
 
 	/**
@@ -108,8 +108,8 @@ public:
 	int GetJoinTime() const;
 
 	/*
-	* Returns the unit's First Attacked Time, returns -1 if the unit wasn't attacked
-	*/
+	 * Returns the unit's First Attacked Time, returns -1 if the unit wasn't attacked
+	 */
 	int GetFirstAttackedTime() const;
 
 	/**
@@ -131,16 +131,14 @@ public:
 	void SetFirstAttackedTime(int FirstAttackedTime);
 
 	/*
-	* Calculate how much damage a unit does
-	* @param {int} AttackerPower - The attackers total power
-	* @param {double} AttackerHealth - The attackers total health
-	* @param {double} AttackedHealth - The attacked total health
-	* 
-	* @returns {double} - The total damage delt
-	*/
+	 * Calculate how much damage a unit does
+	 * @param {int} AttackerPower - The attackers total power
+	 * @param {double} AttackerHealth - The attackers total health
+	 * @param {double} AttackedHealth - The attacked total health
+	 *
+	 * @returns {double} - The total damage delt
+	 */
 	double CalculateDamage(int AttackerPower, double AttackerHealth, double AttackedHealth);
-
-	//virtual void Attack(GameManager* Game) = 0;
 };
 
 /// Operator overloading for the print functions

@@ -30,7 +30,7 @@ public:
 	 */
 	double GetPriority() const;
 
-	void Attack(GameManager* Game);
+	virtual void Attack(GameManager *Game, bool Interactive = true);
 };
 
 #endif // !EarthGunnery_H

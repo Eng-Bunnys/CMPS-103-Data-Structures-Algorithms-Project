@@ -119,6 +119,32 @@ public:
 	 */
 	bool RemoveSoldier(EarthSoldier *&RemovedSoldier);
 
+	/// Unit Peeks
+
+	/*
+	 * Peeks a Soldier
+	 *
+	 * @param {EarthSoldier*&} PeekedSoldier - The peeked soldier
+	 * @returns {bool} - Whether the peek operation was a success or not
+	 */
+	bool PeekSoldier(EarthSoldier *&PeekedSoldier);
+
+	/*
+	 * Peeks a Tank
+	 *
+	 * @param {EarthTank*&} PeekedTank - The peeked Tank
+	 * @returns {bool} - Whether the peek operation was a success or not
+	 */
+	bool PeekTank(EarthTank *&PeekedTank);
+
+	/*
+	 * Peeks a Gunnery
+	 *
+	 * @param {EarthGunnery*&} PeekedGunnery - The peeked Gunnery
+	 * @returns {bool} - Whether the peek operation was a success or not
+	 */
+	bool PeekGunnery(EarthGunnery *&PeekedGunnery);
+
 	/// Print & Misc
 	/*
 	 * Prints all the data for the Alive Earth Units
@@ -141,9 +167,6 @@ public:
 	 * @returns {bool} - True if units can be added, false otherwise
 	 */
 	bool CanAdd() const;
-
-	/// To-Do: Phase 2
-	// virtual void attack();
 
 	/*
 	 * Earth Army Destructor

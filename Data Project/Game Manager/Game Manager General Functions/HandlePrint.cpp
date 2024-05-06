@@ -21,19 +21,14 @@ void GameManager::PrintDead() const
 {
 	std::cout << "============== Dead Units ==============" << std::endl;
 	std::cout << this->Killed->GetCount() << " Dead Units ";
-	///To-Do: Re-add
-	//this->Killed->Print();
+	this->Killed->Print();
 }
 
 void GameManager::Print() const
 {
-	std::cout << "==========================================" << std::endl;
-
 	PrintAvailableUnits();
 
-	std::cout << "==========================================" << std::endl;
+	std::cout << std::endl;
 
 	PrintDead();
-
-	std::cout << "==========================================" << std::endl;
 }

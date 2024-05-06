@@ -15,6 +15,10 @@ public:
      * @param JoinTime The time at which the tank unit joined
      */
     EarthTank(int ID, double Health, int Power, int AttackCapacity, int JoinTime);
+
+    //bool AttackSoldiers(GameManager *Game);
+
+    virtual void Attack(GameManager *Game, bool Interactive = true);
 };
 
 #endif // !EarthTank_H

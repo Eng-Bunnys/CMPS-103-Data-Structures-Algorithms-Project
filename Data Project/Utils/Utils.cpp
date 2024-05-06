@@ -14,4 +14,19 @@ namespace Utils
         // Returning the generated random number
         return UniformDistribution(RandomEngine);
     }
+
+    double SafeDivision(double Numerator, double Denominator) {
+        if (Denominator == 0) {
+            return 0; 
+        }
+        return Numerator / Denominator;
+    }
+
+    double SafeSubtraction(double Value, double Subtrahend) {
+        if (std::isnan(Value) || std::isnan(Subtrahend)) {
+            return 0; 
+        }
+        return Value - Subtrahend;
+    }
+
 }

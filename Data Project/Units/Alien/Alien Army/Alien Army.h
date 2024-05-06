@@ -123,6 +123,32 @@ public:
 	 */
 	bool RemoveDrone(AlienDrone *&RemovedDrone);
 
+	/// Unit Peeks
+
+	/*
+	 * Peeks a Soldier
+	 *
+	 * @param {AlienSoldier*&} PeekedSoldier - The peeked soldier
+	 * @returns {bool} - Whether the peek operation was a success or not
+	 */
+	bool PeekSoldier(AlienSoldier *&PeekedSoldier);
+
+	/*
+	 * Peeks a Monster
+	 *
+	 * @param {AlienMonster*&} PeekedMonster - The peeked Monster
+	 * @returns {bool} - Whether the peek operation was a success or not
+	 */
+	bool PeekMonster(AlienMonster *&PeekedMonster);
+
+	/*
+	 * Peeks a Drone
+	 *
+	 * @param {AlienDrone*&} PeekedDrone - The peeked Drone
+	 * @returns {bool} - Whether the peek operation was a success or not
+	 */
+	bool PeekDrone(AlienDrone *&PeekedDrone);
+
 	/// Prints & Misc
 
 	/*

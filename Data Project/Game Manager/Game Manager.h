@@ -128,8 +128,10 @@ public:
      */
     KilledList *GetKilledList() const;
     /// Attack Logic
+    ///To-Do: Add JSDocs
+    
+    void EarthArmyAttack(GameManager* Game, bool Print);
 
-    void EarthArmyAttack();
 
     /// Prints & Other
 
@@ -147,7 +149,15 @@ public:
      * This method advances the simulation to the next time step
      * @returns {void}
      */
-    void RunNextTimeStep();
+    void RunNextTimeStep(bool Print);
+
+    /*
+    * Runs all of the attacks 
+    * 
+    * @param {bool} PrintAttack - If we want to print the current attacking
+    * @returns {void}
+    */
+    void RunAttack(bool PrintAttack);
 
     /**
      * Print the list of dead units

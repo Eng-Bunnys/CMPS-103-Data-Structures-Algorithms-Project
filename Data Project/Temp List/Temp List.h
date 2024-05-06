@@ -48,8 +48,12 @@ private:
     int EarthCount;
     /* The total number of Alien Units */
     int AlienCount;
-
 public:
+    /* The total number of Earth Soldiers */
+    int EarthSoldierCount;
+
+    /* The total number of Earth Soldiers */
+    int AlienSoldierCount;
     /**
      * Constructs a new TempList with default initialization
      */
@@ -67,7 +71,7 @@ public:
      *
      * @param {EarthSoldier*&} Soldier - A reference to a pointer where the removed Earth soldier will be stored
      */
-    void RemoveEarthSoldier(EarthSoldier *&Soldier);
+    bool RemoveEarthSoldier(EarthSoldier *&Soldier);
 
     /**
      * Adds an Earth tank to the list
@@ -109,7 +113,7 @@ public:
      *
      * @param {AlienSoldier*&} Soldier - A reference to a pointer where the removed Alien soldier will be stored
      */
-    void RemoveAlienSoldier(AlienSoldier *&Soldier);
+    bool RemoveAlienSoldier(AlienSoldier *&Soldier);
 
     /**
      * Adds an Alien drone to the list

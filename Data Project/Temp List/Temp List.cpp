@@ -10,16 +10,19 @@ void TempList::AddEarthSoldier(EarthSoldier *Soldier)
 	this->EarthSoldierList.enqueue(Soldier);
 	this->Count++;
 	this->EarthCount++;
+	this->EarthSoldierCount++;
 }
 
-void TempList::RemoveEarthSoldier(EarthSoldier *&Soldier)
+bool TempList::RemoveEarthSoldier(EarthSoldier *&Soldier)
 {
 	if (this->EarthSoldierList.isEmpty())
-		return;
+		return false;
 
 	this->EarthSoldierList.dequeue(Soldier);
 	this->Count--;
 	this->EarthCount--;
+	this->EarthSoldierCount--;
+	return true;
 }
 
 void TempList::AddTank(EarthTank *Tank)
@@ -65,16 +68,20 @@ void TempList::AddAlienSoldier(AlienSoldier *Soldier)
 	this->AlienSoldierList.enqueue(Soldier);
 	this->Count++;
 	this->AlienCount++;
+	this->AlienSoldierCount++;
 }
 
-void TempList::RemoveAlienSoldier(AlienSoldier *&Soldier)
-{
-	if (this->AlienSoldierList.isEmpty())
-		return;
+bool TempList::RemoveAlienSoldier(AlienSoldier*& Soldier) {
+	if (this->AlienSoldierList.isEmpty()) {
+		Soldier = nullptr; 
+		return false;
+	}
 
 	this->AlienSoldierList.dequeue(Soldier);
 	this->Count--;
 	this->AlienCount--;
+	this->AlienSoldierCount--;
+	return true;
 }
 
 void TempList::AddDrone(AlienDrone *Drone)

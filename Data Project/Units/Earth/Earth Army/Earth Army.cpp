@@ -38,6 +38,14 @@ bool EarthArmy::RemoveSoldier(EarthSoldier *&RemovedSoldier)
 		return false;
 }
 
+bool EarthArmy::PeekSoldier(EarthSoldier *&PeekedSoldier)
+{
+	if (this->Soldiers.peek(PeekedSoldier))
+		return true;
+	else
+		return false;
+}
+
 /// Gunnery
 
 PriorityQueue<EarthGunnery *> EarthArmy::GetGunnery() const
@@ -68,6 +76,16 @@ bool EarthArmy::RemoveGunnery(EarthGunnery *&RemovedGunnery)
 		return false;
 }
 
+bool EarthArmy::PeekGunnery(EarthGunnery *&PeekedGunnery)
+{
+	int Priority;
+
+	if (this->Gunnery.peek(PeekedGunnery, Priority))
+		return true;
+	else
+		return false;
+}
+
 /// Tank
 
 ArrayStack<EarthTank *> EarthArmy::GetTanks() const
@@ -91,6 +109,14 @@ bool EarthArmy::AddTank(double Health, int Power, int AttackCapacity)
 bool EarthArmy::RemoveTank(EarthTank *&RemovedTank)
 {
 	if (this->Tanks.pop(RemovedTank))
+		return true;
+	else
+		return false;
+}
+
+bool EarthArmy::PeekTank(EarthTank *&PeekedTank)
+{
+	if (this->Tanks.peek(PeekedTank))
 		return true;
 	else
 		return false;

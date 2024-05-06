@@ -19,7 +19,10 @@ public:
 	int GetCount() const;
 
 	bool AddUnit(Unit *NewUnit);
+
 	bool RemoveUnit(Unit *&RemovedUnit);
+
+	void Print();
 };
 
 #endif // !KilledList_H

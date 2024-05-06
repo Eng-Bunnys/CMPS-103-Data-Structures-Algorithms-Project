@@ -18,7 +18,10 @@ int KilledList::GetCount() const
 bool KilledList::AddUnit(Unit *NewUnit)
 {
 	if (this->Killed->enqueue(NewUnit))
+	{
+		this->Count++;
 		return true;
+	}
 	else
 		return false;
 }
@@ -26,7 +29,14 @@ bool KilledList::AddUnit(Unit *NewUnit)
 bool KilledList::RemoveUnit(Unit *&RemovedUnit)
 {
 	if (this->Killed->dequeue(RemovedUnit))
+	{
+		this->Count--;
 		return true;
+	}
 	else
 		return false;
+}
+
+void KilledList::Print() {
+	this->Killed->Print();
 }

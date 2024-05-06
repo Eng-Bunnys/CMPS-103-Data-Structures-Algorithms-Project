@@ -10,7 +10,7 @@ class EarthUnit : public Unit
 public:
 	/**
 	 * Constructor for EarthUnit class
-	 * 
+	 *
 	 * @param {int} ID - The ID of the EarthUnit
 	 * @param {double} Health - The health of the EarthUnit
 	 * @param {int} Power - The power of the EarthUnit
@@ -19,7 +19,12 @@ public:
 	 */
 	EarthUnit(int ID, double Health, int Power, int AttackCapacity, int JoinTime);
 
-	//virtual void Attack(GameManager* Game) = 0;
+	/*
+	 * Handles the unit's Attack
+	 *
+	 * @returns {void}
+	 */
+	virtual void Attack(GameManager *Game, bool Interactive = true) = 0;
 };
 
 #endif // !EarthUnit_H

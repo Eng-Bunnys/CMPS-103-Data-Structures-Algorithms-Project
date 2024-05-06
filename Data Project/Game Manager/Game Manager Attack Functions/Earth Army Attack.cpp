@@ -1,11 +1,13 @@
 #include "../Game Manager.h"
 
-void GameManager::EarthArmyAttack()
+void GameManager::EarthArmyAttack(GameManager* Game, bool Print)
 {
-	// EarthGunnery* TempGunnery;
+#pragma region SoldierAttack
 
-	// int TempPri;
+	EarthSoldier* AttackingSoldier = nullptr;
 
-	// if (this->Earth->GetGunnery().peek(TempGunnery, TempPri))
-	//	TempGunnery->Attack(this);
+	if (this->Earth->PeekSoldier(AttackingSoldier))
+		AttackingSoldier->Attack(this);
+
+#pragma endregion
 }

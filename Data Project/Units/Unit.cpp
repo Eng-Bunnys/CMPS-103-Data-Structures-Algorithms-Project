@@ -52,7 +52,8 @@ int Unit::GetJoinTime() const
 	return this->JoinTime;
 }
 
-int Unit::GetFirstAttackedTime() const {
+int Unit::GetFirstAttackedTime() const
+{
 	return this->FirstAttackedTime;
 }
 
@@ -70,7 +71,8 @@ void Unit::SetFirstAttackedTime(int FirstAttackTime)
 	this->FirstAttackedDelay = this->FirstAttackedTime - this->JoinTime;
 }
 
-double Unit::CalculateDamage(int AttackerPower, double AttackerHealth, double AttackedHealth) {
+double Unit::CalculateDamage(int AttackerPower, double AttackerHealth, double AttackedHealth)
+{
 	return (AttackerPower * (AttackedHealth / 100)) / sqrt(AttackedHealth);
 }
 

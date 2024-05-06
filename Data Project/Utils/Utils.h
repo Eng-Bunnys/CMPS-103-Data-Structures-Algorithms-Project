@@ -24,5 +24,8 @@ namespace Utils
      * @return Random number within the specified range [min, max]
      */
     int GenerateRandomNumber(int Min = 0, int Max = 100);
+
+    double SafeSubtraction(double Value, double Subtrahend);
+    double SafeDivision(double Numerator, double Denominator);
 }
 #endif // !Utils_H

@@ -36,6 +36,14 @@ bool AlienArmy::RemoveSoldier(AlienSoldier *&RemovedSoldier)
 		return false;
 }
 
+bool AlienArmy::PeekSoldier(AlienSoldier *&PeekedSoldier)
+{
+	if (this->AlienSoldierQueue.peek(PeekedSoldier))
+		return true;
+	else
+		return false;
+}
+
 /// Monsters
 
 Bag<AlienMonster *> AlienArmy::GetMonsters() const
@@ -61,9 +69,15 @@ bool AlienArmy::AddMonster(double Health, int Power, int AttackCapacity)
 
 bool AlienArmy::RemoveMonster(AlienMonster *&RemovedMonster)
 {
-	Monsters.Remove(RemovedMonster);
+	if (Monsters.Remove(RemovedMonster))
+		return true;
+	else
+		return false;
+}
 
-	if (RemovedMonster)
+bool AlienArmy::PeekMonster(AlienMonster *&PeekedMonster)
+{
+	if (this->Monsters.Peek(PeekedMonster))
 		return true;
 	else
 		return false;
@@ -109,6 +123,14 @@ bool AlienArmy::RemoveDrone(AlienDrone *&RemovedDrone)
 		Drones.DequeueBack(RemovedDrone);
 	}
 	return true;
+}
+
+bool AlienArmy::PeekDrone(AlienDrone *&PeekedDrone)
+{
+	if (this->Drones.peek(PeekedDrone))
+		return true;
+	else
+		return false;
 }
 
 /// Other
