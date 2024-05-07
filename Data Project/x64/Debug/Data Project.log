@@ -1,4 +1,0 @@
-﻿  Generator.cpp
-C:\Users\ben10\Desktop\Data Structures Project\Data Project\Generator\Generator.cpp(81,60): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\ben10\Desktop\Data Structures Project\Data Project\Generator\Generator.cpp(81,49): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  Data Project.vcxproj -> C:\Users\ben10\Desktop\Data Structures Project\x64\Debug\Data Project.exe
