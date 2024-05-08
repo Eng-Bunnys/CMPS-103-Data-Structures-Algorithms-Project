@@ -15,19 +15,19 @@ void GameManager::RunTestCode()
 
         if (RandomNumber >= 1 && RandomNumber <= 10)
         {
-            EarthSoldier* ESoldier;
+            EarthSoldier *ESoldier;
 
-            if (this->Earth->GetSoldiers().dequeue(ESoldier))
+            if (this->Earth->RemoveSoldier(ESoldier))
             {
-                this->Earth->GetSoldiers().enqueue(ESoldier);
+                this->Earth->AddSoldier(ESoldier->GetHealth(), ESoldier->GetPower(), ESoldier->GetAttackCapacity());
             }
         }
 
         if (RandomNumber >= 11 && RandomNumber <= 20)
         {
-            EarthTank* ETank;
+            EarthTank *ETank;
 
-            if (this->Earth->GetTanks().pop(ETank))
+            if (this->Earth->GetTanks()->pop(ETank))
             {
                 this->Killed->AddUnit(ETank);
             }
@@ -35,7 +35,7 @@ void GameManager::RunTestCode()
 
         if (RandomNumber >= 21 && RandomNumber <= 30)
         {
-            EarthGunnery* EGunnery;
+            EarthGunnery *EGunnery;
 
             if (this->Earth->RemoveGunnery(EGunnery))
             {
@@ -48,20 +48,20 @@ void GameManager::RunTestCode()
 
         if (RandomNumber >= 31 && RandomNumber <= 40)
         {
-            AlienSoldier* ASoldier;
+            AlienSoldier *ASoldier;
 
-            LinkedQueue<AlienSoldier*>* TempList = new LinkedQueue<AlienSoldier*>;
+            LinkedQueue<AlienSoldier *> *TempList = new LinkedQueue<AlienSoldier *>;
 
             for (int i = 0; i < 5; i++)
             {
-                if (this->Aliens->GetSoldiers().dequeue(ASoldier))
+                if (this->Aliens->GetSoldiers()->dequeue(ASoldier))
                 {
                     double NewHealth = ASoldier->GetHealth() - 30;
                     ASoldier->SetHealth(NewHealth);
 
                     TempList->enqueue(ASoldier);
                     TempList->dequeue(ASoldier);
-                    this->Aliens->GetSoldiers().enqueue(ASoldier);
+                    this->Aliens->GetSoldiers()->enqueue(ASoldier);
                 }
             }
 
@@ -70,17 +70,17 @@ void GameManager::RunTestCode()
 
         if (RandomNumber >= 41 && RandomNumber <= 50)
         {
-            AlienMonster* AMonster;
+            AlienMonster *AMonster;
             for (int i = 0; i < 5; i++)
             {
                 if (this->Aliens->RemoveMonster(AMonster))
-                    (this->Aliens->GetMonsters()).Add(AMonster);
+                    (this->Aliens->GetMonsters())->Add(AMonster);
             }
         }
 
         if (RandomNumber > 50 && RandomNumber < 60)
         {
-            AlienDrone* ADrone;
+            AlienDrone *ADrone;
 
             for (int i = 0; i < 6; i++)
             {

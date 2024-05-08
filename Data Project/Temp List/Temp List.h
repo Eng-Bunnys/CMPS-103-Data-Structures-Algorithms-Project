@@ -42,8 +42,8 @@ private:
     /* A bag of Alien monsters */
     Bag<AlienMonster *> AlienMonsterList;
 
-    /* A Priority queue of Aliens & Drones */
-    PriorityQueue<EarthUnit*> AlienDroneAndMonsterList;
+    /* A Priority queue of Alien Monsters & Drones, Priority 1 for Alien Drone, 0 for Monster */
+    PriorityQueue<AlienUnit *> AlienMonsterAndDroneList;
 
     /* The total number of Earth Units */
     int EarthCount;
@@ -63,6 +63,31 @@ public:
      * Constructs a new TempList with default initialization
      */
     TempList();
+
+    /*
+     * Adds a Gunnery Attack Unit
+     *
+     * @param {int} Priority - The unit's priority
+     * @param {AlienUnit*} AttackedUnit - A pointer to the unit that will get attacked
+     * @returns {bool} - If the operation was successful
+     */
+    bool AddGunneryAttack(AlienUnit *AttackedUnit, int Priority);
+
+    /*
+     * Removes a Gunnery Attack Unit
+     *
+     * @param {int&} Priority - The unit's priority
+     * @param {AlienUnit*&} AttackedUnit - A pointer to the unit that will get attacked
+     * @returns {bool} - If the operation was successful
+     */
+    bool RemoveGunneryAttack(AlienUnit *&AttackedUnit, int &Priority);
+
+    /*
+     * Prints all of the available Gunnery Attacked Units
+     *
+     * @returns {void}
+     */
+    void PrintGunneryAttack();
 
     /**
      * Adds an Earth soldier to the list
@@ -171,7 +196,7 @@ public:
      * @param {AlienMonster*} Monster - A pointer to an Alien monster to add
      * @returns {bool} - If the operation was successful
      */
-    bool AddMonster(AlienMonster* Monster);
+    bool AddMonster(AlienMonster *Monster);
 
     /**
      * Removes an Alien monster from the list

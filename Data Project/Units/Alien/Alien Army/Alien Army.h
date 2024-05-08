@@ -28,11 +28,11 @@ private:
 
 	/// Units
 	/* A queue to store all of the Alien Soldiers */
-	LinkedQueue<AlienSoldier *> AlienSoldierQueue;
+	LinkedQueue<AlienSoldier *> *AlienSoldierQueue;
 	/* A Bag to store all of the Alien Monsters */
-	Bag<AlienMonster *> Monsters;
+	Bag<AlienMonster *> *Monsters;
 	/* A Double Ended Queue to store all of the Alien Drones */
-	Deque<AlienDrone *> Drones;
+	Deque<AlienDrone *> *Drones;
 
 public:
 	/*
@@ -47,23 +47,23 @@ public:
 	/*
 	 * Returns the Alien Soldier List
 	 *
-	 * @returns {LinkedQueue<AlienSoldier*>} - The Alien Soldier List
+	 * @returns {LinkedQueue<AlienSoldier*>*} - The Alien Soldier List
 	 */
-	LinkedQueue<AlienSoldier *> GetSoldiers() const;
+	LinkedQueue<AlienSoldier *> *GetSoldiers() const;
 
 	/*
 	 * Returns the Alien Monsters List
 	 *
-	 * @returns {Bag<AlienMonsters*>} - The Alien Monsters List
+	 * @returns {Bag<AlienMonsters*>*} - The Alien Monsters List
 	 */
-	Bag<AlienMonster *> GetMonsters() const;
+	Bag<AlienMonster *> *GetMonsters() const;
 
 	/*
 	 * Returns the Alien Drones List
 	 *
-	 * @returns {Deque<AlienDrones*>} - The Alien Drones List
+	 * @returns {Deque<AlienDrones*>*} - The Alien Drones List
 	 */
-	Deque<AlienDrone *> GetDrones() const;
+	Deque<AlienDrone *> *GetDrones() const;
 
 	/// Unit Setters
 
@@ -154,7 +154,6 @@ public:
 	/*
 	 * Prints all the data for the Alive Alien Units
 	 *
-	 * @param {void}
 	 * @returns {void}
 	 */
 	void Print() const;

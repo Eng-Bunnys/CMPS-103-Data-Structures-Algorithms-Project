@@ -10,4 +10,14 @@ void GameManager::EarthArmyAttack(GameManager* Game, bool Print)
 		AttackingSoldier->Attack(this);
 
 #pragma endregion
+
+#pragma region GunneryAttack
+	
+	EarthGunnery* AttackingGunnery = nullptr;
+
+	if (this->Earth->PeekGunnery(AttackingGunnery))
+		AttackingGunnery->Attack(this);
+
+#pragma endregion
+
 }

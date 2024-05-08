@@ -24,11 +24,11 @@ private:
 
 	/// Units
 	/* A queue to store all of the Earth Gunnery */
-	PriorityQueue<EarthGunnery *> Gunnery;
+	PriorityQueue<EarthGunnery *> *Gunnery;
 	/* A stack to store all of the Earth Tanks */
-	ArrayStack<EarthTank *> Tanks;
+	ArrayStack<EarthTank *> *Tanks;
 	/* A queue to store all of the Earth Soldiers */
-	LinkedQueue<EarthSoldier *> Soldiers;
+	LinkedQueue<EarthSoldier *> *Soldiers;
 
 public:
 	/*
@@ -43,23 +43,23 @@ public:
 	/*
 	 * Returns the Earth Gunnery List
 	 *
-	 * @returns {PriorityQueue<EarthGunnery*>}
+	 * @returns {PriorityQueue<EarthGunnery*>*}
 	 */
-	PriorityQueue<EarthGunnery *> GetGunnery() const;
+	PriorityQueue<EarthGunnery *> *GetGunnery() const;
 
 	/*
 	 * Returns the Earth Tank List
 	 *
-	 * @returns {ArrayStack<EarthTank*>}
+	 * @returns {ArrayStack<EarthTank*>*}
 	 */
-	ArrayStack<EarthTank *> GetTanks() const;
+	ArrayStack<EarthTank *> *GetTanks() const;
 
 	/*
 	 * Returns the Earth Soldier List
 	 *
-	 * @returns {LinkedQueue<EarthSoldier*>}
+	 * @returns {LinkedQueue<EarthSoldier*>*}
 	 */
-	LinkedQueue<EarthSoldier *> GetSoldiers() const;
+	LinkedQueue<EarthSoldier *> *GetSoldiers() const;
 
 	/// Unit Setters
 

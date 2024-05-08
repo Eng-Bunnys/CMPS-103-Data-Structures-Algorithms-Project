@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{B4337FBB-8B0E-475A-B9E3-00D6BCF76257}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="game manager\game manager attack functions\Alien Army Attack.cpp" />
+    <ClCompile Include="game manager\game manager attack functions\Earth Army Attack.cpp" />
+    <ClCompile Include="game manager\game manager general functions\GetHandlers.cpp" />
+    <ClCompile Include="game manager\game manager general functions\HandlePrint.cpp" />
+    <ClCompile Include="game manager\game manager general functions\ReadInput.cpp" />
+    <ClCompile Include="game manager\game manager start\ManagerStart.cpp" />
+    <ClCompile Include="game manager\Game Manager.cpp" />
+    <ClCompile Include="game manager\Test Code.cpp" />
+    <ClCompile Include="generator\Generator.cpp" />
+    <ClCompile Include="killed list\Killed List.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="temp list\Temp List.cpp" />
+    <ClCompile Include="units\alien\alien army\Alien Army.cpp" />
+    <ClCompile Include="units\alien\alien units\alien drones\Alien Drones.cpp" />
+    <ClCompile Include="units\alien\alien units\alien monsters\Alien Monsters.cpp" />
+    <ClCompile Include="units\alien\alien units\alien soldier\Alien Soldier.cpp" />
+    <ClCompile Include="units\alien\alien unit\Alien Unit.cpp" />
+    <ClCompile Include="units\earth\earth army\Earth Army.cpp" />
+    <ClCompile Include="units\earth\earth units\earth gunnery\Earth Gunnery.cpp" />
+    <ClCompile Include="units\earth\earth units\earth soldier\Earth Soldier.cpp" />
+    <ClCompile Include="units\earth\earth units\earth tanks\Earth Tank.cpp" />
+    <ClCompile Include="units\earth\earth unit\Earth Unit.cpp" />
+    <ClCompile Include="units\Unit.cpp" />
+    <ClCompile Include="utils\Utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="enums\Enums.h" />
+    <ClInclude Include="game manager\game manager start\ManagerStart.h" />
+    <ClInclude Include="game manager\Game Manager.h" />
+    <ClInclude Include="generator\Generator.h" />
+    <ClInclude Include="killed list\Killed List.h" />
+    <ClInclude Include="Platform.h" />
+    <ClInclude Include="structures\adts\QueueADT.h" />
+    <ClInclude Include="structures\adts\StackADT.h" />
+    <ClInclude Include="structures\bag\Bag.h" />
+    <ClInclude Include="structures\deque\Deque.h" />
+    <ClInclude Include="structures\nodes\DoublyNode.h" />
+    <ClInclude Include="structures\nodes\Node.h" />
+    <ClInclude Include="structures\nodes\PriorityNode.h" />
+    <ClInclude Include="structures\priority queue\PriorityQueue.h" />
+    <ClInclude Include="structures\queue\LinkedQueue.h" />
+    <ClInclude Include="structures\stack\ArrayStack.h" />
+    <ClInclude Include="temp list\Temp List.h" />
+    <ClInclude Include="units\alien\alien army\Alien Army.h" />
+    <ClInclude Include="units\alien\alien units\alien drones\Alien Drones.h" />
+    <ClInclude Include="units\alien\alien units\alien monsters\Alien Monsters.h" />
+    <ClInclude Include="units\alien\alien units\alien soldier\Alien Soldier.h" />
+    <ClInclude Include="units\alien\alien unit\Alien Unit.h" />
+    <ClInclude Include="units\earth\earth army\Earth Army.h" />
+    <ClInclude Include="units\earth\earth units\earth gunnery\Earth Gunnery.h" />
+    <ClInclude Include="units\earth\earth units\earth soldier\Earth Soldier.h" />
+    <ClInclude Include="units\earth\earth units\earth tanks\Earth Tank.h" />
+    <ClInclude Include="units\earth\earth unit\Earth Unit.h" />
+    <ClInclude Include="units\Unit.h" />
+    <ClInclude Include="units\Values.h" />
+    <ClInclude Include="utils\Utils.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

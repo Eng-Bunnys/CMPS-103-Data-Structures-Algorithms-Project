@@ -195,12 +195,8 @@ void ManagerStart::HandleStart()
     case StructureTest:
         this->FilePath += "StructureTest.txt";
 
-        std::cout << "Reading Input File for Game Scenario..." << std::endl;
-
         if (!this->Game->ReadInput(this->FilePath, false))
-        {
             return;
-        }
 
         ClearConsole(true);
 

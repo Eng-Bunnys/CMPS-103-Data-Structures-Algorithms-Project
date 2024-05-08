@@ -25,18 +25,17 @@ void EarthSoldier::Attack(GameManager *Game, bool Interactive)
 
 	int AttackedCount = Game->GetTempList()->GetAlienSoldierCount();
 
-	if (Interactive && AttackedCount > 0)
+	if (Interactive)
 	{
-		std::cout << "ES " << AttackedCount << " shots ";
+		std::cout << "ES " << this->GetID() << " shots ";
 		Game->GetTempList()->PrintAlienSoldier();
 	}
 
 	AttackedSoldier = nullptr;
 
-	while (AttackedCount > 0)
+	while (AttackedCount > 0 
+		&& Game->GetTempList()->RemoveAlienSoldier(AttackedSoldier))
 	{
-		if (Game->GetTempList()->RemoveAlienSoldier(AttackedSoldier))
-		{
 			const double DamageDealt = this->CalculateDamage(this->Power, this->Health, AttackedSoldier->GetHealth());
 
 			const double NewHealth = AttackedSoldier->GetHealth() - DamageDealt;
@@ -56,7 +55,7 @@ void EarthSoldier::Attack(GameManager *Game, bool Interactive)
 					AttackedSoldier->GetPower(),
 					AttackedSoldier->GetAttackCapacity());
 			}
-		}
+
 		AttackedCount--;
 	}
 }

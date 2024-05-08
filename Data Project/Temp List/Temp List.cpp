@@ -14,6 +14,44 @@ TempList::TempList() : EarthCount(0),
 					   AlienMonsterCount(0),
 					   AlienDroneCount(0){};
 
+bool TempList::AddGunneryAttack(AlienUnit *AttackedUnit, int Priority)
+{
+	if (this->AlienMonsterAndDroneList.enqueue(AttackedUnit, Priority))
+	{
+		this->AlienCount++;
+
+		if (Priority == 1)
+			this->AlienDroneCount++;
+		else
+			this->AlienMonsterCount++;
+
+		return true;
+	}
+	else
+		return false;
+}
+
+bool TempList::RemoveGunneryAttack(AlienUnit *&AttackedUnit, int &Priority)
+{
+	if (this->AlienMonsterAndDroneList.dequeue(AttackedUnit, Priority))
+	{
+		this->AlienCount--;
+
+		if (Priority == 1)
+			this->AlienDroneCount--;
+		else
+			this->AlienMonsterCount--;
+
+		return true;
+	}
+	else
+		return false;
+}
+
+void TempList::PrintGunneryAttack() {
+	this->AlienMonsterAndDroneList.Print();
+}
+
 bool TempList::AddEarthSoldier(EarthSoldier *Soldier)
 {
 	if (this->EarthSoldierList.enqueue(Soldier))

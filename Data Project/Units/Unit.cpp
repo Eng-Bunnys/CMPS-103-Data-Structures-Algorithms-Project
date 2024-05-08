@@ -4,7 +4,7 @@
 
 int Unit::GetID() const
 {
-	return this->ID;
+	return ID;
 }
 
 double Unit::GetHealth() const

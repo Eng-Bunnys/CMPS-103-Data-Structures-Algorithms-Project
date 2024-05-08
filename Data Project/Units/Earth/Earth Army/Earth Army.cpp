@@ -4,15 +4,15 @@
 EarthArmy::EarthArmy(GameManager *Game)
 {
 	this->Game = Game;
-	this->Soldiers = LinkedQueue<EarthSoldier *>();
-	this->Tanks = ArrayStack<EarthTank *>();
-	this->Gunnery = PriorityQueue<EarthGunnery *>();
+	this->Soldiers = new LinkedQueue<EarthSoldier *>();
+	this->Tanks = new ArrayStack<EarthTank *>();
+	this->Gunnery = new PriorityQueue<EarthGunnery *>();
 	this->NextID = 1;
 }
 
 /// Soldiers
 
-LinkedQueue<EarthSoldier *> EarthArmy::GetSoldiers() const
+LinkedQueue<EarthSoldier *> *EarthArmy::GetSoldiers() const
 {
 	return this->Soldiers;
 }
@@ -24,7 +24,7 @@ bool EarthArmy::AddSoldier(double Health, int Power, int AttackCapacity)
 
 	EarthSoldier *NewSoldier = new EarthSoldier(++this->NextID, Health, Power, AttackCapacity, this->Game->GetTimeStep());
 
-	if (this->Soldiers.enqueue(NewSoldier))
+	if (this->Soldiers->enqueue(NewSoldier))
 		return true;
 	else
 		return false;
@@ -32,7 +32,7 @@ bool EarthArmy::AddSoldier(double Health, int Power, int AttackCapacity)
 
 bool EarthArmy::RemoveSoldier(EarthSoldier *&RemovedSoldier)
 {
-	if (this->Soldiers.dequeue(RemovedSoldier))
+	if (this->Soldiers->dequeue(RemovedSoldier))
 		return true;
 	else
 		return false;
@@ -40,7 +40,7 @@ bool EarthArmy::RemoveSoldier(EarthSoldier *&RemovedSoldier)
 
 bool EarthArmy::PeekSoldier(EarthSoldier *&PeekedSoldier)
 {
-	if (this->Soldiers.peek(PeekedSoldier))
+	if (this->Soldiers->peek(PeekedSoldier))
 		return true;
 	else
 		return false;
@@ -48,7 +48,7 @@ bool EarthArmy::PeekSoldier(EarthSoldier *&PeekedSoldier)
 
 /// Gunnery
 
-PriorityQueue<EarthGunnery *> EarthArmy::GetGunnery() const
+PriorityQueue<EarthGunnery *> *EarthArmy::GetGunnery() const
 {
 	return this->Gunnery;
 }
@@ -59,7 +59,7 @@ bool EarthArmy::AddGunnery(double Health, int Power, int AttackCapacity)
 		return false;
 
 	EarthGunnery *NewGunnery = new EarthGunnery(++this->NextID, Health, Power, AttackCapacity, this->Game->GetTimeStep());
-	if (this->Gunnery.enqueue(NewGunnery, NewGunnery->GetPriority()))
+	if (this->Gunnery->enqueue(NewGunnery, NewGunnery->GetPriority()))
 		return true;
 	else
 		return false;
@@ -69,7 +69,7 @@ bool EarthArmy::RemoveGunnery(EarthGunnery *&RemovedGunnery)
 {
 	int Priority;
 
-	if (this->Gunnery.dequeue(RemovedGunnery, Priority))
+	if (this->Gunnery->dequeue(RemovedGunnery, Priority))
 		return true;
 
 	else
@@ -80,7 +80,7 @@ bool EarthArmy::PeekGunnery(EarthGunnery *&PeekedGunnery)
 {
 	int Priority;
 
-	if (this->Gunnery.peek(PeekedGunnery, Priority))
+	if (this->Gunnery->peek(PeekedGunnery, Priority))
 		return true;
 	else
 		return false;
@@ -88,7 +88,7 @@ bool EarthArmy::PeekGunnery(EarthGunnery *&PeekedGunnery)
 
 /// Tank
 
-ArrayStack<EarthTank *> EarthArmy::GetTanks() const
+ArrayStack<EarthTank *> *EarthArmy::GetTanks() const
 {
 	return this->Tanks;
 }
@@ -100,7 +100,7 @@ bool EarthArmy::AddTank(double Health, int Power, int AttackCapacity)
 
 	EarthTank *NewTank = new EarthTank(++this->NextID, Health, Power, AttackCapacity, this->Game->GetTimeStep());
 
-	if (this->Tanks.push(NewTank))
+	if (this->Tanks->push(NewTank))
 		return true;
 	else
 		return false;
@@ -108,7 +108,7 @@ bool EarthArmy::AddTank(double Health, int Power, int AttackCapacity)
 
 bool EarthArmy::RemoveTank(EarthTank *&RemovedTank)
 {
-	if (this->Tanks.pop(RemovedTank))
+	if (this->Tanks->pop(RemovedTank))
 		return true;
 	else
 		return false;
@@ -116,7 +116,7 @@ bool EarthArmy::RemoveTank(EarthTank *&RemovedTank)
 
 bool EarthArmy::PeekTank(EarthTank *&PeekedTank)
 {
-	if (this->Tanks.peek(PeekedTank))
+	if (this->Tanks->peek(PeekedTank))
 		return true;
 	else
 		return false;
@@ -126,28 +126,28 @@ bool EarthArmy::PeekTank(EarthTank *&PeekedTank)
 
 void EarthArmy::Print() const
 {
-	if (!this->Soldiers.isEmpty())
+	if (!this->Soldiers->isEmpty())
 	{
-		std::cout << this->Soldiers.GetCount() << " ES ";
-		this->Soldiers.Print();
+		std::cout << this->Soldiers->GetCount() << " ES ";
+		this->Soldiers->Print();
 		std::cout << std::endl;
 	}
 	else
 		std::cout << "0 EG []" << std::endl;
 
-	if (!this->Tanks.isEmpty())
+	if (!this->Tanks->isEmpty())
 	{
-		std::cout << this->Tanks.GetCount() << " ET ";
-		this->Tanks.Print();
+		std::cout << this->Tanks->GetCount() << " ET ";
+		this->Tanks->Print();
 		std::cout << std::endl;
 	}
 	else
 		std::cout << "0 EG []" << std::endl;
 
-	if (!this->Gunnery.isEmpty())
+	if (!this->Gunnery->isEmpty())
 	{
-		std::cout << this->Gunnery.GetCount() << " EG ";
-		this->Gunnery.Print();
+		std::cout << this->Gunnery->GetCount() << " EG ";
+		this->Gunnery->Print();
 		std::cout << std::endl;
 	}
 	else
@@ -156,7 +156,8 @@ void EarthArmy::Print() const
 
 bool EarthArmy::isEmpty() const
 {
-	return (this->Soldiers.isEmpty() && this->Tanks.isEmpty() && this->Gunnery.isEmpty());
+	return (
+		this->Soldiers->isEmpty() && this->Tanks->isEmpty() && this->Gunnery->isEmpty());
 }
 
 bool EarthArmy::CanAdd() const
@@ -166,8 +167,10 @@ bool EarthArmy::CanAdd() const
 
 EarthArmy::~EarthArmy()
 {
+	/// To-Do: Finish the constructor
 	EarthGunnery *Temp;
 	int FalsePriority;
-	while (this->Gunnery.dequeue(Temp, FalsePriority))
+
+	while (this->Gunnery->dequeue(Temp, FalsePriority))
 		delete Temp;
 }
