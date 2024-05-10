@@ -129,10 +129,12 @@
   <ItemGroup>
     <ClInclude Include="Game Manager\Game Manager Start\ManagerStart.h" />
     <ClInclude Include="Game Manager\Game Manager.h" />
+    <ClInclude Include="Units\Earth\Earth Healer\Heal Unit\Heal Unit.h" />
     <ClInclude Include="Killed List\Killed List.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Generator\Generator.h" />
     <ClInclude Include="Temp List\Temp List.h" />
+    <ClInclude Include="Units\Earth\Earth Healer\Unit Maintenance List\Unit Maintenance List.h" />
     <ClInclude Include="Units\Alien\Alien Army\Alien Army.h" />
     <ClInclude Include="Units\Alien\Alien Units\Alien Drones\Alien Drones.h" />
     <ClInclude Include="Units\Alien\Alien Units\Alien Monsters\Alien Monsters.h" />
@@ -167,10 +169,12 @@
     <ClCompile Include="Game Manager\Game Manager General Functions\ReadInput.cpp" />
     <ClCompile Include="Game Manager\Test Code.cpp" />
     <ClCompile Include="Generator\Generator.cpp" />
+    <ClCompile Include="Units\Earth\Earth Healer\Heal Unit\Heal Unit.cpp" />
     <ClCompile Include="Killed List\Killed List.cpp" />
     <ClCompile Include="Structures\Nodes\Node.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Temp List\Temp List.cpp" />
+    <ClCompile Include="Units\Earth\Earth Healer\Unit Maintenance List\Unit Maintenance List.cpp" />
     <ClCompile Include="Units\Alien\Alien Army\Alien Army.cpp" />
     <ClCompile Include="Units\Alien\Alien Units\Alien Drones\Alien Drones.cpp" />
     <ClCompile Include="Units\Alien\Alien Units\Alien Monsters\Alien Monsters.cpp" />

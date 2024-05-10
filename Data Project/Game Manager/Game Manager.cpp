@@ -23,6 +23,8 @@ GameManager::GameManager()
 
     this->Killed = new KilledList();
     this->TempListInstance = new TempList();
+
+    this->UML = new UnitMaintenanceList(this);
 }
 
 void GameManager::RunNextTimeStep(bool Print) {
@@ -75,3 +77,8 @@ void GameManager::RunSilent()
         this->RunNextTimeStep(false);
     }
 };
+
+
+UnitMaintenanceList* GameManager::GetUML() {
+    return this->UML;
+}

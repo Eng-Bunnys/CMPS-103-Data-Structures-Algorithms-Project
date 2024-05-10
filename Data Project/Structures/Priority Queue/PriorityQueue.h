@@ -1,6 +1,6 @@
 #ifndef PriorityQueue_H
 #define PriorityQueue_H
-
+#include <iostream>
 #include "../Nodes/PriorityNode.h"
 
 template <typename T>
@@ -34,9 +34,7 @@ public:
     {
         PriorityNode<T>* NewNode = new PriorityNode<T>(Value, Priority);
 
-        // In-case an error occurs when adding we handle it
-        try
-        {
+        
             // For when the queue is empty / the new node has a higher priority
             if (this->Head == nullptr || Priority > this->Head->GetPriority())
             {
@@ -59,13 +57,8 @@ public:
                 this->Count++;
                 return true;
             }
-        }
-        // Idk what error type would come here but ig it's bad_alloc but I'm not sure so I used ...
-        catch (...)
-        {
-            std::cout << "An error occurred while enqueuing in PriorityQueue" << std::endl;
-            return false;
-        }
+        
+        
 
         return true;
     }

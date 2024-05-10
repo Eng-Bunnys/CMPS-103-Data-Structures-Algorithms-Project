@@ -66,6 +66,16 @@ public:
 		return true;
 	}
 
+	bool Peek(T& Peeked) {
+		if (isEmpty())
+			return false;
+
+		int RandomIndex = Utils::GenerateRandomNumber(0, this->Count - 1);
+
+		Peeked = *this->Array[RandomIndex];
+		return true;
+	}
+
 	void Print() const {
 		if (isEmpty()) 
 			return;

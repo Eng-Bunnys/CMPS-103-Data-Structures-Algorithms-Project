@@ -102,6 +102,12 @@
     <ClInclude Include="Killed List\Killed List.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Units\Earth\Earth Healer\Unit Maintenance List\Unit Maintenance List.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\Earth\Earth Healer\Heal Unit\Heal Unit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -177,6 +183,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game Manager\Game Manager Attack Functions\Alien Army Attack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Units\Earth\Earth Healer\Unit Maintenance List\Unit Maintenance List.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Units\Earth\Earth Healer\Heal Unit\Heal Unit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -9,6 +9,7 @@
 #include "../Generator/Generator.h"
 #include "../Temp List/Temp List.h"
 #include "../Killed List/Killed List.h"
+#include"../Units/Earth/Earth Healer/Unit Maintenance List/Unit Maintenance List.h"
 
 /// Army Imports
 
@@ -16,6 +17,7 @@
 #include "../../Units/Earth/Earth Army/Earth Army.h"
 #include "../../Units/Alien/Alien Army/Alien Army.h"
 
+class UnitMaintenanceList;
 class ManagerStart;
 class GameManager
 {
@@ -36,6 +38,8 @@ private:
     KilledList *Killed;
     /* A pointer to the temp list instance*/
     TempList *TempListInstance;
+
+    UnitMaintenanceList* UML;
 
 public:
     GameManager();
@@ -191,6 +195,9 @@ public:
      * @returns {void}
      */
     void Print() const;
+
+
+    UnitMaintenanceList* GetUML();
 };
 
 #endif // !GameManager_H
