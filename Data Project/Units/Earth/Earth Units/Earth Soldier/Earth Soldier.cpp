@@ -23,9 +23,9 @@ void EarthSoldier::Attack(GameManager *Game, bool Interactive)
 		RemainingCapacity--;
 	}
 
-	int AttackedCount = Game->GetTempList()->GetAlienSoldierCount();
+	int AttackedCount = Game->GetTempList()->GetAlienSoldiers()->GetCount();
 
-	if (Interactive)
+	if (Interactive && AttackedCount > 0)
 	{
 		std::cout << "ES (ID " << this->GetID() << ") is Attacking ";
 		Game->GetTempList()->PrintAlienSoldier();
@@ -33,28 +33,27 @@ void EarthSoldier::Attack(GameManager *Game, bool Interactive)
 
 	AttackedSoldier = nullptr;
 
-	while (AttackedCount > 0 
-		&& Game->GetTempList()->RemoveAlienSoldier(AttackedSoldier))
+	while (AttackedCount > 0 && Game->GetTempList()->RemoveAlienSoldier(AttackedSoldier))
 	{
-			const double DamageDealt = this->CalculateDamage(this->Power, this->Health, AttackedSoldier->GetHealth());
+		const double DamageDealt = this->CalculateDamage(this->Power, this->Health, AttackedSoldier->GetHealth());
 
-			const double NewHealth = AttackedSoldier->GetHealth() - DamageDealt;
+		const double NewHealth = AttackedSoldier->GetHealth() - DamageDealt;
 
-			if (NewHealth <= 0)
-			{
-				AttackedSoldier->SetHealth(0);
-				AttackedSoldier->SetDestructionTime(Game->GetTimeStep());
-				Game->GetKilledList()->AddUnit(static_cast<Unit *>(AttackedSoldier));
-			}
-			else
-			{
-				AttackedSoldier->SetHealth(NewHealth);
+		if (NewHealth <= 0)
+		{
+			AttackedSoldier->SetHealth(0);
+			AttackedSoldier->SetDestructionTime(Game->GetTimeStep());
+			Game->GetKilledList()->AddUnit(static_cast<Unit *>(AttackedSoldier));
+		}
+		else
+		{
+			AttackedSoldier->SetHealth(NewHealth);
 
-				Game->GetAlienArmy()->AddSoldier(
-					AttackedSoldier->GetHealth(),
-					AttackedSoldier->GetPower(),
-					AttackedSoldier->GetAttackCapacity());
-			}
+			Game->GetAlienArmy()->AddSoldier(
+				AttackedSoldier->GetHealth(),
+				AttackedSoldier->GetPower(),
+				AttackedSoldier->GetAttackCapacity());
+		}
 
 		AttackedCount--;
 	}

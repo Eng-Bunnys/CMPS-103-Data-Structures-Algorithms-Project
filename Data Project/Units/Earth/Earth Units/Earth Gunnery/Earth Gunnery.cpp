@@ -18,53 +18,58 @@ double EarthGunnery::GetPriority() const
 	return ((this->Health * this->HealthWeight) + ((this->Power * this->PowerWeight)));
 }
 
-void EarthGunnery::Attack(GameManager* Game, bool Interactive)
+void EarthGunnery::Attack(GameManager *Game, bool Interactive)
 {
 	int RemainingCapacity = this->AttackCapacity;
 
-	AlienMonster* AttackedMonster = nullptr;
-	AlienDrone* AttackedDrone = nullptr;
+	AlienMonster *AttackedMonster = nullptr;
+	AlienDrone *AttackedDrone = nullptr;
 
-	while (RemainingCapacity > 0) {
-		if (Game->GetAlienArmy()->RemoveMonster(AttackedMonster)) {
+	while (RemainingCapacity > 0)
+	{
+		if (Game->GetAlienArmy()->RemoveMonster(AttackedMonster))
+		{
 			Game->GetTempList()->AddGunneryAttack(AttackedMonster, 0);
 			RemainingCapacity--;
 		}
 
-		if (RemainingCapacity > 0
-			&& Game->GetAlienArmy()->RemoveDrone(AttackedDrone)) {
+		if (RemainingCapacity > 0 && Game->GetAlienArmy()->RemoveDrone(AttackedDrone))
+		{
 			Game->GetTempList()->AddGunneryAttack(AttackedDrone, 1);
 			RemainingCapacity--;
 		}
 	}
 
-	int AttackedCount = Game->GetTempList()->GetAlienDroneCount()
-		+ Game->GetTempList()->GetAlienMonsterCount();
+	int AttackedCount = Game->GetTempList()->GetGunneryAttack()->GetCount();
 
 	AttackedMonster = nullptr;
 	AttackedDrone = nullptr;
 
-	if (Interactive && AttackedCount > 0) {
+	if (Interactive && AttackedCount > 0)
+	{
 		std::cout << "EG (ID " << this->GetID() << ") is Attacking ";
 		Game->GetTempList()->PrintGunneryAttack();
 	}
 
 	int UnitPriority;
 
-	AlienUnit* AttackedUnit = nullptr;
+	AlienUnit *AttackedUnit = nullptr;
 
 	while (AttackedCount > 0 &&
-		Game->GetTempList()->RemoveGunneryAttack(AttackedUnit, UnitPriority)) {
-		
+		   Game->GetTempList()->RemoveGunneryAttack(AttackedUnit, UnitPriority))
+	{
+
 		const double DamageDealt = this->CalculateDamage(this->Power, this->Health, AttackedUnit->GetHealth());
 
 		const double NewHealth = AttackedUnit->GetHealth() - DamageDealt;
 
-		if (NewHealth <= 0) {
+		if (NewHealth <= 0)
+		{
 			AttackedUnit->SetHealth(0);
 			Game->GetKilledList()->AddUnit(AttackedUnit);
 		}
-		else {
+		else
+		{
 			AttackedUnit->SetHealth(NewHealth);
 
 			if (UnitPriority == 1)

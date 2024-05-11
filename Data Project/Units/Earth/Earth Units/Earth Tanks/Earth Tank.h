@@ -16,7 +16,7 @@ public:
      */
     EarthTank(int ID, double Health, int Power, int AttackCapacity, int JoinTime);
 
-    //bool AttackSoldiers(GameManager *Game);
+    bool AttackSoldiers(GameManager *Game);
 
     virtual void Attack(GameManager *Game, bool Interactive = true);
 };
