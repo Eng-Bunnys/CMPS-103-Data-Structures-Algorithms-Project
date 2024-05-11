@@ -20,4 +20,13 @@ void GameManager::EarthArmyAttack(GameManager* Game, bool Print)
 
 #pragma endregion
 
+
+#pragma region TankAttack
+
+	EarthTank* AttackingTank = nullptr;
+
+	if (this->Earth->PeekTank(AttackingTank))
+		AttackingTank->Attack(this);
+
+#pragma endregion
 }
