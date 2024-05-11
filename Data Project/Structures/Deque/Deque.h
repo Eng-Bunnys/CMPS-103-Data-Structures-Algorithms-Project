@@ -9,19 +9,19 @@ class Deque : public QueueADT<T>
 {
 private:
     /* The Head of the Deque */
-    DoublyNode<T> *Head;
+    DoublyNode<T>* Head;
     /* The Tail of the Deque */
-    DoublyNode<T> *Tail;
+    DoublyNode<T>* Tail;
     /* The number of nodes in the Deque */
     int Count = 0;
 
 public:
     Deque() : Head(nullptr), Tail(nullptr), Count(0) {}
-    Deque(DoublyNode<T> *Head, DoublyNode<T> *Tail) : Head(Head), Tail(Tail), Count(2) {}
-    Deque(const T &Head, const T &Tail)
+    Deque(DoublyNode<T>* Head, DoublyNode<T>* Tail) : Head(Head), Tail(Tail), Count(2) {}
+    Deque(const T& Head, const T& Tail)
     {
-        DoublyNode<T> *HeadNode = new DoublyNode<T>(Head);
-        DoublyNode<T> *TailNode = new DoublyNode<T>(Tail);
+        DoublyNode<T>* HeadNode = new DoublyNode<T>(Head);
+        DoublyNode<T>* TailNode = new DoublyNode<T>(Tail);
 
         HeadNode->SetNext(TailNode);
         TailNode->SetBack(HeadNode);
@@ -35,10 +35,10 @@ public:
      * @param {T} NewElement - The element to be added.
      * @returns {boolean} True if the operation is successful, false otherwise.
      */
-    bool EnqueueFront(const T &NewElement)
+    bool EnqueueFront(const T& NewElement)
     {
         // Creating a new doubly node that contains the value of the new node
-        DoublyNode<T> *NewNode = new DoublyNode<T>(NewElement);
+        DoublyNode<T>* NewNode = new DoublyNode<T>(NewElement);
 
         // Checking if the deque is empty, if true then we set both the head and tail to the new node since it's just one node
         if (isEmpty())
@@ -60,7 +60,7 @@ public:
      * @param {T} FrontElement - The element removed from the front.
      * @returns {boolean} True if the operation is successful, false otherwise.
      */
-    bool DequeueFront(T &FrontElement)
+    bool DequeueFront(T& FrontElement)
     {
         // If the deque is empty we can't remove anything (obv.)
         if (isEmpty())
@@ -71,7 +71,7 @@ public:
             FrontElement = Head->GetValue();
 
             // I'm not sure if this is correct, but I created this to safely delete the front node, my thought process was if we didn't do this, there will be either a memory leak or dangling pointer
-            DoublyNode<T> *Temp = Head;
+            DoublyNode<T>* Temp = Head;
             // Sometimes the deque can contain only 1 element, if that's the case we set both the head and tail to null
             if (Head == Tail)
                 Head = Tail = nullptr;
@@ -92,10 +92,10 @@ public:
      * @param {T} NewElement - The element to be added.
      * @returns {boolean} True if the operation is successful, false otherwise.
      */
-    bool EnqueueBack(const T &NewElement)
+    bool EnqueueBack(const T& NewElement)
     {
         // Creating a new node to add to the back
-        DoublyNode<T> *NewNode = new DoublyNode<T>(NewElement);
+        DoublyNode<T>* NewNode = new DoublyNode<T>(NewElement);
 
         // If the deque is empty, we add the new node to both the head and tail just like above
         if (isEmpty())
@@ -116,7 +116,7 @@ public:
      * @param {T} BackElement - The element removed from the back.
      * @returns {boolean} True if the operation is successful, false otherwise.
      */
-    bool DequeueBack(T &BackElement)
+    bool DequeueBack(T& BackElement)
     {
         // Just like dequeue front
         if (isEmpty())
@@ -126,9 +126,6 @@ public:
             // Setting the value of the old tail to the parameter
             BackElement = Tail->GetValue();
 
-            // Just like dequeue front
-            DoublyNode<T> *Temp = Tail;
-
             if (Head == Tail)
                 Head = Tail = nullptr;
             else
@@ -136,7 +133,7 @@ public:
                 Tail = Tail->GetBack();
                 Tail->SetNext(nullptr);
             }
-            delete Temp;
+
             Count--;
             return true;
         }
@@ -147,7 +144,7 @@ public:
      * @param {T} FrontElement - The element at the front of the Deque.
      * @returns {boolean} True if the operation is successful, false otherwise.
      */
-    bool GetFront(T &FrontElement) const
+    bool GetFront(T& FrontElement) const
     {
         // If the deque is empty, we set the parameter to null and return false
         if (isEmpty())
@@ -165,7 +162,7 @@ public:
      * @param {T} BackElement - The element at the back of the Deque.
      * @returns {boolean} True if the operation is successful, false otherwise.
      */
-    bool GetBack(T &BackElement) const
+    bool GetBack(T& BackElement) const
     {
         if (isEmpty())
             return false;
@@ -207,7 +204,7 @@ public:
             return;
 
         // Iterate through the deque and print each element
-        DoublyNode<T> *Current = Head;
+        DoublyNode<T>* Current = Head;
 
         std::cout << "[";
 
@@ -233,12 +230,12 @@ public:
     void Clear()
     {
         // Start from the head of the deque
-        DoublyNode<T> *Current = Head;
+        DoublyNode<T>* Current = Head;
 
         // Iterate through the deque and deallocate memory for each node
         while (Current != nullptr)
         {
-            DoublyNode<T> *Temp = Current;
+            DoublyNode<T>* Temp = Current;
 
             // Move to the next node
             Current = Current->GetNext();
@@ -257,28 +254,28 @@ public:
 
     // To avoid errors, we must implement the pure virtual functions found in QueueADT.h since deque implements it
 
-    bool enqueue(const T &newEntry) override
+    bool enqueue(const T& newEntry) override
     {
         return EnqueueBack(newEntry);
     }
 
-    bool dequeue(T &FrontEntry) override
+    bool dequeue(T& FrontEntry) override
     {
         return DequeueFront(FrontEntry);
     }
 
-    bool peek(T &FrontEntry) const override
+    bool peek(T& FrontEntry) const override
     {
         return GetFront(FrontEntry);
     }
 
     ~Deque()
     {
-        DoublyNode<T> *Current = Head;
+        DoublyNode<T>* Current = Head;
 
         while (Current != nullptr)
         {
-            DoublyNode<T> *Temp = Current;
+            DoublyNode<T>* Temp = Current;
             Current = Current->GetNext();
             delete Temp;
         }

@@ -11,7 +11,6 @@ private:
     DoublyNode<T> *Next;
     /* Pointer to the previous node */
     DoublyNode<T> *Back;
-
 public:
     /**
      * Construct a new DoublyNode object with default value, previous, and next pointers.
@@ -49,7 +48,7 @@ public:
      */
     void SetNext(DoublyNode<T> *NewNext)
     {
-        this->Next = NewNext;
+        Next = NewNext;
     }
 
     /**

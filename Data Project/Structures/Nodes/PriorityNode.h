@@ -16,7 +16,7 @@ public:
     /**
      * Construct a new PriorityNode object with default value and next pointer.
      */
-    PriorityNode() : Next(nullptr) {}
+    PriorityNode() : Next(nullptr), Value(nullptr) {}
 
     /**
      * Construct a new PriorityNode object with given value, priority, and default next pointer.

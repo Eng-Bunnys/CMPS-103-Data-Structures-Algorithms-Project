@@ -177,7 +177,10 @@ public:
 	void Print() const
 	{
 		if (isEmpty())
+		{
+			std::cout << "[]";
 			return;
+		}
 
 		Node<T> *Current = this->Head;
 

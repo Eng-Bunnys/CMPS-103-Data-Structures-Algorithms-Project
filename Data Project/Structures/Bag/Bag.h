@@ -3,7 +3,7 @@
 
 #include "../../Utils/Utils.h"
 
-#include <iostream> 
+#include <iostream>
 
 constexpr int MaxSize = 500;
 
@@ -11,79 +11,79 @@ template <typename T>
 class Bag
 {
 private:
-	T* Array[MaxSize];
+	T *Elements[MaxSize];
 	int Count;
 public:
-	Bag() : Count(0) {
+	Bag() : Count(0)
+	{
+		for (int i = 0; i < MaxSize; i++)
+			Elements[i] = nullptr;
 	}
 
-	bool isFull() const {
+	bool isFull() const
+	{
 		return this->Count >= MaxSize;
 	}
 
-	bool isEmpty() const {
+	bool isEmpty() const
+	{
 		return this->Count == 0;
 	}
 
-	int GetCount() const {
+	int GetCount() const
+	{
 		return this->Count;
 	}
 
-	bool Add(const T& NewElement) {
-		if (isFull())
-			return false;
+	bool Add(const T &NewElement)
+	{
+			if (isFull())
+				return false;
 
-		T* NewItem = new (std::nothrow) T(NewElement);
+			T* NewItem = new (std::nothrow) T(NewElement);
 
 			if (NewItem == nullptr)
 				return false;
 
-		this->Array[this->Count] = NewItem;
+			this->Elements[this->Count] = NewItem;
 
-		this->Count++;
-		return true;
+			this->Count++;
+			return true;
 	}
 
-	bool Remove(T& Removed) {
+	bool Remove(T& RemovedElement) {
 		if (isEmpty())
 			return false;
 
-		int RandomIndex = Utils::GenerateRandomNumber(0, this->Count - 1);
+		int RandomNumber = Utils::GenerateRandomNumber(0, this->Count - 1);;
 
-		Removed = *this->Array[RandomIndex];
+		RemovedElement = *Elements[RandomNumber];
 
-		std::cout << Removed;
+		Elements[RandomNumber] = Elements[Count - 1];
 
-		//delete this->Array[RandomIndex];
-
-	/*	if (this->Count > 1) {
-			this->Array[RandomIndex] = this->Array[this->Count - 1];
-			this->Array[this->Count - 1] = nullptr;
-		}*/
+		Elements[Count - 1] = nullptr;
 
 		this->Count--;
 
 		return true;
 	}
 
-	bool Peek(T& Peeked) {
+	bool Peek(T& PeekedElement) const {
 		if (isEmpty())
 			return false;
 
-		int RandomIndex = Utils::GenerateRandomNumber(0, this->Count - 1);
-
-		Peeked = *this->Array[RandomIndex];
+		PeekedElement = *this->Elements[0];
 		return true;
 	}
 
 	void Print() const {
-		if (isEmpty()) 
+		if (isEmpty())
 			return;
-		
 
 		std::cout << "[";
+
 		for (int i = 0; i < this->Count; ++i) {
-			std::cout << *this->Array[i];
+			std::cout << *this->Elements[i];
 			if (i < this->Count - 1)
 				std::cout << ", ";
 		}

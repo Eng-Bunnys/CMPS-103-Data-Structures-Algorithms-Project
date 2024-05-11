@@ -1,6 +1,6 @@
 #ifndef PriorityQueue_H
 #define PriorityQueue_H
-#include <iostream>
+
 #include "../Nodes/PriorityNode.h"
 
 template <typename T>
@@ -13,6 +13,7 @@ private:
     int Count;
 
 public:
+    PriorityQueue() : Head(nullptr) , Count(0) {}
     /**
      * Checks if the priority queue is empty
      *
@@ -34,32 +35,26 @@ public:
     {
         PriorityNode<T>* NewNode = new PriorityNode<T>(Value, Priority);
 
-        
-            // For when the queue is empty / the new node has a higher priority
-            if (this->Head == nullptr || Priority > this->Head->GetPriority())
-            {
-                NewNode->SetNext(this->Head);
-                this->Head = NewNode;
-                this->Count++;
-                return true;
-            }
-            else
-            {
-                // If not then we traverse the queue to find the correct position to add the new node
 
-                PriorityNode<T>* Current = this->Head;
+        // There was a memory allocationf failed error, so I added this here
+        if (!NewNode)
+            return false;
 
-                while (Current->GetNext() != nullptr && Priority <= Current->GetNext()->GetPriority())
-                    Current = Current->GetNext();
+        if (!this->Head || Priority > this->Head->GetPriority()) {
+            NewNode->SetNext(this->Head);
+            this->Head = NewNode;
+        }
+        else {
+            PriorityNode<T>* Current = this->Head;
 
-                NewNode->SetNext(Current->GetNext());
-                Current->SetNext(NewNode);
-                this->Count++;
-                return true;
-            }
-        
-        
+            while (Current->GetNext() && Priority <= Current->GetNext()->GetPriority())
+                Current = Current->GetNext();
 
+            NewNode->SetNext(Current->GetNext());
+            Current->SetNext(NewNode);
+        }
+
+        this->Count++;
         return true;
     }
 
