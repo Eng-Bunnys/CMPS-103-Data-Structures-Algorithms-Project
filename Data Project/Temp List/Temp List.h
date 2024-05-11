@@ -25,25 +25,28 @@ class TempList
 {
 private:
     /* A queue of Earth soldiers */
-    LinkedQueue<EarthSoldier *> EarthSoldierList;
+    LinkedQueue<EarthSoldier *> *EarthSoldierList;
 
     /* A stack of Earth tanks */
-    ArrayStack<EarthTank *> EarthTankList;
+    ArrayStack<EarthTank *> *EarthTankList;
 
     /* A priority queue of Earth gunnery units */
-    PriorityQueue<EarthGunnery *> EarthGunneryList;
+    PriorityQueue<EarthGunnery *> *EarthGunneryList;
 
     /* A queue of Alien soldiers */
-    LinkedQueue<AlienSoldier *> AlienSoldierList;
+    LinkedQueue<AlienSoldier *> *AlienSoldierList;
 
     /* A deque of Alien drones */
-    Deque<AlienDrone *> AlienDroneList;
+    Deque<AlienDrone *> *AlienDroneList;
 
     /* A bag of Alien monsters */
-    Bag<AlienMonster *> AlienMonsterList;
+    Bag<AlienMonster *> *AlienMonsterList;
 
     /* A Priority queue of Alien Monsters & Drones, Priority 1 for Alien Drone, 0 for Monster */
-    PriorityQueue<AlienUnit *> AlienMonsterAndDroneList;
+    PriorityQueue<AlienUnit *> *AlienMonsterAndDroneList;
+
+    /* A Priority queue of Alien Monsters & Soldiers, Priority 1 for Alien Monster, 0 for Soldier */
+    PriorityQueue<AlienUnit *> *AlienMonsterAndSoldierList;
 
     /* The total number of Earth Units */
     int EarthCount;
@@ -63,6 +66,8 @@ public:
      * Constructs a new TempList with default initialization
      */
     TempList();
+
+#pragma region GunneryAttackList
 
     /*
      * Adds a Gunnery Attack Unit
@@ -89,6 +94,53 @@ public:
      */
     void PrintGunneryAttack();
 
+    /*
+     * Returns the Earth Gunnery attack instance
+     *
+     * @returns {PriorityQueue<AlienUnit *>*}
+     */
+    PriorityQueue<AlienUnit *> *GetGunneryAttack() const;
+
+#pragma endregion
+
+#pragma region TankAttackList
+
+    /*
+     * Adds a Tank Attack Unit
+     *
+     * @param {int} Priority - The unit's priority
+     * @param {AlienUnit*} AttackedUnit - A pointer to the unit that will get attacked
+     * @returns {bool} - If the operation was successful
+     */
+    bool AddTankAttack(AlienUnit *AttackedUnit, int Priority);
+
+    /*
+     * Removes a Tank Attack Unit
+     *
+     * @param {int&} Priority - The unit's priority
+     * @param {AlienUnit*&} AttackedUnit - A pointer to the unit that will get attacked
+     * @returns {bool} - If the operation was successful
+     */
+    bool RemoveTankAttack(AlienUnit *&AttackedUnit, int &Priority);
+
+    /*
+     * Prints all of the available Tank Attacked Units
+     *
+     * @returns {void}
+     */
+    void PrintTankAttack();
+
+    /*
+     * Returns the Earth Tank attack instance
+     *
+     * @returns {PriorityQueue<AlienUnit *>*}
+     */
+    PriorityQueue<AlienUnit *> *GetTankAttack() const;
+
+#pragma endregion
+
+#pragma region EarthSoldierList
+
     /**
      * Adds an Earth soldier to the list
      *
@@ -104,6 +156,15 @@ public:
      * @returns {bool} - If the operation was successful
      */
     bool RemoveEarthSoldier(EarthSoldier *&Soldier);
+
+    /*
+     * Returns the Earth Soldier instance
+     *
+     * @returns { LinkedQueue<EarthSoldier*>*}
+     */
+    LinkedQueue<EarthSoldier *> *GetEarthSoldiers() const;
+
+#pragma endregion
 
     /*
      * Prints all of the available Earth Soldiers
@@ -144,6 +205,8 @@ public:
      */
     bool RemoveGunnery(EarthGunnery *&Gunnery);
 
+#pragma region AlienSoldier
+
     /**
      * Adds an Alien soldier to the list
      *
@@ -159,6 +222,15 @@ public:
      * @returns {bool} - If the operation was successful
      */
     bool RemoveAlienSoldier(AlienSoldier *&Soldier);
+
+    /*
+     * Returns the Alien Soldier instance
+     *
+     * @returns { LinkedQueue<EarthSoldier*>*}
+     */
+    LinkedQueue<AlienSoldier *> *GetAlienSoldiers() const;
+
+#pragma endregion
 
     /*
      * Prints all of the available Alien Soldiers
