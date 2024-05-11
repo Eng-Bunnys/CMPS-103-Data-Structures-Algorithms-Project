@@ -27,7 +27,7 @@ void EarthSoldier::Attack(GameManager *Game, bool Interactive)
 
 	if (Interactive)
 	{
-		std::cout << "ES " << this->GetID() << " shots ";
+		std::cout << "ES (ID " << this->GetID() << ") is Attacking ";
 		Game->GetTempList()->PrintAlienSoldier();
 	}
 
