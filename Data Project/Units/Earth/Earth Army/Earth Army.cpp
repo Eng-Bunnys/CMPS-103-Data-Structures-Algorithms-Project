@@ -167,10 +167,25 @@ bool EarthArmy::CanAdd() const
 
 EarthArmy::~EarthArmy()
 {
-	/// To-Do: Finish the constructor
-	EarthGunnery *Temp;
+#pragma region Soldier
+	EarthSoldier *TempSoldier;
+
+	while (this->Soldiers->dequeue(TempSoldier))
+		delete TempSoldier;
+#pragma endregion
+
+#pragma region Tank
+	EarthTank *TempTank;
+
+	while (this->Tanks->pop(TempTank))
+		delete TempTank;
+#pragma endregion
+
+#pragma region Gunnery
+	EarthGunnery *TempGunnery;
 	int FalsePriority;
 
-	while (this->Gunnery->dequeue(Temp, FalsePriority))
-		delete Temp;
+	while (this->Gunnery->dequeue(TempGunnery, FalsePriority))
+		delete TempGunnery;
+#pragma endregion
 }
