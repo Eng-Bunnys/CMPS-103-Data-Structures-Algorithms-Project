@@ -9,7 +9,6 @@
 #include "../Generator/Generator.h"
 #include "../Temp List/Temp List.h"
 #include "../Killed List/Killed List.h"
-#include"../Units/Earth/Earth Healer/Unit Maintenance List/Unit Maintenance List.h"
 
 /// Army Imports
 
@@ -17,7 +16,6 @@
 #include "../../Units/Earth/Earth Army/Earth Army.h"
 #include "../../Units/Alien/Alien Army/Alien Army.h"
 
-class UnitMaintenanceList;
 class ManagerStart;
 class GameManager
 {
@@ -38,8 +36,6 @@ private:
     KilledList *Killed;
     /* A pointer to the temp list instance*/
     TempList *TempListInstance;
-
-    UnitMaintenanceList* UML;
 
 public:
     GameManager();
@@ -132,10 +128,9 @@ public:
      */
     KilledList *GetKilledList() const;
     /// Attack Logic
-    ///To-Do: Add JSDocs
-    
-    void EarthArmyAttack(GameManager* Game, bool Print);
+    /// To-Do: Add JSDocs
 
+    void EarthArmyAttack(GameManager *Game, bool Print);
 
     /// Prints & Other
 
@@ -156,12 +151,12 @@ public:
     void RunNextTimeStep(bool Print);
 
     /*
-    * Runs all of the attacks 
-    * 
-    * @param {bool} PrintAttack - If we want to print the current attacking
-    * @param {bool} TitlePrinted - If the "Current Units Attacking" Title was printed
-    * @returns {void}
-    */
+     * Runs all of the attacks
+     *
+     * @param {bool} PrintAttack - If we want to print the current attacking
+     * @param {bool} TitlePrinted - If the "Current Units Attacking" Title was printed
+     * @returns {void}
+     */
     void RunAttack(bool PrintAttack, bool TitlePrinted);
 
     /**
@@ -196,8 +191,7 @@ public:
      */
     void Print() const;
 
-
-    UnitMaintenanceList* GetUML();
+    ~GameManager();
 };
 
 #endif // !GameManager_H

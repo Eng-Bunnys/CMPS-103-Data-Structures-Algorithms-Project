@@ -11,6 +11,7 @@ private:
 	LinkedQueue<Unit *> *Killed;
 	/* The number of units in the killed list */
 	int Count;
+
 public:
 	KilledList();
 
@@ -23,6 +24,8 @@ public:
 	bool RemoveUnit(Unit *&RemovedUnit);
 
 	void Print();
+
+	~KilledList();
 };
 
 #endif // !KilledList_H

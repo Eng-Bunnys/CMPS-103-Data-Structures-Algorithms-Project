@@ -36,19 +36,12 @@ protected:
 	int DestructionTime;
 	/* The timestep when the unit first got attacked */
 	int FirstAttackedTime;
-	/* The timestep when the unit first joined the UML*/
-	int timeJoinedUML;
-
 
 	/// Delay properties
 	/* The time spent until a unit got hit by an enemy*/
 	int FirstAttackedDelay;
 	/* The time spent from the first attack from an enemy till removal / destruction */
 	int DestructionDelay;
-
-
-	/// flag to know if unit first time to enter uml list or not
-	bool firstTimeInUML = false;
 
 public:
 	/**
@@ -120,25 +113,10 @@ public:
 	int GetFirstAttackedTime() const;
 
 	/**
-	 * Getter for retrieving the time when the unit joined the UML list
-	 * @returns {int} The time when the unit joined the UML list
-	 */
-	int GetTimeJoinedUML() const;
-
-
-	/**
-	 * Getter for retrieving the flag indicating if the unit first time entered the UML list
-	 * @returns {bool} True if it's the first time, false otherwise
-	 */
-	bool GetUMLFlags() const;
-
-	/**
 	 * Setter for updating the health of the unit
 	 * @param {double} NewHealth - The new health value
 	 */
 	void SetHealth(double NewHealth);
-
-
 
 	/**
 	 * Setter for updating the destruction time of the unit
@@ -152,17 +130,6 @@ public:
 	 */
 	void SetFirstAttackedTime(int FirstAttackedTime);
 
-	/**
-	 * Setter for updating the time when the unit joined the UML list
-	 * @param {int} time - The time when the unit joined the UML list
-	 */
-	void SetTimeJoinedUML(int TimeJoinedUML);
-
-	/**
-	 * Setter for updating the flag indicating if the unit first time entered the UML list
-	 * @param {bool} join - The flag indicating if it's the first time
-	 */
-	void SetUMLFlags(bool join);
 	/*
 	 * Calculate how much damage a unit does
 	 * @param {int} AttackerPower - The attackers total power

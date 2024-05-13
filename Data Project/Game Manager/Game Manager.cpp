@@ -23,18 +23,17 @@ GameManager::GameManager()
 
     this->Killed = new KilledList();
     this->TempListInstance = new TempList();
-
-    this->UML = new UnitMaintenanceList(this);
 }
 
-void GameManager::RunNextTimeStep(bool Print) {
-    this->GeneratorInstance->Generate();
-    ///To-Do: Fix the title print
+void GameManager::RunNextTimeStep(bool Print)
+{
     this->RunAttack(Print, Print);
+    this->GeneratorInstance->Generate();
     this->TimeStep++;
 }
 
-void GameManager::RunAttack(bool PrintAttack, bool TitlePrinted) {
+void GameManager::RunAttack(bool PrintAttack, bool TitlePrinted)
+{
     if (TitlePrinted)
         std::cout << "============== Units Fighting At Current Step ==============" << std::endl;
 
@@ -54,7 +53,7 @@ void GameManager::RunInteractive()
 
     this->StartHandler->PressAnyContinue();
 
-    while (this->GetWinner() == Army::None)
+    while (this->Winner != Army::None)
     {
         this->Print();
 
@@ -78,7 +77,11 @@ void GameManager::RunSilent()
     }
 };
 
-
-UnitMaintenanceList* GameManager::GetUML() {
-    return this->UML;
+GameManager::~GameManager()
+{
+    this->Aliens->~AlienArmy();
+    this->Earth->~EarthArmy();
+    this->TempListInstance->~TempList();
+    this->Killed->~KilledList();
+    this->GeneratorInstance->~Generator();
 }

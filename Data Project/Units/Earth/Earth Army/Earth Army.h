@@ -10,6 +10,7 @@
 #include "../Earth Units/Earth Gunnery/Earth Gunnery.h"
 #include "../Earth Units/Earth Tanks/Earth Tank.h"
 #include "../Earth Units/Earth Soldier/Earth Soldier.h"
+#include "../Earth Units/Earth Healer/Earth Healer.h"
 
 class GameManager;
 class AlienArmy;
@@ -29,6 +30,8 @@ private:
 	ArrayStack<EarthTank *> *Tanks;
 	/* A queue to store all of the Earth Soldiers */
 	LinkedQueue<EarthSoldier *> *Soldiers;
+	/* A stack of the Earth Healers */
+	ArrayStack<EarthHealer *> *Healers;
 
 public:
 	/*
@@ -38,7 +41,7 @@ public:
 	 */
 	EarthArmy(GameManager *Game);
 
-	/// Unit Getters
+#pragma region UnitGetters
 
 	/*
 	 * Returns the Earth Gunnery List
@@ -61,7 +64,16 @@ public:
 	 */
 	LinkedQueue<EarthSoldier *> *GetSoldiers() const;
 
-	/// Unit Setters
+	/*
+	 * Returns the Earth Healers List
+	 *
+	 * @returns {ArrayStack<EarthHealer*>*}
+	 */
+	ArrayStack<EarthHealer *> *GetHealers() const;
+
+#pragma endregion
+
+#pragma region UnitSetters
 
 	/*
 	 * Adds a Gunnery to the Gunnery queue
@@ -93,7 +105,19 @@ public:
 	 */
 	bool AddSoldier(double Health, int Power, int AttackCapacity);
 
-	/// Unit Removers
+	/*
+	 * Adds a Healer to the Healer stack
+	 *
+	 * @param {double} Health - The Healer's health
+	 * @param {int} Power - The Healer's power
+	 * @param {int} AttackCapacity - The Healer's attack capacity
+	 * @returns {bool} - If the add operation was successful
+	 */
+	bool AddHealer(double Health, int Power, int AttackCapacity);
+
+#pragma endregion
+
+#pragma region UnitRemovers
 
 	/*
 	 * Removes a Gunnery
@@ -119,7 +143,18 @@ public:
 	 */
 	bool RemoveSoldier(EarthSoldier *&RemovedSoldier);
 
+	/*
+	 * Removes a Healer
+	 *
+	 * @param {EarthHealer*&} RemovedHealer - The removed healer
+	 * @returns {bool} - Whether the remove operation was a success or not
+	 */
+	bool RemoveHealer(EarthHealer *&RemovedHealer);
+#pragma endregion
+
 	/// Unit Peeks
+
+#pragma region UnitPeeks
 
 	/*
 	 * Peeks a Soldier
@@ -145,7 +180,17 @@ public:
 	 */
 	bool PeekGunnery(EarthGunnery *&PeekedGunnery);
 
-	/// Print & Misc
+	/*
+	 * Peeks a Healer
+	 *
+	 * @param {EarthHealer*&} PeekedHealer - The peeked Healer
+	 * @returns {bool} - Whether the peek operation was a success or not
+	 */
+	bool PeekHealer(EarthHealer *&PeekedHealer);
+#pragma endregion
+
+#pragma region Misc
+
 	/*
 	 * Prints all the data for the Alive Earth Units
 	 *
@@ -167,6 +212,8 @@ public:
 	 * @returns {bool} - True if units can be added, false otherwise
 	 */
 	bool CanAdd() const;
+
+#pragma endregion
 
 	/*
 	 * Earth Army Destructor

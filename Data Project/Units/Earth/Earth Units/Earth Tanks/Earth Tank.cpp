@@ -39,11 +39,17 @@ void EarthTank::Attack(GameManager *Game, bool Interactive)
 
 		if (Game->GetAlienArmy()->RemoveMonster(AttackedMonster))
 		{
+			if (AttackedMonster->GetFirstAttackedTime() == -1)
+				AttackedMonster->SetFirstAttackedTime(Game->GetTimeStep());
+
 			Game->GetTempList()->AddTankAttack(AttackedMonster, 1);
 			RemainingCapacity--;
 		}
 		else if (AttackSoldiers(Game) && Game->GetAlienArmy()->RemoveSoldier(AttackedSoldier))
 		{
+			if (AttackedSoldier->GetFirstAttackedTime() == -1)
+				AttackedSoldier->SetFirstAttackedTime(Game->GetTimeStep());
+
 			Game->GetTempList()->AddTankAttack(AttackedSoldier, 0);
 			RemainingCapacity--;
 		}

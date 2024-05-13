@@ -57,16 +57,6 @@ int Unit::GetFirstAttackedTime() const
 	return this->FirstAttackedTime;
 }
 
-int Unit::GetTimeJoinedUML() const
-{
-	return timeJoinedUML;
-}
-
-bool Unit::GetUMLFlags() const
-{
-	return firstTimeInUML;
-}
-
 void Unit::SetDestructionTime(int DestructionTime)
 {
 	this->DestructionTime = DestructionTime;
@@ -81,14 +71,6 @@ void Unit::SetFirstAttackedTime(int FirstAttackTime)
 	this->FirstAttackedDelay = this->FirstAttackedTime - this->JoinTime;
 }
 
-void Unit::SetTimeJoinedUML(int TimeJoinedUML)
-{
-	timeJoinedUML = TimeJoinedUML;
-}
-
-void Unit::SetUMLFlags(bool join) {
-	firstTimeInUML = join;
-}
 double Unit::CalculateDamage(int AttackerPower, double AttackerHealth, double AttackedHealth)
 {
 	return (AttackerPower * (AttackedHealth / 100)) / sqrt(AttackedHealth);

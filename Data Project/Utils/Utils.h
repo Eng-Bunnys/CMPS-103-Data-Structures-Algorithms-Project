@@ -25,6 +25,8 @@ namespace Utils
      */
     int GenerateRandomNumber(int Min = 0, int Max = 100);
 
+    /// To-Do: Add JSDocs
+
     double SafeSubtraction(double Value, double Subtrahend);
     double SafeDivision(double Numerator, double Denominator);
 }

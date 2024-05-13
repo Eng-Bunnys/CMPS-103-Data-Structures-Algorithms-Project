@@ -10,7 +10,7 @@ private:
     /**
      * The maximum size of the array.
      */
-    static constexpr int MAX_SIZE = 100;
+    static constexpr int MAX_SIZE = 500;
     /**
      * The array of stack items.
      */

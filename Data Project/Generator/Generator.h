@@ -168,6 +168,8 @@ public:
      * @returns {void}
      */
     void Generate();
+
+    ~Generator() {}
 };
 
 #endif // !Generator_H

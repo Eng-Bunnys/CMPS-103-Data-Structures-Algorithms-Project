@@ -1,5 +1,5 @@
 #pragma warning(push)
-#pragma warning(disable: 26495)
+#pragma warning(disable : 26495)
 
 #include "ManagerStart.h"
 #include "../Game Manager.h"
@@ -60,7 +60,15 @@ void ManagerStart::SetSettings()
                   << this->ScenarioSettings;
 
         int ChoiceScenario;
-        std::cin >> ChoiceScenario;
+
+        if (!(std::cin >> ChoiceScenario))
+        {
+            std::cout << "Invalid Input Type. Enter a numeric value" << std::endl;
+
+            ClearConsole();
+
+            continue;
+        }
 
         switch (ChoiceScenario)
         {

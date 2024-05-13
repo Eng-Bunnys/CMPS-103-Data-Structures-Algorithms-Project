@@ -13,6 +13,7 @@ class Bag
 private:
 	T *Elements[MaxSize];
 	int Count;
+
 public:
 	Bag() : Count(0)
 	{
@@ -37,25 +38,27 @@ public:
 
 	bool Add(const T &NewElement)
 	{
-			if (isFull())
-				return false;
+		if (isFull())
+			return false;
 
-			T* NewItem = new (std::nothrow) T(NewElement);
+		T *NewItem = new (std::nothrow) T(NewElement);
 
-			if (NewItem == nullptr)
-				return false;
+		if (NewItem == nullptr)
+			return false;
 
-			this->Elements[this->Count] = NewItem;
+		this->Elements[this->Count] = NewItem;
 
-			this->Count++;
-			return true;
+		this->Count++;
+		return true;
 	}
 
-	bool Remove(T& RemovedElement) {
+	bool Remove(T &RemovedElement)
+	{
 		if (isEmpty())
 			return false;
 
-		int RandomNumber = Utils::GenerateRandomNumber(0, this->Count - 1);;
+		int RandomNumber = Utils::GenerateRandomNumber(0, this->Count - 1);
+		;
 
 		RemovedElement = *Elements[RandomNumber];
 
@@ -68,7 +71,8 @@ public:
 		return true;
 	}
 
-	bool Peek(T& PeekedElement) const {
+	bool Peek(T &PeekedElement) const
+	{
 		if (isEmpty())
 			return false;
 
@@ -76,13 +80,15 @@ public:
 		return true;
 	}
 
-	void Print() const {
+	void Print() const
+	{
 		if (isEmpty())
 			return;
 
 		std::cout << "[";
 
-		for (int i = 0; i < this->Count; ++i) {
+		for (int i = 0; i < this->Count; ++i)
+		{
 			std::cout << *this->Elements[i];
 			if (i < this->Count - 1)
 				std::cout << ", ";

@@ -79,6 +79,8 @@ enum UnitType
     HumanSoldierEnum,
     /** Human tank unit */
     HumanTankEnum,
+    /* Human Gunnery Unit */
+    HumanGunneryEnum,
     /** Human healer unit */
     HumanHealerEnum,
     /** Alien soldier unit */

@@ -15,11 +15,13 @@ AlienArmy *GameManager::GetAlienArmy() const
     return this->Aliens;
 }
 
-TempList* GameManager::GetTempList() const {
+TempList *GameManager::GetTempList() const
+{
     return this->TempListInstance;
 }
 
-KilledList* GameManager::GetKilledList() const {
+KilledList *GameManager::GetKilledList() const
+{
     return this->Killed;
 }
 

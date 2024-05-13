@@ -8,12 +8,12 @@ class PriorityQueue
 {
 private:
     /* Pointer to the head of the priority queue */
-    PriorityNode<T>* Head;
+    PriorityNode<T> *Head;
     /* The number of elements in the priority queue */
     int Count;
 
 public:
-    PriorityQueue() : Head(nullptr) , Count(0) {}
+    PriorityQueue() : Head(nullptr), Count(0) {}
     /**
      * Checks if the priority queue is empty
      *
@@ -31,21 +31,22 @@ public:
      * @param {int} Priority - The priority of the value
      * @return {bool} - True if the operation was successful, false otherwise
      */
-    bool enqueue(const T& Value, int Priority)
+    bool enqueue(const T &Value, int Priority)
     {
-        PriorityNode<T>* NewNode = new PriorityNode<T>(Value, Priority);
-
+        PriorityNode<T> *NewNode = new PriorityNode<T>(Value, Priority);
 
         // There was a memory allocationf failed error, so I added this here
         if (!NewNode)
             return false;
 
-        if (!this->Head || Priority > this->Head->GetPriority()) {
+        if (!this->Head || Priority > this->Head->GetPriority())
+        {
             NewNode->SetNext(this->Head);
             this->Head = NewNode;
         }
-        else {
-            PriorityNode<T>* Current = this->Head;
+        else
+        {
+            PriorityNode<T> *Current = this->Head;
 
             while (Current->GetNext() && Priority <= Current->GetNext()->GetPriority())
                 Current = Current->GetNext();
@@ -65,7 +66,7 @@ public:
      * @param {int&} Priority - Reference to store the priority of the removed element
      * @return {bool} - True if the operation was successful, false otherwise
      */
-    bool dequeue(T& Value, int& Priority)
+    bool dequeue(T &Value, int &Priority)
     {
         if (isEmpty())
             return false;
@@ -73,7 +74,7 @@ public:
         Value = this->Head->GetValue();
         Priority = this->Head->GetPriority();
 
-        PriorityNode<T>* Temp = this->Head;
+        PriorityNode<T> *Temp = this->Head;
         this->Head = this->Head->GetNext();
         delete Temp;
         this->Count--;
@@ -87,7 +88,7 @@ public:
      * @param {int&} Priority - Reference to store the priority of the element
      * @return {bool} - True if the operation was successful, false otherwise
      */
-    bool peek(T& Value, int& Priority)
+    bool peek(T &Value, int &Priority)
     {
         if (isEmpty())
             return false;
@@ -106,7 +107,7 @@ public:
         if (isEmpty())
             return;
 
-        PriorityNode<T>* Current = this->Head;
+        PriorityNode<T> *Current = this->Head;
 
         std::cout << "[";
 
@@ -140,7 +141,7 @@ public:
     {
         while (this->Head)
         {
-            PriorityNode<T>* Temp = this->Head;
+            PriorityNode<T> *Temp = this->Head;
             this->Head = this->Head->GetNext();
             delete Temp;
         }

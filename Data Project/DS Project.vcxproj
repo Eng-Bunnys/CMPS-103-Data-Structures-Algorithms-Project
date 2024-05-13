@@ -131,6 +131,7 @@
     <ClCompile Include="killed list\Killed List.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="temp list\Temp List.cpp" />
+    <ClCompile Include="Unit Maintenance List\Unit Maintenance List.cpp" />
     <ClCompile Include="units\alien\alien army\Alien Army.cpp" />
     <ClCompile Include="units\alien\alien units\alien drones\Alien Drones.cpp" />
     <ClCompile Include="units\alien\alien units\alien monsters\Alien Monsters.cpp" />
@@ -138,6 +139,7 @@
     <ClCompile Include="units\alien\alien unit\Alien Unit.cpp" />
     <ClCompile Include="units\earth\earth army\Earth Army.cpp" />
     <ClCompile Include="units\earth\earth units\earth gunnery\Earth Gunnery.cpp" />
+    <ClCompile Include="Units\Earth\Earth Units\Earth Healer\Earth Healer.cpp" />
     <ClCompile Include="units\earth\earth units\earth soldier\Earth Soldier.cpp" />
     <ClCompile Include="units\earth\earth units\earth tanks\Earth Tank.cpp" />
     <ClCompile Include="units\earth\earth unit\Earth Unit.cpp" />
@@ -162,6 +164,7 @@
     <ClInclude Include="structures\queue\LinkedQueue.h" />
     <ClInclude Include="structures\stack\ArrayStack.h" />
     <ClInclude Include="temp list\Temp List.h" />
+    <ClInclude Include="Unit Maintenance List\Unit Maintenance List.h" />
     <ClInclude Include="units\alien\alien army\Alien Army.h" />
     <ClInclude Include="units\alien\alien units\alien drones\Alien Drones.h" />
     <ClInclude Include="units\alien\alien units\alien monsters\Alien Monsters.h" />
@@ -169,6 +172,7 @@
     <ClInclude Include="units\alien\alien unit\Alien Unit.h" />
     <ClInclude Include="units\earth\earth army\Earth Army.h" />
     <ClInclude Include="units\earth\earth units\earth gunnery\Earth Gunnery.h" />
+    <ClInclude Include="Units\Earth\Earth Units\Earth Healer\Earth Healer.h" />
     <ClInclude Include="units\earth\earth units\earth soldier\Earth Soldier.h" />
     <ClInclude Include="units\earth\earth units\earth tanks\Earth Tank.h" />
     <ClInclude Include="units\earth\earth unit\Earth Unit.h" />

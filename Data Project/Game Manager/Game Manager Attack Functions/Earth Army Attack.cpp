@@ -1,10 +1,10 @@
 #include "../Game Manager.h"
 
-void GameManager::EarthArmyAttack(GameManager* Game, bool Print)
+void GameManager::EarthArmyAttack(GameManager *Game, bool Print)
 {
 #pragma region SoldierAttack
 
-	EarthSoldier* AttackingSoldier = nullptr;
+	EarthSoldier *AttackingSoldier = nullptr;
 
 	if (this->Earth->PeekSoldier(AttackingSoldier))
 		AttackingSoldier->Attack(this);
@@ -12,18 +12,17 @@ void GameManager::EarthArmyAttack(GameManager* Game, bool Print)
 #pragma endregion
 
 #pragma region GunneryAttack
-	
-	EarthGunnery* AttackingGunnery = nullptr;
+
+	EarthGunnery *AttackingGunnery = nullptr;
 
 	if (this->Earth->PeekGunnery(AttackingGunnery))
 		AttackingGunnery->Attack(this);
 
 #pragma endregion
 
-
 #pragma region TankAttack
 
-	EarthTank* AttackingTank = nullptr;
+	EarthTank *AttackingTank = nullptr;
 
 	if (this->Earth->PeekTank(AttackingTank))
 		AttackingTank->Attack(this);

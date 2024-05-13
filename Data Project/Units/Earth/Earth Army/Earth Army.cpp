@@ -7,10 +7,11 @@ EarthArmy::EarthArmy(GameManager *Game)
 	this->Soldiers = new LinkedQueue<EarthSoldier *>();
 	this->Tanks = new ArrayStack<EarthTank *>();
 	this->Gunnery = new PriorityQueue<EarthGunnery *>();
+	this->Healers = new ArrayStack<EarthHealer *>();
 	this->NextID = 1;
 }
 
-/// Soldiers
+#pragma region Soldiers
 
 LinkedQueue<EarthSoldier *> *EarthArmy::GetSoldiers() const
 {
@@ -46,7 +47,9 @@ bool EarthArmy::PeekSoldier(EarthSoldier *&PeekedSoldier)
 		return false;
 }
 
-/// Gunnery
+#pragma endregion
+
+#pragma region Gunnery
 
 PriorityQueue<EarthGunnery *> *EarthArmy::GetGunnery() const
 {
@@ -86,7 +89,9 @@ bool EarthArmy::PeekGunnery(EarthGunnery *&PeekedGunnery)
 		return false;
 }
 
-/// Tank
+#pragma endregion
+
+#pragma region Tank
 
 ArrayStack<EarthTank *> *EarthArmy::GetTanks() const
 {
@@ -122,7 +127,47 @@ bool EarthArmy::PeekTank(EarthTank *&PeekedTank)
 		return false;
 }
 
-/// Other
+#pragma endregion
+
+#pragma region Healer
+
+ArrayStack<EarthHealer *> *EarthArmy::GetHealers() const
+{
+	return this->Healers;
+}
+
+bool EarthArmy::AddHealer(double Health, int Power, int AttackCapacity)
+{
+	if (!CanAdd())
+		return false;
+
+	EarthHealer *NewHealer = new EarthHealer(++this->NextID, Health, Power, AttackCapacity, this->Game->GetTimeStep());
+
+	if (this->Healers->push(NewHealer))
+		return true;
+	else
+		return false;
+}
+
+bool EarthArmy::RemoveHealer(EarthHealer *&RemovedHealer)
+{
+	if (this->Healers->pop(RemovedHealer))
+		return true;
+	else
+		return false;
+}
+
+bool EarthArmy::PeekHealer(EarthHealer *&PeekedHealer)
+{
+	if (this->Healers->peek(PeekedHealer))
+		return true;
+	else
+		return false;
+}
+
+#pragma endregion
+
+#pragma region Other
 
 void EarthArmy::Print() const
 {
@@ -133,7 +178,7 @@ void EarthArmy::Print() const
 		std::cout << std::endl;
 	}
 	else
-		std::cout << "0 EG []" << std::endl;
+		std::cout << "0 ES []" << std::endl;
 
 	if (!this->Tanks->isEmpty())
 	{
@@ -142,7 +187,7 @@ void EarthArmy::Print() const
 		std::cout << std::endl;
 	}
 	else
-		std::cout << "0 EG []" << std::endl;
+		std::cout << "0 ET []" << std::endl;
 
 	if (!this->Gunnery->isEmpty())
 	{
@@ -152,6 +197,15 @@ void EarthArmy::Print() const
 	}
 	else
 		std::cout << "0 EG []" << std::endl;
+
+	if (!this->Healers->isEmpty())
+	{
+		std::cout << this->Healers->GetCount() << " EH ";
+		this->Healers->Print();
+		std::cout << std::endl;
+	}
+	else
+		std::cout << "0 EH []" << std::endl;
 }
 
 bool EarthArmy::isEmpty() const
@@ -164,6 +218,10 @@ bool EarthArmy::CanAdd() const
 {
 	return ((this->NextID + 1) >= EarthUnitMinID && (this->NextID + 1) <= EarthUnitMaxID);
 }
+
+#pragma endregion
+
+#pragma region Destructor
 
 EarthArmy::~EarthArmy()
 {
@@ -188,4 +246,14 @@ EarthArmy::~EarthArmy()
 	while (this->Gunnery->dequeue(TempGunnery, FalsePriority))
 		delete TempGunnery;
 #pragma endregion
+
+#pragma region Healer
+	EarthHealer *TempHealer;
+
+	while (this->Healers->pop(TempHealer))
+		delete TempHealer;
+
+#pragma endregion
 }
+
+#pragma endregion

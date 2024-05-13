@@ -29,12 +29,18 @@ void EarthGunnery::Attack(GameManager *Game, bool Interactive)
 	{
 		if (Game->GetAlienArmy()->RemoveMonster(AttackedMonster))
 		{
+			if (AttackedMonster->GetFirstAttackedTime() == -1)
+				AttackedMonster->SetFirstAttackedTime(Game->GetTimeStep());
+
 			Game->GetTempList()->AddGunneryAttack(AttackedMonster, 0);
 			RemainingCapacity--;
 		}
 
 		if (RemainingCapacity > 0 && Game->GetAlienArmy()->RemoveDrone(AttackedDrone))
 		{
+			if (AttackedDrone->GetFirstAttackedTime() == -1)
+				AttackedDrone->SetFirstAttackedTime(Game->GetTimeStep());
+
 			Game->GetTempList()->AddGunneryAttack(AttackedDrone, 1);
 			RemainingCapacity--;
 		}

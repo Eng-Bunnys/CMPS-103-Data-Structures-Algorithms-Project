@@ -37,6 +37,12 @@ bool KilledList::RemoveUnit(Unit *&RemovedUnit)
 		return false;
 }
 
-void KilledList::Print() {
+void KilledList::Print()
+{
 	this->Killed->Print();
+}
+
+KilledList::~KilledList()
+{
+	delete Killed;
 }
