@@ -9,12 +9,20 @@ bool EarthTank::AttackSoldiers(GameManager *Game)
 	int AlienSoldierCount = Game->GetAlienArmy()->GetSoldiers()->GetCount();
 	int EarthSoldierCount = Game->GetEarthArmy()->GetSoldiers()->GetCount();
 
+	static bool HasEarthSoldierRatioDropped = false;
+
 	double EarthToAlienRatio = 100.0 * static_cast<double>(EarthSoldierCount) / AlienSoldierCount;
 
 	if (EarthToAlienRatio < 30.0)
+	{
+		HasEarthSoldierRatioDropped = true;
 		return true;
-	else if (EarthSoldierCount >= 80.0)
+	}
+	else if (HasEarthSoldierRatioDropped && EarthToAlienRatio >= 80.0)
+	{
+		HasEarthSoldierRatioDropped = false;
 		return false;
+	}
 
 	return false;
 }
@@ -28,17 +36,20 @@ void EarthTank::Attack(GameManager *Game, bool Interactive)
 
 	while (RemainingCapacity > 0)
 	{
+
 		if (Game->GetAlienArmy()->RemoveMonster(AttackedMonster))
 		{
 			Game->GetTempList()->AddTankAttack(AttackedMonster, 1);
 			RemainingCapacity--;
 		}
-
-		if (RemainingCapacity > 0 && AttackSoldiers(Game) && Game->GetAlienArmy()->RemoveSoldier(AttackedSoldier))
+		else if (AttackSoldiers(Game) && Game->GetAlienArmy()->RemoveSoldier(AttackedSoldier))
 		{
-			std::cout << "Attacking Soldiers" << std::endl;
 			Game->GetTempList()->AddTankAttack(AttackedSoldier, 0);
 			RemainingCapacity--;
+		}
+		else
+		{
+			break;
 		}
 	}
 
@@ -47,16 +58,18 @@ void EarthTank::Attack(GameManager *Game, bool Interactive)
 	AttackedSoldier = nullptr;
 	AttackedMonster = nullptr;
 
-	if (Interactive && AttackedCount > 0) {
+	if (Interactive && AttackedCount > 0)
+	{
 		std::cout << "ET (ID " << this->GetID() << ") is Attacking ";
 		Game->GetTempList()->PrintTankAttack();
 	}
 
 	int UnitPriority;
 
-	AlienUnit* AttackedUnit = nullptr;
+	AlienUnit *AttackedUnit = nullptr;
 
-	while (AttackedUnit > 0 && Game->GetTempList()->RemoveTankAttack(AttackedUnit, UnitPriority)) {
+	while (AttackedCount > 0 && Game->GetTempList()->RemoveTankAttack(AttackedUnit, UnitPriority))
+	{
 
 		const double DamageDealt = this->CalculateDamage(this->Power, this->Health, AttackedUnit->GetHealth());
 
@@ -67,7 +80,8 @@ void EarthTank::Attack(GameManager *Game, bool Interactive)
 			AttackedUnit->SetHealth(0);
 			Game->GetKilledList()->AddUnit(AttackedUnit);
 		}
-		else {
+		else
+		{
 			AttackedUnit->SetHealth(NewHealth);
 
 			if (UnitPriority == 1)
